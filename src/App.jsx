@@ -154,7 +154,6 @@ function App() {
           />
           {selectedExercise && (
             <ExerciseDetails
-              className="exercise-details"
               selectedExercise={selectedExercise}
               onSelection={handleSelection}
             />
@@ -185,9 +184,9 @@ function WorkoutList({
   onAddToWorkout,
 }) {
   return (
-    <div className="exercises-list">
+    <div className="exercises-list-component">
       <h1>{tab1}</h1>
-      <div>
+      <div className="exercises-list">
         {exercises.map((exercise) => (
           <Exercise
             exercise={exercise}
@@ -220,7 +219,7 @@ function Exercise({ exercise, children, onSelection, selectedExercise }) {
 function ExerciseDetails({ selectedExercise, onSelection }) {
   return (
     <div>
-      <div className="container">
+      <div className="exercise-details">
         <h2>{selectedExercise.name}</h2>
         <button onClick={() => onSelection(selectedExercise)}>X</button>
         <button>History</button>

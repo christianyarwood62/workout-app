@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.app {
+  min-height: 100vh;
+}
+
 .container {
   background: lightgray;
   height: fit-content;
@@ -15,7 +19,6 @@
 .exercise-details-tab {
   display: flex;
   margin-bottom: 100px;
-  gap: 50px;
 }
 
 .exercise {
@@ -34,7 +37,7 @@ header {
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   position: sticky;
-  top: 0;
+  margin-bottom: 10px;
 }
 
 /* The header for the page*/
@@ -47,7 +50,8 @@ nav {
 }
 
 /* The buttons for the navbar tabs*/
-nav button {
+nav button,
+.exercise button {
   background: none;
   border: none;
   font-size: 1rem;
@@ -58,7 +62,8 @@ nav button {
   gap: 10px;
 }
 
-nav button:hover {
+nav button:hover,
+.exercise button:hover {
   color: rgb(107, 184, 209);
 }
 
@@ -72,7 +77,8 @@ nav button:hover {
   flex-direction: column;
 }
 
-.exercises-list {
+.exercises-list-component,
+.exercise-details {
   background-color: rgb(238, 247, 255);
   margin: 20px;
   padding: 20px;
@@ -80,6 +86,35 @@ nav button:hover {
   border-radius: 20px;
 }
 
-.exercises-list h1 {
+.exercises-list-component h1 {
   text-align: center;
+  margin-bottom: 24px;
+}
+
+.exercises-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex-direction: column;
+  gap: 5px;
+}
+
+*/ .exercise p {
+  padding: 10px;
+}
+
+.exercise {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.exercise p {
+  font-size: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-details {
 }
