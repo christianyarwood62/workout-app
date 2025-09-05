@@ -75,6 +75,7 @@ nav button:hover,
 .exercise-details-tab {
   display: flex;
   flex-direction: column;
+  min-width: 100px;
 }
 
 .exercises-list-component,
@@ -94,18 +95,21 @@ nav button:hover,
 .exercises-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  flex-direction: column;
   gap: 5px;
 }
 
-*/ .exercise p {
+.exercise p {
   padding: 10px;
+  width: 100%;
 }
 
 .exercise {
   border: 1px solid gray;
   border-radius: 10px;
-  width: fit-content;
+  width: max;
+  display: flex;
+  gap: 0px;
+  justify-content: space-between;
 }
 
 .exercise p {
