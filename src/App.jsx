@@ -148,7 +148,6 @@ function App() {
         <div className="exercise-details-tab">
           <WorkoutList
             exercises={exercises}
-            className="workout-list"
             onSelection={handleSelection}
             selectedExercise={selectedExercise}
             onAddToWorkout={handleAddExerciseToRoutine}
@@ -186,19 +185,21 @@ function WorkoutList({
   onAddToWorkout,
 }) {
   return (
-    <div className="container">
+    <div className="exercises-list">
       <h1>{tab1}</h1>
-      {exercises.map((exercise) => (
-        <Exercise
-          exercise={exercise}
-          key={exercise.id}
-          onSelection={onSelection}
-          selectedExercise={selectedExercise}
-          onAddToWorkout={onAddToWorkout}
-        >
-          {exercise.name}
-        </Exercise>
-      ))}
+      <div>
+        {exercises.map((exercise) => (
+          <Exercise
+            exercise={exercise}
+            key={exercise.id}
+            onSelection={onSelection}
+            selectedExercise={selectedExercise}
+            onAddToWorkout={onAddToWorkout}
+          >
+            {exercise.name}
+          </Exercise>
+        ))}
+      </div>
     </div>
   );
 }
