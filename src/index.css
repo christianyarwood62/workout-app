@@ -87,28 +87,30 @@ nav button:hover,
   border-radius: 20px;
 }
 
+.exercises-list-component {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+}
+
 .exercises-list-component h1 {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+  position: sticky;
+  z-index: 1;
 }
 
 .exercises-list {
+  overflow-y: auto;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  /* grid-template-columns: repeat(3, 1fr); */
   gap: 5px;
-}
-
-.exercise p {
-  padding: 10px;
-  width: 100%;
 }
 
 .exercise {
   border: 1px solid gray;
   border-radius: 10px;
-  width: 200px;
+  width: 180px;
   display: flex;
   gap: 0px;
   justify-content: space-between;
@@ -118,9 +120,6 @@ nav button:hover,
   font-size: 20px;
   padding: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.exercise-details {
+  /* justify-content: right; */
+  width: 50%;
 }
