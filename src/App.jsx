@@ -154,9 +154,13 @@ function WorkoutList({
 
           let exerciseDetails = await res.json();
 
-          if (exerciseDetails.length === 0) throw new Error("No such exercise");
+          if (exerciseDetails.length === 0) {
+            setExercises(null);
+          } else {
+            setExercises(exerciseDetails);
+          }
+
           console.log(exerciseDetails);
-          setExercises(exerciseDetails);
         } catch (err) {
           console.log(err.message);
         }
@@ -174,20 +178,31 @@ function WorkoutList({
         onKeyDown={(e) => searchExercise(e)}
         placeholder="Search for Exercises..."
       />
-      {showingResultsIsopen && <div>Showing results for </div>}
-      <div className="exercises-list">
-        {exercises.map((exercise) => (
-          <Exercise
-            exercise={exercise}
-            key={exercise.name}
-            onSelection={onSelection}
-            selectedExercise={selectedExercise}
-            onAddToWorkout={onAddToWorkout}
-          >
-            {exercise.name}
-          </Exercise>
+      {showingResultsIsopen &&
+        (exercises ? (
+          searchedExercise ? (
+            <div>Showing results for {searchedExercise}</div>
+          ) : (
+            ""
+          )
+        ) : (
+          <div>No results</div>
         ))}
-      </div>
+      {
+        <div className="exercises-list">
+          {exercises?.map((exercise) => (
+            <Exercise
+              exercise={exercise}
+              key={exercise.name}
+              onSelection={onSelection}
+              selectedExercise={selectedExercise}
+              onAddToWorkout={onAddToWorkout}
+            >
+              {exercise.name}
+            </Exercise>
+          ))}
+        </div>
+      }
     </div>
   );
 }
