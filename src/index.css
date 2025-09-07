@@ -75,7 +75,7 @@ nav button:hover,
 .exercise-details-tab {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
+  min-width: 300px;
 }
 
 .exercises-list-component,
@@ -105,6 +105,7 @@ nav button:hover,
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  padding-bottom: 5px;
 }
 
 .exercise {
@@ -114,12 +115,13 @@ nav button:hover,
   display: flex;
   gap: 0px;
   justify-content: space-between;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .exercise p {
-  font-size: 20px;
+  font-size: 1rem;
   padding: 10px;
   display: flex;
-  /* justify-content: right; */
   width: 50%;
+  align-self: center;
 }
