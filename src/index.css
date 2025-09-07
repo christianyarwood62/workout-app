@@ -50,11 +50,23 @@ nav {
 }
 
 /* The buttons for the navbar tabs*/
-nav button,
-.exercise button {
+nav button {
   background: none;
   border: none;
   font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+.exercise button {
+  background: rgb(234, 231, 231);
+  border: none;
+  height: min-content;
+  width: min-content;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #333;
   padding: 0.5rem 1rem;
@@ -109,19 +121,22 @@ nav button:hover,
 }
 
 .exercise {
-  border: 1px solid gray;
+  border: 1px solid #ddd;
   border-radius: 10px;
   width: 180px;
   display: flex;
+  flex-direction: column;
   gap: 0px;
   justify-content: space-between;
+  align-items: center;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  padding: 10px;
 }
 
 .exercise p {
   font-size: 1rem;
   padding: 10px;
   display: flex;
-  width: 50%;
-  align-self: center;
+  width: auto;
 }
