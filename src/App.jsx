@@ -40,6 +40,13 @@ function App() {
   const [chosenExerciseForRoutine, setChosenExerciseForRoutine] =
     useState(null);
   const [templateList, setTemplateList] = useState([]);
+  const [searchedExercise, setSearchedExercise] = useState("");
+
+  function searchExercise(e) {
+    if (e.key === "Enter") {
+      setSearchedExercise(e.target.value);
+    }
+  }
 
   function handleSetTab(tab) {
     setTab(tab);
@@ -62,23 +69,34 @@ function App() {
   i.e. just write {handlexxx}
   */
 
-  useEffect(function () {
-    async function getExercises() {
-      let res = await fetch(
-        "https://api.api-ninjas.com/v1/exercises?name=press",
-        {
-          headers: {
-            "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
-          },
-        }
-      );
+  useEffect(
+    function () {
+      async function getExercises() {
+        try {
+          let res = await fetch(
+            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
+            {
+              headers: {
+                "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
+              },
+            }
+          );
 
-      let exerciseDetails = await res.json();
-      console.log(exerciseDetails);
-      setExercises(exerciseDetails);
-    }
-    getExercises();
-  }, []);
+          if (!res.ok) throw new Error("Failed to retrieve exercises");
+
+          let exerciseDetails = await res.json();
+
+          if (exerciseDetails.length === 0) throw new Error("No such exercise");
+          console.log(exerciseDetails);
+          setExercises(exerciseDetails);
+        } catch (err) {
+          console.log(err.message);
+        }
+      }
+      getExercises();
+    },
+    [searchedExercise]
+  );
 
   return (
     <div className="app">
@@ -112,6 +130,7 @@ function App() {
             onSelection={handleSelection}
             selectedExercise={selectedExercise}
             onAddToWorkout={handleAddExerciseToRoutine}
+            onSearchExercise={searchExercise}
           />
           {selectedExercise && (
             <ExerciseDetails
@@ -143,19 +162,14 @@ function WorkoutList({
   onSelection,
   selectedExercise,
   onAddToWorkout,
+  onSearchExercise,
 }) {
-  const [searchedExercise, setSearchedExercise] = useState("");
-
-  function handleSetSearchedExercise(e) {
-    setSearchedExercise(e.target.value);
-  }
-
   return (
     <div className="exercises-list-component">
       <h1>{tab1}</h1>
       <input
-        onChange={(e) => handleSetSearchedExercise(e)}
         type="text"
+        onKeyDown={(e) => onSearchExercise(e)}
         placeholder="Search for Exercises..."
       ></input>
       <div className="exercises-list">
