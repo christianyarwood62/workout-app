@@ -40,13 +40,6 @@ function App() {
   const [chosenExerciseForRoutine, setChosenExerciseForRoutine] =
     useState(null);
   const [templateList, setTemplateList] = useState([]);
-  const [searchedExercise, setSearchedExercise] = useState("");
-
-  function searchExercise(e) {
-    if (e.key === "Enter") {
-      setSearchedExercise(e.target.value);
-    }
-  }
 
   function handleSetTab(tab) {
     setTab(tab);
@@ -68,35 +61,6 @@ function App() {
   NOTE: Dont need to put {()=> handlexxx()} if there is no argument,
   i.e. just write {handlexxx}
   */
-
-  useEffect(
-    function () {
-      async function getExercises() {
-        try {
-          let res = await fetch(
-            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
-            {
-              headers: {
-                "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
-              },
-            }
-          );
-
-          if (!res.ok) throw new Error("Failed to retrieve exercises");
-
-          let exerciseDetails = await res.json();
-
-          if (exerciseDetails.length === 0) throw new Error("No such exercise");
-          console.log(exerciseDetails);
-          setExercises(exerciseDetails);
-        } catch (err) {
-          console.log(err.message);
-        }
-      }
-      getExercises();
-    },
-    [searchedExercise]
-  );
 
   return (
     <div className="app">
@@ -130,7 +94,7 @@ function App() {
             onSelection={handleSelection}
             selectedExercise={selectedExercise}
             onAddToWorkout={handleAddExerciseToRoutine}
-            onSearchExercise={searchExercise}
+            setExercises={setExercises}
           />
           {selectedExercise && (
             <ExerciseDetails
@@ -162,16 +126,55 @@ function WorkoutList({
   onSelection,
   selectedExercise,
   onAddToWorkout,
-  onSearchExercise,
+  setExercises,
 }) {
+  const [searchedExercise, setSearchedExercise] = useState("");
+  const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
+
+  function searchExercise(e) {
+    if (e.key === "Enter") {
+      setSearchedExercise(e.target.value);
+    }
+  }
+
+  useEffect(
+    function () {
+      async function getExercises() {
+        try {
+          let res = await fetch(
+            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
+            {
+              headers: {
+                "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
+              },
+            }
+          );
+
+          if (!res.ok) throw new Error("Failed to retrieve exercises");
+
+          let exerciseDetails = await res.json();
+
+          if (exerciseDetails.length === 0) throw new Error("No such exercise");
+          console.log(exerciseDetails);
+          setExercises(exerciseDetails);
+        } catch (err) {
+          console.log(err.message);
+        }
+      }
+      getExercises();
+    },
+    [searchedExercise]
+  );
+
   return (
     <div className="exercises-list-component">
       <h1>{tab1}</h1>
       <input
         type="text"
-        onKeyDown={(e) => onSearchExercise(e)}
+        onKeyDown={(e) => searchExercise(e)}
         placeholder="Search for Exercises..."
-      ></input>
+      />
+      {showingResultsIsopen && <div>Showing results for </div>}
       <div className="exercises-list">
         {exercises.map((exercise) => (
           <Exercise
