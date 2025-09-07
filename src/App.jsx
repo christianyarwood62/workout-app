@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 const initialExercises = [
   {
@@ -119,6 +120,24 @@ function App() {
   i.e. just write {handlexxx}
   */
 
+  useEffect(function () {
+    async function getExercises() {
+      let res = await fetch(
+        "https://api.api-ninjas.com/v1/exercises?name=press",
+        {
+          headers: {
+            "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
+          },
+        }
+      );
+
+      let exerciseDetails = await res.json();
+      console.log(exerciseDetails);
+      setExercises(exerciseDetails);
+    }
+    getExercises();
+  }, []);
+
   return (
     <div className="app">
       <header>
@@ -224,11 +243,11 @@ function ExerciseDetails({ selectedExercise, onSelection }) {
         <button onClick={() => onSelection(selectedExercise)}>X</button>
         <button>History</button>
         <button>Records</button>
-        {selectedExercise.instructions.map((instruction, step) => (
+        {/* {selectedExercise.instructions.map((instruction, step) => (
           <div key={step + 1}>
             Step {step + 1}: {instruction}
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
