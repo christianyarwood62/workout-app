@@ -130,20 +130,26 @@ function WorkoutList({
 }) {
   const [searchedExercise, setSearchedExercise] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState("");
 
   function searchExercise(e) {
-    if (e.key === "Enter") {
-      setSearchedExercise(e.target.value);
-    }
+    // if (e.key === "Enter") {
+    setSearchedExercise(e.target.value);
   }
 
   useEffect(
     function () {
+      const controller = new AbortController();
+
       async function getExercises() {
         try {
+          setErr("");
           let res = await fetch(
             `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
+            // { signal: controller.signal },
             {
+              signal: controller.signal,
               headers: {
                 "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
               },
@@ -159,15 +165,28 @@ function WorkoutList({
           } else {
             setExercises(exerciseDetails);
           }
-
-          console.log(exerciseDetails);
         } catch (err) {
-          console.log(err.message);
+          if (err.name !== "AbortError") {
+            console.log(err.message);
+            setError(err.message);
+            setIsLoading(false);
+          }
+        } finally {
+          if (!controller.signal.aborted) {
+            setIsLoading(false);
+            setErr("");
+          }
         }
       }
+
+      setIsLoading(true);
       getExercises();
+
+      return function () {
+        controller.abort(); // This cancels fetch request everytime theres a new keystroke, to avoid fetching every time a new letter is typed
+      };
     },
-    [searchedExercise]
+    [searchedExercise, setExercises]
   );
 
   return (
@@ -177,10 +196,13 @@ function WorkoutList({
         <input
           className="searchExercisesInput"
           type="text"
-          onKeyDown={(e) => searchExercise(e)}
+          onChange={(e) => searchExercise(e)}
           placeholder="Search for Exercises..."
         />
-        {showingResultsIsopen &&
+        {isLoading ? (
+          <Loader />
+        ) : (
+          showingResultsIsopen &&
           (exercises ? (
             searchedExercise ? (
               <div>Showing results for {searchedExercise}</div>
@@ -189,9 +211,10 @@ function WorkoutList({
             )
           ) : (
             <div>No results</div>
-          ))}
+          ))
+        )}
       </div>
-      {
+      {!isLoading && (
         <div className="exercises-list backgroundContainer">
           {exercises?.map((exercise) => (
             <Exercise
@@ -205,11 +228,14 @@ function WorkoutList({
             </Exercise>
           ))}
         </div>
-      }
+      )}
     </div>
   );
 }
 
+function Loader() {
+  return <div className="loader">Loading...</div>;
+}
 function Exercise({ exercise, children, onSelection, selectedExercise }) {
   const isSelected = selectedExercise?.name === exercise.name;
 
