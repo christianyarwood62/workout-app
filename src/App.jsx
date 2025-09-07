@@ -144,9 +144,20 @@ function WorkoutList({
   selectedExercise,
   onAddToWorkout,
 }) {
+  const [searchedExercise, setSearchedExercise] = useState("");
+
+  function handleSetSearchedExercise(e) {
+    setSearchedExercise(e.target.value);
+  }
+
   return (
     <div className="exercises-list-component">
       <h1>{tab1}</h1>
+      <input
+        onChange={(e) => handleSetSearchedExercise(e)}
+        type="text"
+        placeholder="Search for Exercises..."
+      ></input>
       <div className="exercises-list">
         {exercises.map((exercise) => (
           <Exercise
