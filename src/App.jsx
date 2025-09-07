@@ -171,25 +171,28 @@ function WorkoutList({
   );
 
   return (
-    <div className="exercises-list-component">
-      <h1>{tab1}</h1>
-      <input
-        type="text"
-        onKeyDown={(e) => searchExercise(e)}
-        placeholder="Search for Exercises..."
-      />
-      {showingResultsIsopen &&
-        (exercises ? (
-          searchedExercise ? (
-            <div>Showing results for {searchedExercise}</div>
+    <div className="exercises-list-component backgroundContainer">
+      <div className="exercises-header">
+        <h1>{tab1}</h1>
+        <input
+          className="searchExercisesInput"
+          type="text"
+          onKeyDown={(e) => searchExercise(e)}
+          placeholder="Search for Exercises..."
+        />
+        {showingResultsIsopen &&
+          (exercises ? (
+            searchedExercise ? (
+              <div>Showing results for {searchedExercise}</div>
+            ) : (
+              ""
+            )
           ) : (
-            ""
-          )
-        ) : (
-          <div>No results</div>
-        ))}
+            <div>No results</div>
+          ))}
+      </div>
       {
-        <div className="exercises-list">
+        <div className="exercises-list backgroundContainer">
           {exercises?.map((exercise) => (
             <Exercise
               exercise={exercise}
@@ -223,7 +226,7 @@ function Exercise({ exercise, children, onSelection, selectedExercise }) {
 function ExerciseDetails({ selectedExercise, onSelection }) {
   return (
     <div>
-      <div className="exercise-details">
+      <div className="exercise-details backgroundContainer">
         <h2>{selectedExercise.name}</h2>
         <button onClick={() => onSelection(selectedExercise)}>X</button>
         <button>History</button>
