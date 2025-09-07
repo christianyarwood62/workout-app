@@ -3,82 +3,22 @@ import { useEffect } from "react";
 
 const initialExercises = [
   {
-    name: "Bench Press",
-    category: "chest",
-    instructions: [
-      "Lie flat on the bench holding the barbell shoulder width",
-      "Retract scapula and have elbows at 45 degree angle",
-      "Breath in and lower bar to middle of chest",
-      "Repeat for reps",
-    ],
-    id: "bench-press",
-    history: [
-      {
-        date: "01-01-2025",
-        sets: 10,
-        reps: 12,
-      },
-    ],
+    name: "Triceps dip",
+    type: "strength",
+    muscle: "triceps",
+    equipment: "body_only",
+    difficulty: "intermediate",
+    instructions:
+      "To get into the starting position, hold your body at arm's length with your arms nearly locked above the bars. Now, inhale and slowly lower yourself downward. Your torso should remain upright and your elbows should stay close to your body. This helps to better focus on tricep involvement. Lower yourself until there is a 90 degree angle formed between the upper arm and forearm. Then, exhale and push your torso back up using your triceps to bring your body back to the starting position. Repeat the movement for the prescribed amount of repetitions.  Variations: If you are new at this exercise and do not have the strength to perform it, use a dip assist machine if available. These machines use weight to help you push your bodyweight. Otherwise, a spotter holding your legs can help. More advanced lifters can add weight to the exercise by using a weight belt that allows the addition of weighted plates.",
   },
   {
-    name: "Chest fly",
-    category: "chest",
-    instructions: [
-      "Sit with pad against back and grip the handles",
-      "Slightly elbows with and squeeze chest to bring handles in front of chest",
-      "Return to starting position while inhaling",
-      "Repeat for reps",
-    ],
-    id: "chest-fly",
-    history: [],
-  },
-  {
-    name: "Bicep Curl",
-    category: "arms",
-    instructions: [
-      "Stand/sit with dumbells at rest next to sides",
-      "Keep dumbell in front with pinkie squeeze to the sky",
-      "Pull the dumbell up, keeping momentum at a minimum",
-      "Repeat for reps",
-    ],
-    id: "bicep-curl",
-    history: [],
-  },
-  {
-    name: "Chest Dip",
-    category: "chest",
-    instructions: [
-      "Hold body from arms extended above dip bars",
-      "Slowly lower body with torso leaning forward  and elbows slightly flared",
-      "From this position, squeeze chest and bring body back to starting position",
-      "Repeat for reps",
-    ],
-    id: "chest-dip",
-    history: [],
-  },
-  {
-    name: "Squat",
-    category: "legs",
-    instructions: [
-      "Retract shoulder blade and hold barbell on traps as low as is comfortable",
-      "With core tight, lower bar while keeping knees over toes",
-      "Continue until thighs are parallel to floor, and return to original position",
-      "Repeat for reps",
-    ],
-    id: "squat",
-    history: [],
-  },
-  {
-    name: "Shoulder Press",
-    category: "shoulders",
-    instructions: [
-      "Stand/sit with dumbells resting on shoulders",
-      "Retract shoulder blades and press dumbells up and out front ",
-      "Imagine trying to squeeze a pencil at top of motion, return to original position",
-      "Repeat for reps",
-    ],
-    id: "chest dip",
-    history: [],
+    name: "Decline EZ-bar skullcrusher",
+    type: "strength",
+    muscle: "triceps",
+    equipment: "e-z_curl_bar",
+    difficulty: "intermediate",
+    instructions:
+      "Secure your legs at the end of the decline bench and slowly lay down on the bench. Using a close grip (a grip that is slightly less than shoulder width), lift the EZ bar from the rack and hold it straight over you with your arms locked and elbows in. The arms should be perpendicular to the floor. This will be your starting position. Tip: In order to protect your rotator cuff, it is best if you have a spotter help you lift the barbell off the rack. As you breathe in and you keep the upper arms stationary, bring the bar down slowly by moving your forearms in a semicircular motion towards you until you feel the bar slightly touch your forehead. Breathe in as you perform this portion of the movement. Lift the bar back to the starting position by contracting the triceps and exhaling. Repeat until the recommended amount of repetitions is performed.  Variations: You can use a straight bar or dumbbells to perform this movement. You can also perform it on a flat bench as well.",
   },
 ];
 
@@ -107,7 +47,9 @@ function App() {
 
   function handleSelection(exercise) {
     //
-    setSelectedExercise((cur) => (cur?.id === exercise.id ? null : exercise));
+    setSelectedExercise((cur) =>
+      cur?.name === exercise.name ? null : exercise
+    );
   }
 
   function handleAddExerciseToRoutine(exercise) {
@@ -209,7 +151,7 @@ function WorkoutList({
         {exercises.map((exercise) => (
           <Exercise
             exercise={exercise}
-            key={exercise.id}
+            key={exercise.name}
             onSelection={onSelection}
             selectedExercise={selectedExercise}
             onAddToWorkout={onAddToWorkout}
@@ -223,7 +165,7 @@ function WorkoutList({
 }
 
 function Exercise({ exercise, children, onSelection, selectedExercise }) {
-  const isSelected = selectedExercise?.id === exercise.id;
+  const isSelected = selectedExercise?.name === exercise.name;
 
   return (
     <div className="exercise">
@@ -248,6 +190,26 @@ function ExerciseDetails({ selectedExercise, onSelection }) {
             Step {step + 1}: {instruction}
           </div>
         ))} */}
+        <div>
+          <h3>Exercise Difficulty</h3>
+          <span>{selectedExercise.difficulty}</span>
+        </div>
+        <div>
+          <h3>Exercise Equipment</h3>
+          <span>{selectedExercise.equipment}</span>
+        </div>
+        <div>
+          <h3>Exercise Instructions</h3>
+          <span>{selectedExercise.instructions}</span>
+        </div>
+        <div>
+          <h3>Exercise Target Muscle</h3>
+          <span>{selectedExercise.muscle}</span>
+        </div>
+        <div>
+          <h3>Exercise Type</h3>
+          <span>{selectedExercise.type}</span>
+        </div>
       </div>
     </div>
   );
