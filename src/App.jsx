@@ -198,6 +198,7 @@ function WorkoutList({
           type="text"
           onChange={(e) => searchExercise(e)}
           placeholder="Search for Exercises..."
+          value={searchedExercise}
         />
         {isLoading ? (
           <Loader />
