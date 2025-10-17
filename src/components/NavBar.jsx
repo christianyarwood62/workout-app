@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Navbar({ tab, onSelectTab }) {
   const tab1 = "Exercises";
   const tab2 = "Start a workout";
@@ -7,24 +9,9 @@ function Navbar({ tab, onSelectTab }) {
     <header>
       <h1>Dream Workout</h1>
       <nav>
-        <button
-          className={tab === tab1 ? "selectedTab" : ""}
-          onClick={() => onSelectTab(tab1)}
-        >
-          {tab1}
-        </button>
-        <button
-          className={tab === tab2 ? "selectedTab" : ""}
-          onClick={() => onSelectTab(tab2)}
-        >
-          {tab2}
-        </button>
-        <button
-          className={tab === tab3 ? "selectedTab" : ""}
-          onClick={() => onSelectTab(tab3)}
-        >
-          {tab3}
-        </button>
+        <NavLink to="/exercises">{tab1}</NavLink>
+        <NavLink to="/workout">{tab2}</NavLink>
+        <NavLink to="/history">{tab3}</NavLink>
       </nav>
     </header>
   );
