@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import WorkoutList from "./components/WorkoutList";
 import Navbar from "./components/NavBar";
+import Homepage from "./pages/HomePage";
 
 const initialExercises = [
   {
@@ -69,6 +70,7 @@ function App() {
         <h1>Dream Workout</h1>
         <Navbar tab={tab} onSelectTab={handleSetTab} />
       </header>
+      <Homepage />
       {/* {tab === tab1 && (
         <div className="exercise-details-tab">
           <WorkoutList
