@@ -5,7 +5,6 @@ import ExerciseDetails from "../components/ExerciseDetails";
 import Navbar from "../components/NavBar";
 
 function ExercisesPage() {
-  const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState(null);
 
   function handleAddExerciseToRoutine(exercise) {
@@ -24,11 +23,9 @@ function ExercisesPage() {
     <div className="exercise-details-tab">
       <Navbar />
       <WorkoutList
-        exercises={exercises}
         onSelection={handleSelection}
         selectedExercise={selectedExercise}
         onAddToWorkout={handleAddExerciseToRoutine}
-        setExercises={setExercises}
       />
       {/* <ExerciseDetails
         selectedExercise={selectedExercise}

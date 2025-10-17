@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
 import Exercise from "../components/Exercise";
+import { useExercises } from "../contexts/ExercisesContext";
 
 const initialExercises = [
   {
@@ -23,17 +24,13 @@ const initialExercises = [
   },
 ];
 
-function WorkoutList({
-  exercises,
-  onSelection,
-  selectedExercise,
-  onAddToWorkout,
-  setExercises,
-}) {
+function WorkoutList({ onSelection, selectedExercise, onAddToWorkout }) {
   const [searchedExercise, setSearchedExercise] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
+
+  const { exercises, setExercises } = useExercises();
 
   function searchExercise(e) {
     // if (e.key === "Enter") {
@@ -54,10 +51,7 @@ function WorkoutList({
             },
           });
 
-          console.log(res);
-
           if (!res.ok) {
-            console.error("response", res.status);
             setExercises(initialExercises);
             throw new Error("Failed to retrieve exercises");
           }

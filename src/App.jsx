@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import WorkoutList from "./components/WorkoutList";
 import Homepage from "./pages/HomePage";
 import ExercisesPage from "./pages/ExercisesPage";
+import { ExercisesProvider } from "./contexts/ExercisesContext";
 
 const initialExercises = [
   {
@@ -47,11 +48,6 @@ function App() {
     setTab(tab);
   }
 
-  function handleAddExerciseToRoutine(exercise) {
-    setChosenExerciseForRoutine(exercise);
-    setExerciseRoutine((exerciseRoutine) => [...exerciseRoutine, exercise]);
-  }
-
   /*
   NOTE: Dont need to put {()=> handlexxx()} if there is no argument,
   i.e. just write {handlexxx}
@@ -59,16 +55,17 @@ function App() {
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Homepage />} />
-          <Route path="/exercises" element={<ExercisesPage />} />
-          {/* <header>
+      <ExercisesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path="/exercises" element={<ExercisesPage />} />
+            {/* <header>
             <h1>Dream Workout</h1>
             <Navbar tab={tab} onSelectTab={handleSetTab} />
           </header>
           <Homepage /> */}
-          {/* {tab === tab1 && (
+            {/* {tab === tab1 && (
         <div className="exercise-details-tab">
           <WorkoutList
             exercises={exercises}
@@ -96,8 +93,9 @@ function App() {
         />
       )}
       {tab === tab3 && <ExerciseHistoryTab />} */}
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </ExercisesProvider>
     </div>
   );
 }
