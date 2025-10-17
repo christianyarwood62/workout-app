@@ -6,11 +6,11 @@ function ExerciseDetails({ selectedExercise, onSelection }) {
         <button onClick={() => onSelection(selectedExercise)}>X</button>
         <button>History</button>
         <button>Records</button>
-        {/* {selectedExercise.instructions.map((instruction, step) => (
-            <div key={step + 1}>
-              Step {step + 1}: {instruction}
-            </div>
-          ))} */}
+        {selectedExercise.instructions.map((instruction, step) => (
+          <div key={step + 1}>
+            Step {step + 1}: {instruction}
+          </div>
+        ))}
         <div>
           <h3>Exercise Difficulty</h3>
           <span>{selectedExercise.difficulty}</span>

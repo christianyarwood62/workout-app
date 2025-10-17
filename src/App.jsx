@@ -35,8 +35,7 @@ const tab3 = "Exercise history";
 
 function App() {
   const [tab, setTab] = useState(tab1);
-  const [exercises, setExercises] = useState([]);
-  const [selectedExercise, setSelectedExercise] = useState(null);
+
   const [exerciseRoutine, setExerciseRoutine] = useState(
     initialExerciseRoutine
   );
@@ -46,13 +45,6 @@ function App() {
 
   function handleSetTab(tab) {
     setTab(tab);
-  }
-
-  function handleSelection(exercise) {
-    //
-    setSelectedExercise((cur) =>
-      cur?.name === exercise.name ? null : exercise
-    );
   }
 
   function handleAddExerciseToRoutine(exercise) {
