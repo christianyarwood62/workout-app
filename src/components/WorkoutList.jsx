@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+import Loader from "./Loader";
+import Exercise from "../components/Exercise";
+
 function WorkoutList({
   exercises,
   onSelection,
@@ -47,7 +50,7 @@ function WorkoutList({
         } catch (err) {
           if (err.name !== "AbortError") {
             console.log(err.message);
-            setError(err.message);
+            setErr(err.message);
             setIsLoading(false);
           }
         } finally {
@@ -71,7 +74,7 @@ function WorkoutList({
   return (
     <div className="exercises-list-component backgroundContainer">
       <div className="exercises-header">
-        <h1>{tab1}</h1>
+        {/* <h1>{tab1}</h1> */}
         <input
           className="searchExercisesInput"
           type="text"
