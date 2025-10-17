@@ -8,6 +8,14 @@
   min-height: 100vh;
 }
 
+.backgroundContainer {
+  background-color: rgb(238, 247, 255);
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
 .container {
   background: lightgray;
   height: fit-content;
@@ -90,26 +98,26 @@ nav button:hover,
   min-width: 300px;
 }
 
-.exercises-list-component,
-.exercise-details {
-  background-color: rgb(238, 247, 255);
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-}
-
 .exercises-list-component {
   display: flex;
   flex-direction: column;
   max-height: 400px;
 }
 
-.exercises-list-component h1 {
+.exercises-list-component .exercises-header {
   text-align: center;
-  margin-bottom: 12px;
   position: sticky;
   z-index: 1;
+}
+
+.exercises-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.exercises-header h1 {
+  padding-bottom: 12px;
 }
 
 .exercises-list {
@@ -120,6 +128,9 @@ nav button:hover,
   padding-bottom: 5px;
 }
 
+.searchExercisesInput {
+  width: 200px;
+}
 .exercise {
   border: 1px solid #ddd;
   border-radius: 10px;

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
+import WorkoutList from "./components/WorkoutList";
+import Navbar from "./components/NavBar";
+
 const initialExercises = [
   {
     name: "Triceps dip",
@@ -22,8 +25,6 @@ const initialExercises = [
   },
 ];
 
-const initialExercisesInTemplate = [];
-
 const initialExerciseRoutine = [];
 
 const tab1 = "Exercises";
@@ -32,7 +33,7 @@ const tab3 = "Exercise history";
 
 function App() {
   const [tab, setTab] = useState(tab1);
-  const [exercises, setExercises] = useState(initialExercises);
+  const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [exerciseRoutine, setExerciseRoutine] = useState(
     initialExerciseRoutine
@@ -66,28 +67,9 @@ function App() {
     <div className="app">
       <header>
         <h1>Dream Workout</h1>
-        <nav>
-          <button
-            className={tab === tab1 ? "selectedTab" : ""}
-            onClick={() => handleSetTab(tab1)}
-          >
-            {tab1}
-          </button>
-          <button
-            className={tab === tab2 ? "selectedTab" : ""}
-            onClick={() => handleSetTab(tab2)}
-          >
-            {tab2}
-          </button>
-          <button
-            className={tab === tab3 ? "selectedTab" : ""}
-            onClick={() => handleSetTab(tab3)}
-          >
-            {tab3}
-          </button>
-        </nav>
+        <Navbar tab={tab} onSelectTab={handleSetTab} />
       </header>
-      {tab === tab1 && (
+      {/* {tab === tab1 && (
         <div className="exercise-details-tab">
           <WorkoutList
             exercises={exercises}
@@ -114,125 +96,12 @@ function App() {
           onSetTemplateList={setTemplateList}
         />
       )}
-      {tab === tab3 && <ExerciseHistoryTab />}
+      {tab === tab3 && <ExerciseHistoryTab />} */}
     </div>
   );
 }
 
 export default App;
-
-function WorkoutList({
-  exercises,
-  onSelection,
-  selectedExercise,
-  onAddToWorkout,
-  setExercises,
-}) {
-  const [searchedExercise, setSearchedExercise] = useState("");
-  const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState("");
-
-  function searchExercise(e) {
-    // if (e.key === "Enter") {
-    setSearchedExercise(e.target.value);
-  }
-
-  useEffect(
-    function () {
-      const controller = new AbortController();
-
-      async function getExercises() {
-        try {
-          setErr("");
-          let res = await fetch(
-            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
-            // { signal: controller.signal },
-            {
-              signal: controller.signal,
-              headers: {
-                "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
-              },
-            }
-          );
-
-          if (!res.ok) throw new Error("Failed to retrieve exercises");
-
-          let exerciseDetails = await res.json();
-
-          if (exerciseDetails.length === 0) {
-            setExercises(null);
-          } else {
-            setExercises(exerciseDetails);
-          }
-        } catch (err) {
-          if (err.name !== "AbortError") {
-            console.log(err.message);
-            setError(err.message);
-            setIsLoading(false);
-          }
-        } finally {
-          if (!controller.signal.aborted) {
-            setIsLoading(false);
-            setErr("");
-          }
-        }
-      }
-
-      setIsLoading(true);
-      getExercises();
-
-      return function () {
-        controller.abort(); // This cancels fetch request everytime theres a new keystroke, to avoid fetching every time a new letter is typed
-      };
-    },
-    [searchedExercise, setExercises]
-  );
-
-  return (
-    <div className="exercises-list-component backgroundContainer">
-      <div className="exercises-header">
-        <h1>{tab1}</h1>
-        <input
-          className="searchExercisesInput"
-          type="text"
-          onChange={(e) => searchExercise(e)}
-          placeholder="Search for Exercises..."
-          value={searchedExercise}
-        />
-        {isLoading ? (
-          <Loader />
-        ) : (
-          showingResultsIsopen &&
-          (exercises ? (
-            searchedExercise ? (
-              <div>Showing results for {searchedExercise}</div>
-            ) : (
-              ""
-            )
-          ) : (
-            <div>No results</div>
-          ))
-        )}
-      </div>
-      {!isLoading && (
-        <div className="exercises-list backgroundContainer">
-          {exercises?.map((exercise) => (
-            <Exercise
-              exercise={exercise}
-              key={exercise.name}
-              onSelection={onSelection}
-              selectedExercise={selectedExercise}
-              onAddToWorkout={onAddToWorkout}
-            >
-              {exercise.name}
-            </Exercise>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 function Loader() {
   return <div className="loader">Loading...</div>;
@@ -308,7 +177,7 @@ function WorkoutTab({ exercises, templateList, onSetTemplateList }) {
     e.preventDefault();
     chosenExercise === "Choose an exercise"
       ? ""
-      : setChosenExerciseList(() => [...chosenExercisesList, chosenExercise]);
+      : setChosenExerciseList((list) => [...list, chosenExercise]);
   }
 
   function handleShowCreateWorkoutTemplate() {
@@ -368,17 +237,9 @@ function CreateWorkoutTemplateForm({
   onSetChosenExerciseList,
   onShowCreateWorkoutTemplate,
 }) {
-  const [exercisesInSelectBox, setExercisesInSelectBox] = useState(
-    initialExercisesInTemplate
-  );
   const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
 
-  function handleShowAddExerciseSelectBoxes(e, exercise) {
-    e.preventDefault();
-    setExercisesInSelectBox((exercisesInSelectBox) => [
-      ...exercisesInSelectBox,
-      exercise,
-    ]);
+  function handleShowAddExerciseSelectBoxes() {
     setIsAddExerciseInputOpen(true);
   }
 
@@ -399,7 +260,7 @@ function CreateWorkoutTemplateForm({
           {isAddExerciseInputOpen ? (
             ""
           ) : (
-            <button onClick={(e) => handleShowAddExerciseSelectBoxes(e)}>
+            <button onClick={handleShowAddExerciseSelectBoxes}>
               Add an exercise
             </button>
           )}
@@ -475,15 +336,11 @@ function ProposedExerciseTemplateList({
   onSetTemplateName,
   chosenExercisesList,
   onSetTemplateList,
-  templateList,
 }) {
-  const [proposedWorkoutTemplate, setProposedWorkoutTemplate] = useState(null);
-
   function handleAddProposedWorkoutTemplate(e) {
     e.preventDefault();
-    setProposedWorkoutTemplate({ templateName });
     const newTemplate = [templateName, ...chosenExercisesList];
-    onSetTemplateList([...templateList, newTemplate]);
+    onSetTemplateList((prev) => [...prev, newTemplate]);
   }
 
   return (
