@@ -31,6 +31,7 @@ function ExercisesProvider({ children }) {
         handleSelection,
         selectedExercise,
         handleAddExerciseToRoutine,
+        searchedExercise,
         searchExercise,
       }}
     >

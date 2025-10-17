@@ -30,13 +30,8 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  const {
-    exercises,
-    setExercises,
-    searchedExercise,
-    setSearchedExercise,
-    handleSelection,
-  } = useExercises();
+  const { exercises, setExercises, searchedExercise, handleSelection } =
+    useExercises();
 
   useEffect(
     function () {
@@ -45,12 +40,15 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
       async function getExercises() {
         try {
           setErr("");
-          let res = await fetch(`https://api.api-ninjas.com/v1/exercises`, {
-            signal: controller.signal,
-            headers: {
-              "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
-            },
-          });
+          let res = await fetch(
+            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
+            {
+              signal: controller.signal,
+              headers: {
+                "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
+              },
+            }
+          );
 
           if (!res.ok) {
             setExercises(initialExercises);
@@ -85,7 +83,7 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
         controller.abort(); // This cancels fetch request everytime theres a new keystroke, to avoid fetching every time a new letter is typed
       };
     },
-    [setExercises]
+    [searchedExercise, setExercises]
   );
 
   return (
