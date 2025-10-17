@@ -1,36 +1,26 @@
 import { useState } from "react";
 
-import WorkoutList from "../components/WorkoutList";
+import { useExercises } from "../contexts/ExercisesContext";
+
+import ExercisesList from "../components/ExercisesList";
 import ExerciseDetails from "../components/ExerciseDetails";
 import Navbar from "../components/NavBar";
+import ExerciseSearchBar from "../components/ExerciseSearchBar";
 
 function ExercisesPage() {
-  const [selectedExercise, setSelectedExercise] = useState(null);
-
-  function handleAddExerciseToRoutine(exercise) {
-    setChosenExerciseForRoutine(exercise);
-    setExerciseRoutine((exerciseRoutine) => [...exerciseRoutine, exercise]);
-  }
-
-  function handleSelection(exercise) {
-    //
-    setSelectedExercise((cur) =>
-      cur?.name === exercise.name ? null : exercise
-    );
-  }
+  const { selectedExercise } = useExercises();
 
   return (
     <div className="exercise-details-tab">
       <Navbar />
-      <WorkoutList
-        onSelection={handleSelection}
-        selectedExercise={selectedExercise}
-        onAddToWorkout={handleAddExerciseToRoutine}
-      />
-      {/* <ExerciseDetails
-        selectedExercise={selectedExercise}
-        onSelection={handleSelection}
-      /> */}
+      <ExerciseSearchBar />
+      <ExercisesList />
+      {/* {selectedExercise && (
+        <ExerciseDetails
+          selectedExercise={selectedExercise}
+          onSelection={handleSelection}
+        />
+      )} */}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import WorkoutList from "./components/WorkoutList";
+import WorkoutList from "./components/ExercisesList";
 import Homepage from "./pages/HomePage";
 import ExercisesPage from "./pages/ExercisesPage";
 import { ExercisesProvider } from "./contexts/ExercisesContext";

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
-import Exercise from "../components/Exercise";
+import Exercise from "./Exercise";
+import ExerciseSearchBar from "./ExerciseSearchBar";
 import { useExercises } from "../contexts/ExercisesContext";
 
 const initialExercises = [
@@ -24,18 +25,18 @@ const initialExercises = [
   },
 ];
 
-function WorkoutList({ onSelection, selectedExercise, onAddToWorkout }) {
-  const [searchedExercise, setSearchedExercise] = useState("");
+function ExercisesList({ selectedExercise, onAddToWorkout }) {
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  const { exercises, setExercises } = useExercises();
-
-  function searchExercise(e) {
-    // if (e.key === "Enter") {
-    setSearchedExercise(e.target.value);
-  }
+  const {
+    exercises,
+    setExercises,
+    searchedExercise,
+    setSearchedExercise,
+    handleSelection,
+  } = useExercises();
 
   useEffect(
     function () {
@@ -90,14 +91,6 @@ function WorkoutList({ onSelection, selectedExercise, onAddToWorkout }) {
   return (
     <div className="exercises-list-component backgroundContainer">
       <div className="exercises-header">
-        {/* <h1>{tab1}</h1> */}
-        <input
-          className="searchExercisesInput"
-          type="text"
-          onChange={(e) => searchExercise(e)}
-          placeholder="Search for Exercises..."
-          value={searchedExercise}
-        />
         {isLoading ? (
           <Loader />
         ) : (
@@ -119,7 +112,7 @@ function WorkoutList({ onSelection, selectedExercise, onAddToWorkout }) {
             <Exercise
               exercise={exercise}
               key={exercise.name}
-              onSelection={onSelection}
+              onSelection={handleSelection}
               selectedExercise={selectedExercise}
               onAddToWorkout={onAddToWorkout}
             >
@@ -132,4 +125,4 @@ function WorkoutList({ onSelection, selectedExercise, onAddToWorkout }) {
   );
 }
 
-export default WorkoutList;
+export default ExercisesList;
