@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import WorkoutList from "../components/WorkoutList";
 import ExerciseDetails from "../components/ExerciseDetails";
+import Navbar from "../components/NavBar";
 
 function ExercisesPage({
   handleSelection,
@@ -12,6 +13,7 @@ function ExercisesPage({
 
   return (
     <div className="exercise-details-tab">
+      <Navbar />
       <WorkoutList
         exercises={exercises}
         onSelection={handleSelection}
