@@ -107,13 +107,7 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
       {!isLoading && (
         <div className="exercises-list backgroundContainer">
           {exercises?.map((exercise) => (
-            <Exercise
-              exercise={exercise}
-              key={exercise.name}
-              onSelection={handleSelection}
-              selectedExercise={selectedExercise}
-              onAddToWorkout={onAddToWorkout}
-            >
+            <Exercise exercise={exercise} key={exercise.name}>
               {exercise.name}
             </Exercise>
           ))}

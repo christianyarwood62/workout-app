@@ -30,13 +30,7 @@ const initialExercises = [
 
 const initialExerciseRoutine = [];
 
-const tab1 = "Exercises";
-const tab2 = "Start a workout";
-const tab3 = "Exercise history";
-
 function App() {
-  const [tab, setTab] = useState(tab1);
-
   const [exerciseRoutine, setExerciseRoutine] = useState(
     initialExerciseRoutine
   );

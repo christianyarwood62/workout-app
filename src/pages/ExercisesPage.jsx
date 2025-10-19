@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { useExercises } from "../contexts/ExercisesContext";
 
 import ExercisesList from "../components/ExercisesList";
@@ -15,12 +13,7 @@ function ExercisesPage() {
       <Navbar />
       <ExerciseSearchBar />
       <ExercisesList />
-      {/* {selectedExercise && (
-        <ExerciseDetails
-          selectedExercise={selectedExercise}
-          onSelection={handleSelection}
-        />
-      )} */}
+      {selectedExercise && <ExerciseDetails />}
     </div>
   );
 }

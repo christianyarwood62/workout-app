@@ -1,10 +1,15 @@
-function Exercise({ exercise, children, onSelection, selectedExercise }) {
+import { useExercises } from "../contexts/ExercisesContext";
+
+function Exercise({ exercise, children }) {
+  const { handleSelection, selectedExercise } = useExercises();
+
+  console.log(selectedExercise);
   const isSelected = selectedExercise?.name === exercise.name;
 
   return (
     <div className="exercise">
       <p>{children}</p>
-      <button onClick={() => onSelection(exercise)}>
+      <button onClick={() => handleSelection(exercise)}>
         {isSelected ? "Hide details" : "Show details"}
       </button>
     </div>
