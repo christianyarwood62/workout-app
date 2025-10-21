@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWorkout } from "../contexts/WorkoutContext";
 
 function NewWorkoutForm({
   exercises,
@@ -9,20 +10,20 @@ function NewWorkoutForm({
   onSetChosenExerciseList,
   onShowCreateWorkoutTemplate,
 }) {
-  const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
-
-  function handleShowAddExerciseSelectBoxes() {
-    setIsAddExerciseInputOpen(true);
-  }
+  const {
+    isAddExerciseInputOpen,
+    handleShowAddExerciseSelectBoxes,
+    handleShowNewWorkoutForm,
+  } = useWorkout();
 
   return (
     <div className="container">
       <div>
         <button
           onClick={() => {
-            onShowCreateWorkoutTemplate();
-            onSetIsAddExerciseInputOpen(false);
-            onSetChosenExerciseList([]);
+            handleShowNewWorkoutForm();
+            // onSetIsAddExerciseInputOpen(false);
+            // onSetChosenExerciseList([]);
           }}
         >
           x

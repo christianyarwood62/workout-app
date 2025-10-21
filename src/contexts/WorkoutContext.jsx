@@ -1,10 +1,32 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const WorkoutContext = createContext();
 
 function WorkoutProvider({ children }) {
+  const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
+  const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
+    useState(false);
+
+  function handleShowAddExerciseSelectBoxes() {
+    setIsAddExerciseInputOpen(true);
+  }
+
+  function handleShowNewWorkoutForm() {
+    setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
+  }
+
   return (
-    <WorkoutContext.Provider value={{}}>{children}</WorkoutContext.Provider>
+    <WorkoutContext.Provider
+      value={{
+        isAddExerciseInputOpen,
+        handleShowAddExerciseSelectBoxes,
+        showCreateWorkoutTemplate,
+        setShowCreateWorkoutTemplate,
+        handleShowNewWorkoutForm,
+      }}
+    >
+      {children}
+    </WorkoutContext.Provider>
   );
 }
 

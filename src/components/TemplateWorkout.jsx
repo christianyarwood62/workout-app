@@ -1,7 +1,11 @@
-function TemplateWorkout({ onShowCreateWorkoutTemplate }) {
+import { useWorkout } from "../contexts/WorkoutContext";
+
+function TemplateWorkout() {
+  const { handleShowNewWorkoutForm } = useWorkout();
+
   return (
     <div className="container">
-      <button onClick={() => onShowCreateWorkoutTemplate()}>
+      <button onClick={() => handleShowNewWorkoutForm()}>
         Add a new workout
       </button>
     </div>
