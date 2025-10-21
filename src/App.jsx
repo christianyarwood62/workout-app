@@ -6,6 +6,8 @@ import WorkoutList from "./components/ExercisesList";
 import Homepage from "./pages/HomePage";
 import ExercisesPage from "./pages/ExercisesPage";
 import { ExercisesProvider } from "./contexts/ExercisesContext";
+import { WorkoutProvider } from "./contexts/WorkoutContext";
+import WorkoutPage from "./pages/WorkoutPage";
 
 const initialExercises = [
   {
@@ -38,10 +40,6 @@ function App() {
     useState(null);
   const [templateList, setTemplateList] = useState([]);
 
-  function handleSetTab(tab) {
-    setTab(tab);
-  }
-
   /*
   NOTE: Dont need to put {()=> handlexxx()} if there is no argument,
   i.e. just write {handlexxx}
@@ -50,16 +48,18 @@ function App() {
   return (
     <div className="app">
       <ExercisesProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Homepage />} />
-            <Route path="/exercises" element={<ExercisesPage />} />
-            {/* <header>
+        <WorkoutProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Homepage />} />
+              <Route path="/exercises" element={<ExercisesPage />} />
+              <Route path="/workout" element={<WorkoutPage />} />
+              {/* <header>
             <h1>Dream Workout</h1>
             <Navbar tab={tab} onSelectTab={handleSetTab} />
           </header>
           <Homepage /> */}
-            {/* {tab === tab1 && (
+              {/* {tab === tab1 && (
         <div className="exercise-details-tab">
           <WorkoutList
             exercises={exercises}
@@ -87,8 +87,9 @@ function App() {
         />
       )}
       {tab === tab3 && <ExerciseHistoryTab />} */}
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </WorkoutProvider>
       </ExercisesProvider>
     </div>
   );
