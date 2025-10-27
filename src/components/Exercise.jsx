@@ -2,8 +2,6 @@ import { useExercises } from "../contexts/ExercisesContext";
 
 function Exercise({ exercise, children }) {
   const { handleSelection, selectedExercise } = useExercises();
-
-  console.log(selectedExercise);
   const isSelected = selectedExercise?.name === exercise.name;
 
   return (

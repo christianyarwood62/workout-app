@@ -5,43 +5,37 @@ import ExerciseSearchBar from "./ExerciseSearchBar";
 import { useExercises } from "../contexts/ExercisesContext";
 
 function ExercisesList({ selectedExercise, onAddToWorkout }) {
-  const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
-
   const {
     exercises,
     setExercises,
     searchedExercise,
     handleSelection,
     isLoading,
+    showingResultsIsopen,
   } = useExercises();
 
   return (
-    <div className="exercises-list-component backgroundContainer">
+    <div>
       <div className="exercises-header">
         {isLoading ? (
           <Loader />
         ) : (
-          showingResultsIsopen &&
-          (exercises ? (
-            searchedExercise ? (
+          <>
+            {searchedExercise ? (
               <div>Showing results for {searchedExercise}</div>
             ) : (
-              ""
-            )
-          ) : (
-            <div>No results</div>
-          ))
+              <div>This is the complete list</div>
+            )}
+            <div className="exercises-list backgroundContainer">
+              {exercises?.map((exercise) => (
+                <Exercise exercise={exercise} key={exercise.name}>
+                  {exercise.name}
+                </Exercise>
+              ))}
+            </div>
+          </>
         )}
       </div>
-      {!isLoading && (
-        <div className="exercises-list backgroundContainer">
-          {exercises?.map((exercise) => (
-            <Exercise exercise={exercise} key={exercise.name}>
-              {exercise.name}
-            </Exercise>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
