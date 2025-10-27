@@ -10,6 +10,10 @@ function ExercisesProvider({ children }) {
   const [err, setErr] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
+  const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
+  const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
+    useState(false);
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -101,6 +105,15 @@ function ExercisesProvider({ children }) {
     setSearchedExercise(e.target.value);
   }
 
+  function handleShowAddExerciseSelectBoxes(e, option) {
+    e.preventDefault();
+    setIsAddExerciseInputOpen(option);
+  }
+
+  function handleShowNewWorkoutForm() {
+    setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
+  }
+
   return (
     <ExercisesContext.Provider
       value={{
@@ -113,6 +126,11 @@ function ExercisesProvider({ children }) {
         searchExercise,
         setSelectedExercise,
         setShowingResultsIsOpen,
+        isAddExerciseInputOpen,
+        handleShowAddExerciseSelectBoxes,
+        showCreateWorkoutTemplate,
+        setShowCreateWorkoutTemplate,
+        handleShowNewWorkoutForm,
       }}
     >
       {children}

@@ -6,7 +6,6 @@ import WorkoutList from "./components/ExercisesList";
 import Homepage from "./pages/HomePage";
 import ExercisesPage from "./pages/ExercisesPage";
 import { ExercisesProvider } from "./contexts/ExercisesContext";
-import { WorkoutProvider } from "./contexts/WorkoutContext";
 import WorkoutPage from "./pages/WorkoutPage";
 
 const initialExercises = [
@@ -48,18 +47,17 @@ function App() {
   return (
     <div className="app">
       <ExercisesProvider>
-        <WorkoutProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route index element={<Homepage />} />
-              <Route path="/exercises" element={<ExercisesPage />} />
-              <Route path="/workout" element={<WorkoutPage />} />
-              {/* <header>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path="/exercises" element={<ExercisesPage />} />
+            <Route path="/workout" element={<WorkoutPage />} />
+            {/* <header>
             <h1>Dream Workout</h1>
             <Navbar tab={tab} onSelectTab={handleSetTab} />
           </header>
           <Homepage /> */}
-              {/* {tab === tab1 && (
+            {/* {tab === tab1 && (
         <div className="exercise-details-tab">
           <WorkoutList
             exercises={exercises}
@@ -87,9 +85,8 @@ function App() {
         />
       )}
       {tab === tab3 && <ExerciseHistoryTab />} */}
-            </Routes>
-          </BrowserRouter>
-        </WorkoutProvider>
+          </Routes>
+        </BrowserRouter>
       </ExercisesProvider>
     </div>
   );

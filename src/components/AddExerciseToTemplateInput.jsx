@@ -1,8 +1,7 @@
 import { useExercises } from "../contexts/ExercisesContext";
-import { useWorkout } from "../contexts/WorkoutContext";
 
 function AddExercisetoTemplateInput({}) {
-  const { isAddExerciseInputOpen } = useWorkout();
+  const { isAddExerciseInputOpen } = useExercises();
   const { exercises } = useExercises();
 
   function handleSetIsAddExerciseOpen(e) {

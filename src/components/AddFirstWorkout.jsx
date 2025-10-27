@@ -1,7 +1,7 @@
-import { useWorkout } from "../contexts/WorkoutContext";
+import { useExercises } from "../contexts/ExercisesContext";
 
 function AddFirstWorkout() {
-  const { handleShowNewWorkoutForm } = useWorkout();
+  const { handleShowNewWorkoutForm } = useExercises();
 
   return (
     <div className="container">

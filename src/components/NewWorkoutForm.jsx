@@ -1,4 +1,4 @@
-import { useWorkout } from "../contexts/WorkoutContext";
+import { useExercises } from "../contexts/ExercisesContext";
 import AddExercisetoTemplateInput from "./AddExerciseToTemplateInput";
 
 function NewWorkoutForm() {
@@ -6,7 +6,7 @@ function NewWorkoutForm() {
     isAddExerciseInputOpen,
     handleShowAddExerciseSelectBoxes,
     handleShowNewWorkoutForm,
-  } = useWorkout();
+  } = useExercises();
 
   return (
     <div className="container">
@@ -23,7 +23,7 @@ function NewWorkoutForm() {
         <h2>New Workout Template!</h2>
         <form>
           <button onClick={(e) => handleShowAddExerciseSelectBoxes(e, true)}>
-            Add an exercise
+            Choose the exercises
           </button>
           <AddExercisetoTemplateInput
           // exercises={exercises}
