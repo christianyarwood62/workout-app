@@ -4,7 +4,7 @@ function ExerciseDetails() {
   const { selectedExercise, setSelectedExercise } = useExercises();
   return (
     <div>
-      <div className="exercise-details backgroundContainer">
+      <div className="exercise-details main-color">
         <h2>{selectedExercise.name}</h2>
         <button onClick={() => setSelectedExercise(null)}>X</button>
         <button>History</button>

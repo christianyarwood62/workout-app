@@ -3,9 +3,10 @@ import { useExercises } from "../contexts/ExercisesContext";
 function ExerciseSearchBar() {
   const { searchedExercise, searchExercise } = useExercises();
   return (
-    <div>
+    <div className="search-container">
+      <span>🔎</span>
       <input
-        className="searchExercisesInput"
+        className="search-input"
         type="text"
         onChange={(e) => searchExercise(e)}
         placeholder="Search for Exercises..."

@@ -12,7 +12,7 @@ function ExercisesPage() {
     <div className="exercise-details-tab">
       <Navbar />
       <ExerciseSearchBar />
-      <ExercisesList />
+      {!selectedExercise && <ExercisesList />}
       {selectedExercise && <ExerciseDetails />}
     </div>
   );

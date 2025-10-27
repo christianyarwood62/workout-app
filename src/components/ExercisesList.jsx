@@ -15,29 +15,26 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
   } = useExercises();
 
   return (
-    <div>
-      <div className="exercises-component">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <h1>List of exercises</h1>
-            <ExerciseSearchBar />
-            {searchedExercise ? (
-              <div>Showing results for {searchedExercise}</div>
-            ) : (
-              <div>Showing all results</div>
-            )}
-            <div className="exercises-list backgroundContainer">
-              {exercises?.map((exercise) => (
-                <Exercise exercise={exercise} key={exercise.name}>
-                  {exercise.name}
-                </Exercise>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+    <div className="exercises-component">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <h1>List of exercises</h1>
+          {searchedExercise ? (
+            <div>Showing results for {searchedExercise}</div>
+          ) : (
+            <div>Showing all results</div>
+          )}
+          <div className="exercises-list backgroundContainer">
+            {exercises?.map((exercise) => (
+              <Exercise exercise={exercise} key={exercise.name}>
+                {exercise.name}
+              </Exercise>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
