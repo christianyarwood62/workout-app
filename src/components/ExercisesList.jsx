@@ -16,15 +16,17 @@ function ExercisesList({ selectedExercise, onAddToWorkout }) {
 
   return (
     <div>
-      <div className="exercises-header">
+      <div className="exercises-component">
         {isLoading ? (
           <Loader />
         ) : (
           <>
+            <h1>List of exercises</h1>
+            <ExerciseSearchBar />
             {searchedExercise ? (
               <div>Showing results for {searchedExercise}</div>
             ) : (
-              <div>This is the complete list</div>
+              <div>Showing all results</div>
             )}
             <div className="exercises-list backgroundContainer">
               {exercises?.map((exercise) => (

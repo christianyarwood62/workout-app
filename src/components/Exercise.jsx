@@ -5,11 +5,8 @@ function Exercise({ exercise, children }) {
   const isSelected = selectedExercise?.name === exercise.name;
 
   return (
-    <div className="exercise">
+    <div onClick={() => handleSelection(exercise)} className="exercise">
       <p>{children}</p>
-      <button onClick={() => handleSelection(exercise)}>
-        {isSelected ? "Hide details" : "Show details"}
-      </button>
     </div>
   );
 }
