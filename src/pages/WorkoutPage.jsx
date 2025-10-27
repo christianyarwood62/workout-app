@@ -1,4 +1,4 @@
-import TemplateWorkout from "../components/TemplateWorkout";
+import AddFirstWorkout from "../components/AddFirstWorkout";
 import Navbar from "../components/NavBar";
 import NewWorkoutForm from "../components/NewWorkoutForm";
 import { useWorkout } from "../contexts/WorkoutContext";
@@ -9,7 +9,7 @@ function WorkoutPage() {
   return (
     <>
       <Navbar />
-      {!showCreateWorkoutTemplate && <TemplateWorkout />}
+      {!showCreateWorkoutTemplate && <AddFirstWorkout />}
       {showCreateWorkoutTemplate && <NewWorkoutForm />}
     </>
   );

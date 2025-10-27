@@ -1,15 +1,15 @@
 import { useWorkout } from "../contexts/WorkoutContext";
 
-function TemplateWorkout() {
+function AddFirstWorkout() {
   const { handleShowNewWorkoutForm } = useWorkout();
 
   return (
     <div className="container">
       <button onClick={() => handleShowNewWorkoutForm()}>
-        Add a new workout
+        Add your first workout!
       </button>
     </div>
   );
 }
 
-export default TemplateWorkout;
+export default AddFirstWorkout;

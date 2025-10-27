@@ -1,15 +1,7 @@
-import { useState } from "react";
 import { useWorkout } from "../contexts/WorkoutContext";
+import AddExercisetoTemplateInput from "./AddExerciseToTemplateInput";
 
-function NewWorkoutForm({
-  exercises,
-  onAddChosenExercisesList,
-  chosenExercise,
-  onHandleChosenExercise,
-  onSetIsAddExerciseInputOpen,
-  onSetChosenExerciseList,
-  onShowCreateWorkoutTemplate,
-}) {
+function NewWorkoutForm() {
   const {
     isAddExerciseInputOpen,
     handleShowAddExerciseSelectBoxes,
@@ -30,22 +22,18 @@ function NewWorkoutForm({
         </button>
         <h2>New Workout Template!</h2>
         <form>
-          {isAddExerciseInputOpen ? (
-            ""
-          ) : (
-            <button onClick={handleShowAddExerciseSelectBoxes}>
-              Add an exercise
-            </button>
-          )}
-          {/* <AddExercisetoTemplateInput
-            exercises={exercises}
-            chosenExercise={chosenExercise}
-            onAddChosenExercisesList={onAddChosenExercisesList}
-            onHandleChosenExercise={onHandleChosenExercise}
-            isAddExerciseInputOpen={isAddExerciseInputOpen}
-            onSetIsAddExerciseInputOpen={onSetIsAddExerciseInputOpen}
-            onSetChosenExerciseList={onSetChosenExerciseList}
-          /> */}
+          <button onClick={(e) => handleShowAddExerciseSelectBoxes(e, true)}>
+            Add an exercise
+          </button>
+          <AddExercisetoTemplateInput
+          // exercises={exercises}
+          // chosenExercise={chosenExercise}
+          // onAddChosenExercisesList={onAddChosenExercisesList}
+          // onHandleChosenExercise={onHandleChosenExercise}
+          // isAddExerciseInputOpen={isAddExerciseInputOpen}
+          // onSetIsAddExerciseInputOpen={onSetIsAddExerciseInputOpen}
+          // onSetChosenExerciseList={onSetChosenExerciseList}
+          />
         </form>
       </div>
     </div>

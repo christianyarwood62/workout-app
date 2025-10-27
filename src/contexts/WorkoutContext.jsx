@@ -7,8 +7,9 @@ function WorkoutProvider({ children }) {
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
 
-  function handleShowAddExerciseSelectBoxes() {
-    setIsAddExerciseInputOpen(true);
+  function handleShowAddExerciseSelectBoxes(e, option) {
+    e.preventDefault();
+    setIsAddExerciseInputOpen(option);
   }
 
   function handleShowNewWorkoutForm() {
