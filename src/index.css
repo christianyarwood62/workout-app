@@ -5,8 +5,9 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.app {
-  min-height: 100vh;
+body {
+  min-height: 500px;
+  min-width: 740px;
 }
 
 :root {
@@ -26,11 +27,6 @@
   width: fit-content;
   padding: 10px;
   border-radius: 30px;
-}
-
-.exercise-details-tab {
-  display: flex;
-  margin-bottom: 100px;
 }
 
 .exercise {
@@ -101,6 +97,12 @@ nav a:hover {
   min-width: 300px;
 }
 
+.exercise-details {
+  background-color: var(--main-color);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 64px;
+}
 .exercises-list-component {
   display: flex;
   flex-direction: column;

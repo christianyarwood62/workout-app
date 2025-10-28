@@ -11,7 +11,7 @@ function ExercisesPage() {
   return (
     <div className="exercise-details-tab">
       <Navbar />
-      <ExerciseSearchBar />
+      {!selectedExercise && <ExerciseSearchBar />}
       {!selectedExercise && <ExercisesList />}
       {selectedExercise && <ExerciseDetails />}
     </div>
