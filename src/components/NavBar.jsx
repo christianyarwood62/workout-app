@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar({ tab, onSelectTab }) {
   const tab1 = "Exercises";
-  const tab2 = "Start a workout";
+  const tab2 = "Workout Templates";
   const tab3 = "Exercise history";
 
   return (

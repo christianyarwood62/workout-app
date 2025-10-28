@@ -1,16 +1,20 @@
-import AddFirstWorkout from "../components/AddFirstWorkout";
+import AddFirstWorkoutButton from "../components/AddFirstWorkoutButton";
 import Navbar from "../components/NavBar";
 import NewWorkoutForm from "../components/NewWorkoutForm";
 import { useExercises } from "../contexts/ExercisesContext";
+import WorkoutTemplateList from "../components/WorkoutTemplateList";
 
 function WorkoutPage() {
   const { showCreateWorkoutTemplate } = useExercises();
 
+  const { workoutTemplateList } = useExercises();
+
   return (
     <>
       <Navbar />
-      {!showCreateWorkoutTemplate && <AddFirstWorkout />}
+      {!workoutTemplateList && <AddFirstWorkoutButton />}
       {showCreateWorkoutTemplate && <NewWorkoutForm />}
+      <WorkoutTemplateList />
     </>
   );
 }
