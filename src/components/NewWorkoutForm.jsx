@@ -1,5 +1,6 @@
 import { useExercises } from "../contexts/ExercisesContext";
 import AddExercisetoTemplateInput from "./AddExerciseToTemplateInput";
+import TemplateExercises from "./TemplateExercises";
 
 function NewWorkoutForm() {
   const {
@@ -9,7 +10,7 @@ function NewWorkoutForm() {
   } = useExercises();
 
   return (
-    <div className="element-container">
+    <div className="new-template-form">
       <button
         className="button"
         onClick={() => {
@@ -20,12 +21,16 @@ function NewWorkoutForm() {
       >
         x
       </button>
-      <h2>New Workout Template!</h2>
+      <h2>💪 Choose your exercises for this template</h2>
       <form>
-        <button onClick={(e) => handleShowAddExerciseSelectBoxes(e, true)}>
+        {/* <button
+          className="button"
+          onClick={(e) => handleShowAddExerciseSelectBoxes(e, true)}
+        >
           Choose the exercises
-        </button>
+        </button> */}
         <AddExercisetoTemplateInput />
+        <TemplateExercises />
       </form>
     </div>
   );

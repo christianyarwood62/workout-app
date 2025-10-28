@@ -14,6 +14,9 @@ function ExercisesProvider({ children }) {
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
   const [workoutTemplateList, setWorkoutTemplateList] = useState(null);
+  const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
+  const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
+    useState([]);
 
   useEffect(
     function () {
@@ -170,6 +173,19 @@ function ExercisesProvider({ children }) {
     setWorkoutTemplateList(!workoutTemplateList);
   }
 
+  function handleToggleOverlay(e) {
+    e.preventDefault();
+    setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
+  }
+
+  function handleAddExerciseToTemplate(e) {
+    setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
+    setSelectedExercisesForTemplate([
+      ...selectedExercisesForTemplate,
+      e.target.value,
+    ]);
+  }
+
   return (
     <ExercisesContext.Provider
       value={{
@@ -188,6 +204,10 @@ function ExercisesProvider({ children }) {
         setShowCreateWorkoutTemplate,
         handleShowNewWorkoutForm,
         workoutTemplateList,
+        handleToggleOverlay,
+        isTemplateOverlayOpen,
+        handleAddExerciseToTemplate,
+        selectedExercisesForTemplate,
       }}
     >
       {children}

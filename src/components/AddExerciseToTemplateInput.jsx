@@ -11,27 +11,25 @@ function AddExercisetoTemplateInput({}) {
 
   return (
     <div>
-      {" "}
-      {isAddExerciseInputOpen ? (
-        <div>
-          <button
-          // onClick={(e) => {
-          //   handleSetIsAddExerciseOpen(e);
-          //   onSetChosenExerciseList([]);
-          // }}
-          >
-            Cancel new template
-          </button>
-          <select
-          // value={chosenExercise}
-          // onChange={(e) => onHandleChosenExercise(e)}
-          >
-            <option>Choose an exercise</option>
-            {exercises.map((exercise, i) => (
-              <option key={`exercise-${i}`}>{exercise.name}</option>
-            ))}
-          </select>
-          {/* <button
+      <div>
+        <button
+        // onClick={(e) => {
+        //   handleSetIsAddExerciseOpen(e);
+        //   onSetChosenExerciseList([]);
+        // }}
+        >
+          Cancel new template
+        </button>
+        <select
+        // value={chosenExercise}
+        // onChange={(e) => onHandleChosenExercise(e)}
+        >
+          <option>Choose an exercise</option>
+          {exercises.map((exercise, i) => (
+            <option key={`exercise-${i}`}>{exercise.name}</option>
+          ))}
+        </select>
+        {/* <button
             onClick={(e) => {
               onAddChosenExercisesList(e, { chosenExercise });
               onSetIsAddExerciseInputOpen(true);
@@ -39,10 +37,7 @@ function AddExercisetoTemplateInput({}) {
           >
             Add
           </button> */}
-        </div>
-      ) : (
-        <div></div>
-      )}
+      </div>
     </div>
   );
 }
