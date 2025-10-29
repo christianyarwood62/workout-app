@@ -3,7 +3,7 @@ import { useExercises } from "../contexts/ExercisesContext";
 function NewTemplateExerciseForm() {
   const {
     isTemplateOverlayOpen,
-    handleToggleOverlay,
+    handleToggleTemplateFormOverlay,
     exercises,
     handleAddExerciseToTemplate,
   } = useExercises();
@@ -11,7 +11,7 @@ function NewTemplateExerciseForm() {
   if (!isTemplateOverlayOpen) return null;
 
   return (
-    <div onClick={handleToggleOverlay} className="overlay-backdrop">
+    <div onClick={handleToggleTemplateFormOverlay} className="overlay-backdrop">
       <div
         onClick={(e) => e.stopPropagation()}
         className="overlay-content element-container"

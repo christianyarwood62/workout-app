@@ -17,6 +17,8 @@ function ExercisesProvider({ children }) {
   const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
+  const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
+    useState(false);
 
   useEffect(
     function () {
@@ -147,6 +149,15 @@ function ExercisesProvider({ children }) {
     [searchedExercise]
   );
 
+  useEffect(
+    function () {
+      setTimeout(() => {
+        setIsTemplateExerciseErrorOpen(false);
+      }, 2000);
+    },
+    [isTemplateExerciseErrorOpen]
+  );
+
   function handleSelection(exercise) {
     setSelectedExercise((cur) =>
       cur?.name === exercise.name ? null : exercise
@@ -173,16 +184,23 @@ function ExercisesProvider({ children }) {
     setWorkoutTemplateList(!workoutTemplateList);
   }
 
-  function handleToggleOverlay(e) {
+  function handleToggleTemplateFormOverlay(e) {
     e.preventDefault();
     setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
   }
 
   function handleAddExerciseToTemplate(e) {
+    const exercise = e.target.value;
     setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
-    setSelectedExercisesForTemplate((cur) =>
-      cur.includes(e.target.value) ? cur : [...cur, e.target.value]
-    );
+    setSelectedExercisesForTemplate((cur) => {
+      if (cur.includes(exercise)) {
+        setIsTemplateExerciseErrorOpen(true);
+        return cur;
+      } else {
+        return [...cur, exercise];
+      }
+      // cur.includes(e.target.value) ? cur : [...cur, e.target.value]
+    });
   }
 
   function handleSaveTemplate(e) {
@@ -191,7 +209,11 @@ function ExercisesProvider({ children }) {
 
   function deleteExerciseFromTemplate(e) {
     e.preventDefault();
-    console.log("hi");
+    console.log("deleted");
+  }
+
+  function handleToggleTemplateExerciseErrorOpen() {
+    setIsTemplateExerciseErrorOpen(true);
   }
 
   return (
@@ -212,12 +234,14 @@ function ExercisesProvider({ children }) {
         setShowCreateWorkoutTemplate,
         handleShowNewWorkoutForm,
         workoutTemplateList,
-        handleToggleOverlay,
+        handleToggleTemplateFormOverlay,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
         selectedExercisesForTemplate,
         handleSaveTemplate,
         deleteExerciseFromTemplate,
+        isTemplateExerciseErrorOpen,
+        handleToggleTemplateExerciseErrorOpen,
       }}
     >
       {children}

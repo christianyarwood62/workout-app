@@ -1,7 +1,19 @@
+import { useExercises } from "../contexts/ExercisesContext";
+
 function TemplateExerciseErrorComponent() {
+  const { handleToggleTemplateExerciseErrorOpen } = useExercises();
+
   return (
-    <div>
-      This exercise is already in the component, choose a different exercise!
+    <div
+      onClick={handleToggleTemplateExerciseErrorOpen}
+      className="overlay-backdrop "
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="overlay-content element-container"
+      >
+        This exercise is already in the component, choose a different exercise!
+      </div>
     </div>
   );
 }

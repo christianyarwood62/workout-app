@@ -3,7 +3,7 @@ import TemplateExercise from "./TemplateExercise";
 
 function TemplateExercises() {
   const {
-    handleToggleOverlay,
+    handleToggleTemplateFormOverlay,
     selectedExercisesForTemplate,
     handleSaveTemplate,
     deleteExerciseFromTemplate,
@@ -17,7 +17,7 @@ function TemplateExercises() {
         ))}
         <button
           className="add-template-exercise-button button"
-          onClick={handleToggleOverlay}
+          onClick={handleToggleTemplateFormOverlay}
         >
           <p>Add an exercise</p>
         </button>
