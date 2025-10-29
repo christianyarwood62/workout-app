@@ -29,7 +29,7 @@ function NewWorkoutForm() {
         >
           Choose the exercises
         </button> */}
-        <AddExercisetoTemplateInput />
+        {/* <AddExercisetoTemplateInput /> */}
         <TemplateExercises />
       </form>
     </div>

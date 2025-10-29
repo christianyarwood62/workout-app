@@ -186,6 +186,15 @@ function ExercisesProvider({ children }) {
     ]);
   }
 
+  function handleSaveTemplate(e) {
+    e.preventDefault();
+  }
+
+  function deleteExerciseFromTemplate(e) {
+    e.preventDefault();
+    console.log("hi");
+  }
+
   return (
     <ExercisesContext.Provider
       value={{
@@ -208,6 +217,8 @@ function ExercisesProvider({ children }) {
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
         selectedExercisesForTemplate,
+        handleSaveTemplate,
+        deleteExerciseFromTemplate,
       }}
     >
       {children}

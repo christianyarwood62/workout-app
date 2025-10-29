@@ -5,6 +5,7 @@
   background-color: var(--main-color);
   border-radius: 16px;
   padding: 8px 16px;
+  border-style: none;
 }
 
 .element-container {
@@ -13,6 +14,38 @@
   padding: 16px;
   margin: 64px;
 }
+
+.icon {
+  align-content: center;
+  padding: 16px;
+}
+
+.icon-lower-area {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  max-height: 100px;
+}
+
+.icon-top-area {
+  padding: 5px;
+  padding-bottom: 15px;
+}
+
+.text-in-icon {
+  max-width: 75%;
+}
+
+p {
+  font-size: 16px;
+}
+
+.flex-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+/* App stuff */
 
 * {
   margin: 0px;
@@ -29,7 +62,7 @@ body {
 :root {
   --main-bg-color: #191923;
   --main-color: #a7e2e3;
-  --accent-color: #4f86c6;
+  --accent-color: #d5a021;
 }
 
 .backgroundContainer {
@@ -186,6 +219,14 @@ nav a:hover {
 .new-template-form {
   padding: 16px;
   margin: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.new-template-form button {
+  align-self: flex-start;
 }
 
 .new-template-form h2 {
@@ -206,10 +247,17 @@ nav a:hover {
   width: 5rem;
 }
 
-.templates-exercise {
+.template-exercises {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+}
+
+.exercise-in-template {
+  background-color: var(--main-color);
+  height: 128px;
+  width: 128px;
+  border-radius: 16px;
 }
 
 /* Buttons */
@@ -223,6 +271,23 @@ nav a:hover {
 .add-template-exercise-button {
   height: 128px;
   width: 128px;
+}
+
+.save-template-button {
+  margin-top: 32px;
+  background-color: #fc9f5b;
+  width: 96px;
+  box-sizing: content-box;
+}
+
+.icon-x {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.save-template-button-container {
+  display: flex;
+  justify-content: center;
 }
 
 /* Overlay.css */
