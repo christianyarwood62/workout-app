@@ -182,6 +182,7 @@ function ExercisesProvider({ children }) {
   function handleShowNewWorkoutForm() {
     setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
     setWorkoutTemplateList(!workoutTemplateList);
+    setSelectedExercisesForTemplate([]);
   }
 
   function handleToggleTemplateFormOverlay(e) {
