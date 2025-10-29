@@ -1,4 +1,5 @@
 import { useExercises } from "../contexts/ExercisesContext";
+import TemplateExercise from "./TemplateExercise";
 
 function TemplateExercises() {
   const {
@@ -12,19 +13,7 @@ function TemplateExercises() {
     <div className="flex-columns">
       <div className="template-exercises ">
         {selectedExercisesForTemplate?.map((exercise) => (
-          <div className="exercise-in-template">
-            <div className="icon-top-area">
-              <button
-                onClick={deleteExerciseFromTemplate}
-                class="button icon-x"
-              >
-                X
-              </button>
-            </div>
-            <div className="icon-lower-area">
-              <p className="text-in-icon">{exercise}</p>
-            </div>
-          </div>
+          <TemplateExercise key={exercise}>{exercise}</TemplateExercise>
         ))}
         <button
           className="add-template-exercise-button button"

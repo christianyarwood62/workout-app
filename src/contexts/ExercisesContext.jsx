@@ -180,10 +180,9 @@ function ExercisesProvider({ children }) {
 
   function handleAddExerciseToTemplate(e) {
     setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
-    setSelectedExercisesForTemplate([
-      ...selectedExercisesForTemplate,
-      e.target.value,
-    ]);
+    setSelectedExercisesForTemplate((cur) =>
+      cur.includes(e.target.value) ? cur : [...cur, e.target.value]
+    );
   }
 
   function handleSaveTemplate(e) {
