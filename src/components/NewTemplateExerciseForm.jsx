@@ -14,7 +14,7 @@ function NewTemplateExerciseForm() {
     <div onClick={handleToggleTemplateFormOverlay} className="overlay-backdrop">
       <div
         onClick={(e) => e.stopPropagation()}
-        className="overlay-content element-container"
+        className="overlay-content element-container" // no CSS for overlay-content, just here for understanding
       >
         <select
           onChange={handleAddExerciseToTemplate}

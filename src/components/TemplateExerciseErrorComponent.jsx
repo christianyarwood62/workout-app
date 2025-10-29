@@ -8,10 +8,7 @@ function TemplateExerciseErrorComponent() {
       onClick={handleToggleTemplateExerciseErrorOpen}
       className="overlay-backdrop "
     >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="overlay-content element-container"
-      >
+      <div onClick={(e) => e.stopPropagation()} className="element-container">
         This exercise is already in the component, choose a different exercise!
       </div>
     </div>

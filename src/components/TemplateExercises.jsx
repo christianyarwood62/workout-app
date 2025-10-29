@@ -13,7 +13,9 @@ function TemplateExercises() {
     <div className="flex-columns">
       <div className="template-exercises ">
         {selectedExercisesForTemplate?.map((exercise) => (
-          <TemplateExercise key={exercise}>{exercise}</TemplateExercise>
+          <TemplateExercise value={exercise} key={exercise}>
+            {exercise}
+          </TemplateExercise>
         ))}
         <button
           className="add-template-exercise-button button"

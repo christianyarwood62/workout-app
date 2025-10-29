@@ -191,6 +191,7 @@ function ExercisesProvider({ children }) {
 
   function handleAddExerciseToTemplate(e) {
     const exercise = e.target.value;
+    console.log(exercise);
     setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
     setSelectedExercisesForTemplate((cur) => {
       if (cur.includes(exercise)) {
@@ -199,7 +200,6 @@ function ExercisesProvider({ children }) {
       } else {
         return [...cur, exercise];
       }
-      // cur.includes(e.target.value) ? cur : [...cur, e.target.value]
     });
   }
 
@@ -209,7 +209,12 @@ function ExercisesProvider({ children }) {
 
   function deleteExerciseFromTemplate(e) {
     e.preventDefault();
-    console.log("deleted");
+
+    const exercise = e.target.value;
+    setSelectedExercisesForTemplate((cur) => {
+      return cur.filter((element) => element !== exercise);
+    });
+    console.log("exercise deleted");
   }
 
   function handleToggleTemplateExerciseErrorOpen() {

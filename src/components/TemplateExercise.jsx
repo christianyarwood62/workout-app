@@ -1,12 +1,16 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
-function TemplateExercise({ children }) {
+function TemplateExercise({ children, value }) {
   const { deleteExerciseFromTemplate } = useExercises();
 
   return (
     <div className="exercise-in-template">
       <div className="icon-top-area">
-        <button onClick={deleteExerciseFromTemplate} className="button icon-x">
+        <button
+          onClick={deleteExerciseFromTemplate}
+          value={value}
+          className="button icon-x"
+        >
           X
         </button>
       </div>
