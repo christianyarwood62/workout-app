@@ -1,4 +1,4 @@
-import AddFirstWorkoutButton from "../components/AddFirstWorkoutButton";
+import AddWorkoutTemplateButton from "../components/AddWorkoutTemplateButton";
 import Navbar from "../components/NavBar";
 import NewWorkoutForm from "../components/NewWorkoutForm";
 import { useExercises } from "../contexts/ExercisesContext";
@@ -14,7 +14,7 @@ function WorkoutPage() {
   return (
     <>
       <Navbar />
-      {!workoutTemplateList && <AddFirstWorkoutButton />}
+      {!workoutTemplateList && <AddWorkoutTemplateButton />}
       {showCreateWorkoutTemplate && <NewWorkoutForm />}
       <WorkoutTemplateList />
       <NewTemplateExerciseForm />

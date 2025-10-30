@@ -13,7 +13,6 @@ function ExercisesProvider({ children }) {
   const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
-  // const [workoutTemplateList, setWorkoutTemplateList] = useState(null);
   const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
@@ -211,7 +210,11 @@ function ExercisesProvider({ children }) {
 
     setWorkoutTemplates(() => [
       ...workoutTemplates,
-      selectedExercisesForTemplate,
+      {
+        id: crypto.randomUUID(),
+        exercises: selectedExercisesForTemplate,
+        displayNumber: workoutTemplates.length + 1, // This is used because without it, when you delete a template, the numbering restarts
+      },
     ]);
     setSelectedExercisesForTemplate([]);
   }
@@ -228,6 +231,17 @@ function ExercisesProvider({ children }) {
 
   function handleToggleTemplateExerciseErrorOpen() {
     setIsTemplateExerciseErrorOpen(true);
+  }
+
+  function deleteWorkoutTemplateFromList(e, id) {
+    e.preventDefault();
+
+    const workout = e.target.value;
+    console.log(workout);
+    setWorkoutTemplates((cur) => {
+      console.log(cur);
+      return cur.filter((template) => template.id !== id);
+    });
   }
 
   return (
@@ -257,6 +271,7 @@ function ExercisesProvider({ children }) {
         isTemplateExerciseErrorOpen,
         handleToggleTemplateExerciseErrorOpen,
         workoutTemplates,
+        deleteWorkoutTemplateFromList,
       }}
     >
       {children}

@@ -13,7 +13,12 @@ function WorkoutTemplateList() {
     return (
       <div className="workout-template-container">
         {workoutTemplates.map((template, i) => (
-          <WorkoutTemplateIcon value={template} index={i}></WorkoutTemplateIcon>
+          <WorkoutTemplateIcon
+            value={template}
+            id={template.id}
+            displayNumber={template.displayNumber}
+            key={`template-${i + 1}`}
+          />
         ))}
       </div>
     );
