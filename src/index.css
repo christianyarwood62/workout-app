@@ -123,10 +123,6 @@ nav a:hover {
   color: var(--accent-color);
 }
 
-.selectedTab {
-  background-color: lightblue;
-}
-
 /* The exercises page */
 .exercise-details-tab {
   display: flex;
@@ -354,6 +350,15 @@ button:hover {
 .save-template-button-container {
   display: flex;
   justify-content: center;
+}
+
+.icon-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-edit-button {
+  cursor: pointer;
 }
 
 /* Overlay.css */

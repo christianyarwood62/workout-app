@@ -17,7 +17,7 @@ function WorkoutTemplateList() {
             value={template}
             id={template.id}
             displayNumber={template.displayNumber}
-            key={`template-${i + 1}`}
+            key={`template-${template.displayNumber}`}
           />
         ))}
       </div>
