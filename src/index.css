@@ -45,6 +45,12 @@ p {
   flex-direction: column;
 }
 
+h1 {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* App stuff */
 
 * {
