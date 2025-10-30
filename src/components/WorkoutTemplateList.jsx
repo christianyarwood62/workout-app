@@ -12,12 +12,12 @@ function WorkoutTemplateList() {
   if (workoutTemplates.length > 0)
     return (
       <div className="workout-template-container">
-        {workoutTemplates.map((template, i) => (
+        {workoutTemplates.map((template) => (
           <WorkoutTemplateIcon
-            value={template}
+            workout={template}
             id={template.id}
-            displayNumber={template.displayNumber}
-            key={`template-${template.displayNumber}`}
+            displayNumber={template.templateCounter}
+            key={`template-${template.templateCounter}`}
           />
         ))}
       </div>

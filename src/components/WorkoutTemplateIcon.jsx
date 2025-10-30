@@ -1,7 +1,8 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
-function WorkoutTemplateIcon({ value, id, displayNumber }) {
-  const { deleteWorkoutTemplateFromList } = useExercises();
+function WorkoutTemplateIcon({ workout, id, displayNumber }) {
+  const { deleteWorkoutTemplateFromList, handleEditWorkoutTemplate } =
+    useExercises();
 
   return (
     <div className="workout-template-icon">
@@ -12,11 +13,16 @@ function WorkoutTemplateIcon({ value, id, displayNumber }) {
         >
           X
         </button>
-        <button className="icon-edit-button button">✍️</button>
+        <button
+          className="icon-edit-button button"
+          onClick={(e) => handleEditWorkoutTemplate(e, id)}
+        >
+          ✍️
+        </button>
       </div>
       <h3>{`Template ${displayNumber}`}</h3>
       <div className="workout-template-icon-exercises">
-        {value.exercises.map((exercise) => (
+        {workout.exercises.map((exercise) => (
           <p key={exercise}>💪 {exercise}</p>
         ))}
       </div>

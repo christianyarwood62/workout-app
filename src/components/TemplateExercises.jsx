@@ -6,7 +6,6 @@ function TemplateExercises() {
     handleToggleTemplateFormOverlay,
     selectedExercisesForTemplate,
     handleSaveTemplate,
-    deleteExerciseFromTemplate,
   } = useExercises();
 
   return (

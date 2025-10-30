@@ -19,6 +19,7 @@ function ExercisesProvider({ children }) {
   const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
     useState(false);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
+  const [templateCounter, setTemplateCounter] = useState(0);
 
   useEffect(
     function () {
@@ -211,11 +212,14 @@ function ExercisesProvider({ children }) {
     setWorkoutTemplates(() => [
       ...workoutTemplates,
       {
+        workoutName: `Template ${workoutTemplates.length + 1}`,
         id: crypto.randomUUID(),
         exercises: selectedExercisesForTemplate,
         displayNumber: workoutTemplates.length + 1, // This is used because without it, when you delete a template, the numbering restarts
+        templateCounter: templateCounter + 1,
       },
     ]);
+    setTemplateCounter(templateCounter + 1);
     setSelectedExercisesForTemplate([]);
   }
 
@@ -239,9 +243,15 @@ function ExercisesProvider({ children }) {
     const workout = e.target.value;
     console.log(workout);
     setWorkoutTemplates((cur) => {
-      console.log(cur);
-      return cur.filter((template) => template.id !== id);
+      return cur.filter((template) => template.id !== id); // cur is the workoutTemplates
     });
+  }
+
+  function handleEditWorkoutTemplate(e, id) {
+    e.preventDefault();
+
+    const workout = e.target.value;
+    console.log(workout);
   }
 
   return (
@@ -272,6 +282,8 @@ function ExercisesProvider({ children }) {
         handleToggleTemplateExerciseErrorOpen,
         workoutTemplates,
         deleteWorkoutTemplateFromList,
+        handleEditWorkoutTemplate,
+        templateCounter,
       }}
     >
       {children}
