@@ -13,12 +13,13 @@ function ExercisesProvider({ children }) {
   const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
-  const [workoutTemplateList, setWorkoutTemplateList] = useState(null);
+  // const [workoutTemplateList, setWorkoutTemplateList] = useState(null);
   const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
   const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
     useState(false);
+  const [workoutTemplates, setWorkoutTemplates] = useState([]);
 
   useEffect(
     function () {
@@ -181,7 +182,7 @@ function ExercisesProvider({ children }) {
 
   function handleShowNewWorkoutForm() {
     setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
-    setWorkoutTemplateList(!workoutTemplateList);
+    // setWorkoutTemplateList(!workoutTemplateList);
     setSelectedExercisesForTemplate([]);
   }
 
@@ -206,6 +207,11 @@ function ExercisesProvider({ children }) {
 
   function handleSaveTemplate(e) {
     e.preventDefault();
+    setWorkoutTemplates(() => [
+      ...workoutTemplates,
+      selectedExercisesForTemplate,
+    ]);
+    setSelectedExercisesForTemplate([]);
   }
 
   function deleteExerciseFromTemplate(e) {
@@ -239,7 +245,7 @@ function ExercisesProvider({ children }) {
         showCreateWorkoutTemplate,
         setShowCreateWorkoutTemplate,
         handleShowNewWorkoutForm,
-        workoutTemplateList,
+        // workoutTemplateList,
         handleToggleTemplateFormOverlay,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
@@ -248,6 +254,7 @@ function ExercisesProvider({ children }) {
         deleteExerciseFromTemplate,
         isTemplateExerciseErrorOpen,
         handleToggleTemplateExerciseErrorOpen,
+        workoutTemplates,
       }}
     >
       {children}
