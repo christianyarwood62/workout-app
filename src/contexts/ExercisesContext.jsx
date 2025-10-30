@@ -207,6 +207,8 @@ function ExercisesProvider({ children }) {
 
   function handleSaveTemplate(e) {
     e.preventDefault();
+    if (selectedExercisesForTemplate.length === 0) return;
+
     setWorkoutTemplates(() => [
       ...workoutTemplates,
       selectedExercisesForTemplate,
