@@ -1,4 +1,5 @@
 import { useExercises } from "../contexts/ExercisesContext";
+import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
 
 function WorkoutTemplateList() {
   const { workoutTemplates } = useExercises();
@@ -8,24 +9,7 @@ function WorkoutTemplateList() {
       <div className="element-container">No templates to show, add some!</div>
     );
 
-  if (workoutTemplates.length > 0)
-    return (
-      <div className="workout-template-container">
-        {workoutTemplates.map((template, i) => (
-          <div
-            className="workout-template-icon"
-            key={`template-${workoutTemplates[i]} `}
-          >
-            <h3>Template {i}</h3>
-            <div className="workout-template-icon-exercises">
-              {template.map((exercise) => (
-                <p key={exercise}>💪 {exercise}</p>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+  if (workoutTemplates.length > 0) return <WorkoutTemplateIcon />;
 }
 
 export default WorkoutTemplateList;
