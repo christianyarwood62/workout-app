@@ -9,7 +9,14 @@ function WorkoutTemplateList() {
       <div className="element-container">No templates to show, add some!</div>
     );
 
-  if (workoutTemplates.length > 0) return <WorkoutTemplateIcon />;
+  if (workoutTemplates.length > 0)
+    return (
+      <div className="workout-template-container">
+        {workoutTemplates.map((template, i) => (
+          <WorkoutTemplateIcon value={template} index={i}></WorkoutTemplateIcon>
+        ))}
+      </div>
+    );
 }
 
 export default WorkoutTemplateList;
