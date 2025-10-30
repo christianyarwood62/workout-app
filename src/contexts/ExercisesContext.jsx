@@ -10,7 +10,6 @@ function ExercisesProvider({ children }) {
   const [err, setErr] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
-  const [isAddExerciseInputOpen, setIsAddExerciseInputOpen] = useState(false);
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
   const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
@@ -20,6 +19,9 @@ function ExercisesProvider({ children }) {
     useState(false);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
   const [templateCounter, setTemplateCounter] = useState(0);
+  const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
+    useState(false);
+  const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
 
   useEffect(
     function () {
@@ -165,19 +167,9 @@ function ExercisesProvider({ children }) {
     );
   }
 
-  function handleAddExerciseToRoutine(exercise) {
-    setChosenExerciseForRoutine(exercise);
-    setExerciseRoutine((exerciseRoutine) => [...exerciseRoutine, exercise]);
-  }
-
   function searchExercise(e) {
     // if (e.key === "Enter") {
     setSearchedExercise(e.target.value);
-  }
-
-  function handleShowAddExerciseSelectBoxes(e, option) {
-    e.preventDefault();
-    setIsAddExerciseInputOpen(option);
   }
 
   function handleShowNewWorkoutForm() {
@@ -240,8 +232,6 @@ function ExercisesProvider({ children }) {
   function deleteWorkoutTemplateFromList(e, id) {
     e.preventDefault();
 
-    const workout = e.target.value;
-    console.log(workout);
     setWorkoutTemplates((cur) => {
       return cur.filter((template) => template.id !== id); // cur is the workoutTemplates
     });
@@ -251,7 +241,12 @@ function ExercisesProvider({ children }) {
     e.preventDefault();
 
     const workout = e.target.value;
-    console.log(workout);
+    console.log(e);
+  }
+
+  function toggleEditWorkoutForm(id) {
+    setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
+    setSelectedTemplateToEdit(id);
   }
 
   return (
@@ -261,17 +256,13 @@ function ExercisesProvider({ children }) {
         setExercises,
         handleSelection,
         selectedExercise,
-        handleAddExerciseToRoutine,
         searchedExercise,
         searchExercise,
         setSelectedExercise,
         setShowingResultsIsOpen,
-        isAddExerciseInputOpen,
-        handleShowAddExerciseSelectBoxes,
         showCreateWorkoutTemplate,
         setShowCreateWorkoutTemplate,
         handleShowNewWorkoutForm,
-        // workoutTemplateList,
         handleToggleTemplateFormOverlay,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
@@ -284,6 +275,10 @@ function ExercisesProvider({ children }) {
         deleteWorkoutTemplateFromList,
         handleEditWorkoutTemplate,
         templateCounter,
+        toggleEditWorkoutForm,
+        isEditTemplateOverlayOpen,
+        setIsEditTemplateOverlayOpen,
+        selectedTemplateToEdit,
       }}
     >
       {children}

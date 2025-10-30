@@ -5,11 +5,16 @@ import { useExercises } from "../contexts/ExercisesContext";
 import WorkoutTemplateList from "../components/WorkoutTemplateList";
 import NewTemplateExerciseForm from "../components/NewTemplateExerciseForm";
 import TemplateExerciseErrorComponent from "../components/TemplateExerciseErrorComponent";
+import EditWorkoutTemplate from "../components/EditWorkoutTemplate";
 
 function WorkoutPage() {
   const { showCreateWorkoutTemplate } = useExercises();
 
-  const { workoutTemplateList, isTemplateExerciseErrorOpen } = useExercises();
+  const {
+    workoutTemplateList,
+    isTemplateExerciseErrorOpen,
+    isEditTemplateOverlayOpen,
+  } = useExercises();
 
   return (
     <>
@@ -18,6 +23,7 @@ function WorkoutPage() {
       {showCreateWorkoutTemplate && <NewWorkoutForm />}
       <WorkoutTemplateList />
       <NewTemplateExerciseForm />
+      <EditWorkoutTemplate />
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
     </>
   );
