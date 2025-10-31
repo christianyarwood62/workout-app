@@ -7,14 +7,17 @@ function EditWorkoutTemplate() {
     isEditTemplateOverlayOpen,
     setIsEditTemplateOverlayOpen,
     selectedTemplateToEdit,
+    setTemplateNameInput,
+    saveNewTemplate,
+    setSelectedTemplateToEdit,
+    templateNameInput,
   } = useExercises();
-  const [form, setForm] = useState(null);
 
   useEffect(
     function () {
-      setForm(selectedTemplateToEdit);
+      setSelectedTemplateToEdit(selectedTemplateToEdit);
     },
-    [selectedTemplateToEdit]
+    [selectedTemplateToEdit, setSelectedTemplateToEdit]
   );
   if (!isEditTemplateOverlayOpen) return null;
 
@@ -37,10 +40,21 @@ function EditWorkoutTemplate() {
             >
               X
             </button>
+            <button
+              className="icon-edit-button button"
+              onClick={() =>
+                saveNewTemplate(selectedTemplateToEdit.id, templateNameInput)
+              }
+            >
+              ☑️ Save
+            </button>
           </div>
-          <h3>{`${form?.workoutName}`}</h3>
+          <input
+            placeholder={`${templateNameInput}...`}
+            onChange={(e) => setTemplateNameInput(e.target.value)}
+          ></input>
           <div className="workout-template-icon-exercises">
-            {form?.exercises.map((exercise) => (
+            {selectedTemplateToEdit?.exercises.map((exercise) => (
               <p key={exercise}>💪 {exercise}</p>
             ))}
           </div>

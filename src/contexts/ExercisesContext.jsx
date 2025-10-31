@@ -22,6 +22,7 @@ function ExercisesProvider({ children }) {
   const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
     useState(false);
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
+  const [templateNameInput, setTemplateNameInput] = useState("");
 
   useEffect(
     function () {
@@ -161,6 +162,10 @@ function ExercisesProvider({ children }) {
     [isTemplateExerciseErrorOpen]
   );
 
+  // useEffect(function () {
+
+  // }, [selectedTemplateToEdit])
+
   function handleSelection(exercise) {
     setSelectedExercise((cur) =>
       cur?.name === exercise.name ? null : exercise
@@ -244,9 +249,22 @@ function ExercisesProvider({ children }) {
     console.log(e);
   }
 
-  function toggleEditWorkoutForm(id) {
+  function toggleEditWorkoutForm(template) {
     setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
-    setSelectedTemplateToEdit(id);
+    setSelectedTemplateToEdit(template);
+    setTemplateNameInput(template.workoutName);
+  }
+
+  function saveNewTemplate(id, newName) {
+    setWorkoutTemplates((cur) =>
+      cur.map((template) =>
+        template.id === id
+          ? { ...template, workoutName: newName }
+          : { ...template }
+      )
+    );
+
+    setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
   }
 
   return (
@@ -279,6 +297,10 @@ function ExercisesProvider({ children }) {
         isEditTemplateOverlayOpen,
         setIsEditTemplateOverlayOpen,
         selectedTemplateToEdit,
+        setSelectedTemplateToEdit,
+        setTemplateNameInput,
+        saveNewTemplate,
+        templateNameInput,
       }}
     >
       {children}
