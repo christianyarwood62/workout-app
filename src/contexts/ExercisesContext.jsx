@@ -258,9 +258,7 @@ function ExercisesProvider({ children }) {
   function saveNewTemplate(id, newName) {
     setWorkoutTemplates((cur) =>
       cur.map((template) =>
-        template.id === id
-          ? { ...template, workoutName: newName }
-          : { ...template }
+        template.id === id ? { ...template, workoutName: newName } : template
       )
     );
 

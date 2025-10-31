@@ -13,12 +13,6 @@ function EditWorkoutTemplate() {
     templateNameInput,
   } = useExercises();
 
-  useEffect(
-    function () {
-      setSelectedTemplateToEdit(selectedTemplateToEdit);
-    },
-    [selectedTemplateToEdit, setSelectedTemplateToEdit]
-  );
   if (!isEditTemplateOverlayOpen) return null;
 
   return (

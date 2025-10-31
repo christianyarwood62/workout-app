@@ -23,7 +23,7 @@ function WorkoutTemplateIcon({ template, id, displayNumber }) {
           ✍️
         </button>
       </div>
-      <h3>{`Template ${displayNumber}`}</h3>
+      <h3>{template.workoutName}</h3>
       <div className="workout-template-icon-exercises">
         {template.exercises.map((exercise) => (
           <p key={exercise}>💪 {exercise}</p>
