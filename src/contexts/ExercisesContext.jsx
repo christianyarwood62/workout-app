@@ -12,12 +12,11 @@ const initialState = {
   // workoutTemplates: [],
   // templateNameInput: "",
   // selectedTemplateToEdit: null,
-  // isEditTemplateOverlayOpen: false,
   // templateCounter: 0,
-  // isTemplateExerciseErrorOpen: false,
   // selectedExercisesForTemplate: [],
   isTemplateOverlayOpen: false,
   isTemplateExerciseErrorOpen: false,
+  isEditTemplateOverlayOpen: false,
   // showCreateWorkoutTemplate: false,
 };
 
@@ -46,17 +45,21 @@ function ExercisesProvider({ children }) {
     useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
-  // const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
-  //   useState(false);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
   const [templateCounter, setTemplateCounter] = useState(0);
-  const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
-    useState(false);
+  // const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
+  //   useState(false);
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
-  const [{ isTemplateOverlayOpen, isTemplateExerciseErrorOpen }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    {
+      isTemplateOverlayOpen,
+      isTemplateExerciseErrorOpen,
+      isEditTemplateOverlayOpen,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(
     function () {
@@ -287,7 +290,7 @@ function ExercisesProvider({ children }) {
   }
 
   function toggleEditWorkoutForm(template) {
-    setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
+    dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
     setSelectedTemplateToEdit(template);
     setTemplateNameInput(template.workoutName);
   }
@@ -299,10 +302,8 @@ function ExercisesProvider({ children }) {
       )
     );
 
-    setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
+    dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
   }
-
-  console.log(isTemplateExerciseErrorOpen);
 
   return (
     <ExercisesContext.Provider
@@ -332,7 +333,6 @@ function ExercisesProvider({ children }) {
         templateCounter,
         toggleEditWorkoutForm,
         isEditTemplateOverlayOpen,
-        setIsEditTemplateOverlayOpen,
         selectedTemplateToEdit,
         setSelectedTemplateToEdit,
         setTemplateNameInput,
