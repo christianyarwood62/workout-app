@@ -10,16 +10,13 @@ import EditWorkoutTemplate from "../components/EditWorkoutTemplate";
 function WorkoutPage() {
   const { showCreateWorkoutTemplate } = useExercises();
 
-  const {
-    workoutTemplateList,
-    isTemplateExerciseErrorOpen,
-    isEditTemplateOverlayOpen,
-  } = useExercises();
+  const { isTemplateExerciseErrorOpen, isEditTemplateOverlayOpen } =
+    useExercises();
 
   return (
     <>
       <Navbar />
-      {!workoutTemplateList && <AddWorkoutTemplateButton />}
+      <AddWorkoutTemplateButton />
       {showCreateWorkoutTemplate && <NewWorkoutForm />}
       <WorkoutTemplateList />
       <NewTemplateExerciseForm />

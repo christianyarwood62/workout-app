@@ -17,6 +17,7 @@ const initialState = {
   // isTemplateExerciseErrorOpen: false,
   // selectedExercisesForTemplate: [],
   isTemplateOverlayOpen: false,
+  isTemplateExerciseErrorOpen: false,
   // showCreateWorkoutTemplate: false,
 };
 
@@ -27,6 +28,9 @@ function reducer(state, action) {
         ...state,
         [action.payload]: !state[action.payload],
       };
+
+    default:
+      return state;
   }
 }
 
@@ -42,8 +46,8 @@ function ExercisesProvider({ children }) {
     useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
-  const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
-    useState(false);
+  // const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
+  //   useState(false);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
   const [templateCounter, setTemplateCounter] = useState(0);
   const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
@@ -51,10 +55,8 @@ function ExercisesProvider({ children }) {
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
-  const [{ isTemplateOverlayOpen }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ isTemplateOverlayOpen, isTemplateExerciseErrorOpen }, dispatch] =
+    useReducer(reducer, initialState);
 
   useEffect(
     function () {
@@ -187,9 +189,16 @@ function ExercisesProvider({ children }) {
 
   useEffect(
     function () {
-      setTimeout(() => {
-        setIsTemplateExerciseErrorOpen(false);
+      if (!isTemplateExerciseErrorOpen) return;
+
+      const timer = setTimeout(() => {
+        dispatch({
+          type: "toggleOverlay",
+          payload: "isTemplateExerciseErrorOpen",
+        });
       }, 2000);
+
+      return () => clearTimeout(timer);
     },
     [isTemplateExerciseErrorOpen]
   );
@@ -220,14 +229,14 @@ function ExercisesProvider({ children }) {
     const exercise = e.target.value;
     console.log(exercise);
     dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
-    setSelectedExercisesForTemplate((cur) => {
-      if (cur.includes(exercise)) {
-        setIsTemplateExerciseErrorOpen(true);
-        return cur;
-      } else {
-        return [...cur, exercise];
-      }
-    });
+    if (selectedExercisesForTemplate.includes(exercise)) {
+      dispatch({
+        type: "toggleOverlay",
+        payload: "isTemplateExerciseErrorOpen",
+      });
+      return;
+    }
+    setSelectedExercisesForTemplate((cur) => [...cur, exercise]);
   }
 
   function handleSaveTemplate(e) {
@@ -259,7 +268,7 @@ function ExercisesProvider({ children }) {
   }
 
   function handleToggleTemplateExerciseErrorOpen() {
-    setIsTemplateExerciseErrorOpen(true);
+    dispatch({ type: "toggleOverlay", payload: "isTemplateExerciseErrorOpen" });
   }
 
   function deleteWorkoutTemplateFromList(e, id) {
@@ -292,6 +301,8 @@ function ExercisesProvider({ children }) {
 
     setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen);
   }
+
+  console.log(isTemplateExerciseErrorOpen);
 
   return (
     <ExercisesContext.Provider
