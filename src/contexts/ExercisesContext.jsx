@@ -25,7 +25,7 @@ function reducer(state, action) {
     case "toggleOverlay":
       return {
         ...state,
-        isTemplateOverlayOpen: action.payload,
+        [action.payload]: !state[action.payload],
       };
   }
 }
@@ -40,7 +40,6 @@ function ExercisesProvider({ children }) {
 
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
-  // const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
   const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
@@ -195,10 +194,6 @@ function ExercisesProvider({ children }) {
     [isTemplateExerciseErrorOpen]
   );
 
-  // useEffect(function () {
-
-  // }, [selectedTemplateToEdit])
-
   function handleSelection(exercise) {
     setSelectedExercise((cur) =>
       cur?.name === exercise.name ? null : exercise
@@ -218,13 +213,13 @@ function ExercisesProvider({ children }) {
 
   function handleToggleTemplateFormOverlay(e) {
     e.preventDefault();
-    dispatch({ type: "toggleOverlay", payload: true });
+    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
   }
 
   function handleAddExerciseToTemplate(e) {
     const exercise = e.target.value;
     console.log(exercise);
-    dispatch({ type: "toggleOverlay", payload: false });
+    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
     setSelectedExercisesForTemplate((cur) => {
       if (cur.includes(exercise)) {
         setIsTemplateExerciseErrorOpen(true);
