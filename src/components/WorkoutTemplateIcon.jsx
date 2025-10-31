@@ -14,7 +14,7 @@ function WorkoutTemplateIcon({ template, id, displayNumber }) {
           onClick={(e) => deleteWorkoutTemplateFromList(e, id)}
           className="icon-x button"
         >
-          X
+          🗑️
         </button>
         <button
           className="icon-edit-button button"

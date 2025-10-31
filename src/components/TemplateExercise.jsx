@@ -11,7 +11,7 @@ function TemplateExercise({ children, value }) {
           value={value}
           className="button icon-x"
         >
-          X
+          🗑️
         </button>
       </div>
       <div className="icon-lower-area">
