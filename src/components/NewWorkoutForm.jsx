@@ -2,14 +2,17 @@ import { useExercises } from "../contexts/ExercisesContext";
 import TemplateExercises from "./TemplateExercises";
 
 function NewWorkoutForm() {
-  const { handleShowNewWorkoutForm } = useExercises();
+  const { dispatch } = useExercises();
 
   return (
     <div className="new-template-form">
       <button
         className="button"
         onClick={() => {
-          handleShowNewWorkoutForm();
+          dispatch({
+            type: "toggleOverlay",
+            payload: "isCreateWorkoutTemplateOpen",
+          });
         }}
       >
         x

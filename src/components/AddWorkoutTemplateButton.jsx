@@ -1,17 +1,22 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
 function AddWorkoutTemplateButton() {
-  const {
-    handleShowNewWorkoutForm,
-    workoutTemplates,
-    showCreateWorkoutTemplate,
-  } = useExercises();
+  const { isCreateWorkoutTemplateOpen, workoutTemplates, dispatch } =
+    useExercises();
 
   return (
     <>
-      {!showCreateWorkoutTemplate && (
+      {!isCreateWorkoutTemplateOpen && (
         <div className="add-template-button">
-          <button className="button" onClick={() => handleShowNewWorkoutForm()}>
+          <button
+            className="button"
+            onClick={() =>
+              dispatch({
+                type: "toggleOverlay",
+                payload: "isCreateWorkoutTemplateOpen",
+              })
+            }
+          >
             {workoutTemplates.length === 0 ? (
               <h3>Create your first template! 🏋️‍♀️</h3>
             ) : (

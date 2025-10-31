@@ -17,6 +17,7 @@ const initialState = {
   isTemplateOverlayOpen: false,
   isTemplateExerciseErrorOpen: false,
   isEditTemplateOverlayOpen: false,
+  isCreateWorkoutTemplateOpen: false,
   // showCreateWorkoutTemplate: false,
 };
 
@@ -41,14 +42,12 @@ function ExercisesProvider({ children }) {
   const [err, setErr] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
-  const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
-    useState(false);
+  // const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
+  //   useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
   const [templateCounter, setTemplateCounter] = useState(0);
-  // const [isEditTemplateOverlayOpen, setIsEditTemplateOverlayOpen] =
-  //   useState(false);
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
@@ -57,6 +56,7 @@ function ExercisesProvider({ children }) {
       isTemplateOverlayOpen,
       isTemplateExerciseErrorOpen,
       isEditTemplateOverlayOpen,
+      isCreateWorkoutTemplateOpen,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -218,7 +218,7 @@ function ExercisesProvider({ children }) {
   }
 
   function handleShowNewWorkoutForm() {
-    setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
+    dispatch({ type: "toggleOverlay", payload: "showCreateWorkoutTemplate" });
     // setWorkoutTemplateList(!workoutTemplateList);
     setSelectedExercisesForTemplate([]);
   }
@@ -316,8 +316,6 @@ function ExercisesProvider({ children }) {
         searchExercise,
         setSelectedExercise,
         setShowingResultsIsOpen,
-        showCreateWorkoutTemplate,
-        setShowCreateWorkoutTemplate,
         handleShowNewWorkoutForm,
         handleToggleTemplateFormOverlay,
         isTemplateOverlayOpen,
@@ -338,6 +336,8 @@ function ExercisesProvider({ children }) {
         setTemplateNameInput,
         saveNewTemplate,
         templateNameInput,
+        isCreateWorkoutTemplateOpen,
+        dispatch,
       }}
     >
       {children}

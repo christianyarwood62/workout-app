@@ -8,16 +8,14 @@ import TemplateExerciseErrorComponent from "../components/TemplateExerciseErrorC
 import EditWorkoutTemplate from "../components/EditWorkoutTemplate";
 
 function WorkoutPage() {
-  const { showCreateWorkoutTemplate } = useExercises();
-
-  const { isTemplateExerciseErrorOpen, isEditTemplateOverlayOpen } =
+  const { isCreateWorkoutTemplateOpen, isTemplateExerciseErrorOpen } =
     useExercises();
 
   return (
     <>
       <Navbar />
       <AddWorkoutTemplateButton />
-      {showCreateWorkoutTemplate && <NewWorkoutForm />}
+      {isCreateWorkoutTemplateOpen && <NewWorkoutForm />}
       <WorkoutTemplateList />
       <NewTemplateExerciseForm />
       <EditWorkoutTemplate />
