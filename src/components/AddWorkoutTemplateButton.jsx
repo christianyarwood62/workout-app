@@ -10,12 +10,13 @@ function AddWorkoutTemplateButton() {
         <div className="add-template-button">
           <button
             className="button"
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "toggleOverlay",
                 payload: "isCreateWorkoutTemplateOpen",
-              })
-            }
+              });
+              console.log("test");
+            }}
           >
             {workoutTemplates.length === 0 ? (
               <h3>Create your first template! 🏋️‍♀️</h3>

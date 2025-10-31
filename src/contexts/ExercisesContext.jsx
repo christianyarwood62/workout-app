@@ -218,7 +218,7 @@ function ExercisesProvider({ children }) {
   }
 
   function handleShowNewWorkoutForm() {
-    dispatch({ type: "toggleOverlay", payload: "showCreateWorkoutTemplate" });
+    setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
     // setWorkoutTemplateList(!workoutTemplateList);
     setSelectedExercisesForTemplate([]);
   }
@@ -336,8 +336,8 @@ function ExercisesProvider({ children }) {
         setTemplateNameInput,
         saveNewTemplate,
         templateNameInput,
-        isCreateWorkoutTemplateOpen,
         dispatch,
+        isCreateWorkoutTemplateOpen,
       }}
     >
       {children}

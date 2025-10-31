@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
 import Loader from "./Loader";
 import Exercise from "./Exercise";
-import ExerciseSearchBar from "./ExerciseSearchBar";
 import { useExercises } from "../contexts/ExercisesContext";
 
-function ExercisesList({ selectedExercise, onAddToWorkout }) {
+function ExercisesList() {
   const {
     exercises,
-    setExercises,
     searchedExercise,
-    handleSelection,
     isLoading,
-    showingResultsIsopen,
   } = useExercises();
 
   return (
