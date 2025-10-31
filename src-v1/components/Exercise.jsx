@@ -1,8 +1,7 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
 function Exercise({ exercise, children }) {
-  const { handleSelection, selectedExercise } = useExercises();
-  const isSelected = selectedExercise?.name === exercise.name;
+  const { handleSelection } = useExercises();
 
   return (
     <div className="exercise">

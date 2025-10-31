@@ -19,8 +19,6 @@ function NewTemplateExerciseForm() {
         <select
           onChange={handleAddExerciseToTemplate}
           className="button"
-          // value={chosenExercise}
-          // onChange={(e) => onHandleChosenExercise(e)}
         >
           <option>Choose an exercise</option>
           {exercises.map((exercise, i) => (
