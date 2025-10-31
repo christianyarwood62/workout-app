@@ -1,34 +1,6 @@
-import {
-  useContext,
-  createContext,
-  useState,
-  useEffect,
-  useReducer,
-} from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
 const ExercisesContext = createContext();
-
-const initialState = {
-  // workoutTemplates: [],
-  // templateNameInput: "",
-  // selectedTemplateToEdit: null,
-  // isEditTemplateOverlayOpen: false,
-  // templateCounter: 0,
-  // isTemplateExerciseErrorOpen: false,
-  // selectedExercisesForTemplate: [],
-  isTemplateOverlayOpen: false,
-  // showCreateWorkoutTemplate: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "toggleOverlay":
-      return {
-        ...state,
-        isTemplateOverlayOpen: action.payload,
-      };
-  }
-}
 
 function ExercisesProvider({ children }) {
   const [exercises, setExercises] = useState([]);
@@ -40,7 +12,7 @@ function ExercisesProvider({ children }) {
 
   const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
     useState(false);
-  // const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
+  const [isTemplateOverlayOpen, setIsTemplateOverlayOpen] = useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
   const [isTemplateExerciseErrorOpen, setIsTemplateExerciseErrorOpen] =
@@ -51,11 +23,6 @@ function ExercisesProvider({ children }) {
     useState(false);
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
-
-  const [{ isTemplateOverlayOpen }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
 
   useEffect(
     function () {
@@ -218,13 +185,13 @@ function ExercisesProvider({ children }) {
 
   function handleToggleTemplateFormOverlay(e) {
     e.preventDefault();
-    dispatch({ type: "toggleOverlay", payload: true });
+    setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
   }
 
   function handleAddExerciseToTemplate(e) {
     const exercise = e.target.value;
     console.log(exercise);
-    dispatch({ type: "toggleOverlay", payload: false });
+    setIsTemplateOverlayOpen(!isTemplateOverlayOpen);
     setSelectedExercisesForTemplate((cur) => {
       if (cur.includes(exercise)) {
         setIsTemplateExerciseErrorOpen(true);
