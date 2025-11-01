@@ -1,11 +1,8 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
 function WorkoutTemplateIcon({ template, id, displayNumber }) {
-  const {
-    deleteWorkoutTemplateFromList,
-    handleEditWorkoutTemplate,
-    toggleEditWorkoutForm,
-  } = useExercises();
+  const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm } =
+    useExercises();
 
   return (
     <div className="workout-template-icon">
@@ -18,7 +15,7 @@ function WorkoutTemplateIcon({ template, id, displayNumber }) {
         </button>
         <button
           className="icon-edit-button button"
-          onClick={() => toggleEditWorkoutForm(template)}
+          onClick={() => toggleEditWorkoutForm(id)}
         >
           ✍️
         </button>

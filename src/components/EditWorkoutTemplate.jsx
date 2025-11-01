@@ -6,18 +6,38 @@ function EditWorkoutTemplate() {
   const {
     isEditTemplateOverlayOpen,
     setIsEditTemplateOverlayOpen,
-    selectedTemplateToEdit,
+    // selectedTemplateToEdit,
     setTemplateNameInput,
-    saveNewTemplate,
-    setSelectedTemplateToEdit,
     templateNameInput,
+    saveNewTemplate,
+    dispatch,
+    workoutTemplates,
+    selectedTemplateIDToEdit,
+    setWorkoutTemplates,
   } = useExercises();
+
+  const selectedTemplateToEdit = workoutTemplates.find(
+    (template) => template.id === selectedTemplateIDToEdit
+  );
 
   if (!isEditTemplateOverlayOpen) return null;
 
+  function setNewNameForTemplate(e) {
+    const newName = e.target.value;
+    setTemplateNameInput(newName);
+  }
+
+  function handleCloseEditTemplateButton() {
+    dispatch({
+      type: "toggleOverlay",
+      payload: "isEditTemplateOverlayOpen",
+    });
+    setTemplateNameInput("");
+  }
+
   return (
     <div
-      onClick={() => setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen)}
+      // onClick={() => setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen)}
       className="overlay-backdrop"
     >
       <div
@@ -27,9 +47,7 @@ function EditWorkoutTemplate() {
         <div className="workout-template-icon">
           <div className="icon-buttons">
             <button
-              onClick={() =>
-                setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen)
-              }
+              onClick={handleCloseEditTemplateButton}
               className="icon-x button"
             >
               X
@@ -44,8 +62,8 @@ function EditWorkoutTemplate() {
             </button>
           </div>
           <input
-            placeholder={`${templateNameInput}...`}
-            onChange={(e) => setTemplateNameInput(e.target.value)}
+            value={templateNameInput || selectedTemplateToEdit?.workoutName}
+            onChange={setNewNameForTemplate}
           ></input>
           <div className="workout-template-icon-exercises">
             {selectedTemplateToEdit?.exercises.map((exercise) => (

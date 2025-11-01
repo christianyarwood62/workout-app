@@ -18,7 +18,6 @@ const initialState = {
   isTemplateExerciseErrorOpen: false,
   isEditTemplateOverlayOpen: false,
   isCreateWorkoutTemplateOpen: false,
-  // showCreateWorkoutTemplate: false,
 };
 
 function reducer(state, action) {
@@ -42,13 +41,13 @@ function ExercisesProvider({ children }) {
   const [err, setErr] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
-  // const [showCreateWorkoutTemplate, setShowCreateWorkoutTemplate] =
-  //   useState(false);
   const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
     useState([]);
   const [workoutTemplates, setWorkoutTemplates] = useState([]);
   const [templateCounter, setTemplateCounter] = useState(0);
   const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
+  const [selectedTemplateIDToEdit, setSelectedTemplateIDToEdit] =
+    useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
   const [
@@ -249,10 +248,10 @@ function ExercisesProvider({ children }) {
     setWorkoutTemplates(() => [
       ...workoutTemplates,
       {
-        workoutName: `Template ${workoutTemplates.length + 1}`,
+        workoutName: `Template ${templateCounter + 1}`,
         id: crypto.randomUUID(),
         exercises: selectedExercisesForTemplate,
-        displayNumber: workoutTemplates.length + 1, // This is used because without it, when you delete a template, the numbering restarts
+        displayNumber: templateCounter + 1, // This is used because without it, when you delete a template, the numbering restarts
         templateCounter: templateCounter + 1,
       },
     ]);
@@ -282,17 +281,10 @@ function ExercisesProvider({ children }) {
     });
   }
 
-  function handleEditWorkoutTemplate(e, id) {
-    e.preventDefault();
-
-    const workout = e.target.value;
-    console.log(e);
-  }
-
-  function toggleEditWorkoutForm(template) {
+  function toggleEditWorkoutForm(id) {
     dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
-    setSelectedTemplateToEdit(template);
-    setTemplateNameInput(template.workoutName);
+    setSelectedTemplateIDToEdit(id);
+    // setTemplateNameInput(`Template ${template.displayNumber}`);
   }
 
   function saveNewTemplate(id, newName) {
@@ -301,6 +293,7 @@ function ExercisesProvider({ children }) {
         template.id === id ? { ...template, workoutName: newName } : template
       )
     );
+    setTemplateNameInput("");
 
     dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
   }
@@ -326,8 +319,8 @@ function ExercisesProvider({ children }) {
         isTemplateExerciseErrorOpen,
         handleToggleTemplateExerciseErrorOpen,
         workoutTemplates,
+        setWorkoutTemplates,
         deleteWorkoutTemplateFromList,
-        handleEditWorkoutTemplate,
         templateCounter,
         toggleEditWorkoutForm,
         isEditTemplateOverlayOpen,
@@ -338,6 +331,7 @@ function ExercisesProvider({ children }) {
         templateNameInput,
         dispatch,
         isCreateWorkoutTemplateOpen,
+        selectedTemplateIDToEdit,
       }}
     >
       {children}
