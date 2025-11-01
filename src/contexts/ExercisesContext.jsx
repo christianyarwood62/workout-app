@@ -60,6 +60,8 @@ function ExercisesProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(
     function () {
       const controller = new AbortController();

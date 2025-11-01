@@ -1,6 +1,6 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
-function WorkoutTemplateIcon({ template, id, displayNumber }) {
+function WorkoutTemplateIcon({ template, id }) {
   const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm } =
     useExercises();
 

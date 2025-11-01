@@ -7,7 +7,9 @@ function Navbar() {
 
   return (
     <header>
-      <h1>Dream Workout</h1>
+      <h1>
+        <NavLink to="/">Dream Workout</NavLink>
+      </h1>
       <nav>
         <NavLink to="/exercises">{tab1}</NavLink>
         <NavLink to="/workout">{tab2}</NavLink>
