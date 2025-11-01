@@ -257,6 +257,7 @@ function ExercisesProvider({ children }) {
     ]);
     setTemplateCounter(templateCounter + 1);
     setSelectedExercisesForTemplate([]);
+    dispatch({ type: "toggleOverlay", payload: "isCreateWorkoutTemplateOpen" });
   }
 
   function deleteExerciseFromTemplate(e) {
@@ -294,7 +295,6 @@ function ExercisesProvider({ children }) {
       )
     );
     setTemplateNameInput("");
-
     dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
   }
 
