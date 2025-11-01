@@ -37,6 +37,12 @@ function EditWorkoutTemplate() {
 
   return (
     <div
+      onClick={() =>
+        dispatch({
+          type: "toggleOverlay",
+          payload: "isEditTemplateOverlayOpen",
+        })
+      }
       // onClick={() => setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen)}
       className="overlay-backdrop"
     >
