@@ -2,17 +2,15 @@ import { useExercises } from "../contexts/ExercisesContext";
 
 import ExercisesList from "../components/ExercisesList";
 import ExerciseDetails from "../components/ExerciseDetails";
-import Navbar from "../components/NavBar";
 import ExerciseSearchBar from "../components/ExerciseSearchBar";
-import User from "../components/User";
+import UserTile from "../components/UserTile";
 
 function ExercisesPage() {
   const { selectedExercise } = useExercises();
 
   return (
     <div className="exercise-details-tab">
-      <Navbar />
-      <User />
+      <UserTile />
       {!selectedExercise && <ExerciseSearchBar />}
       {!selectedExercise && <ExercisesList />}
       {selectedExercise && <ExerciseDetails />}

@@ -61,15 +61,26 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  min-height: 500px;
-  min-width: 740px;
-}
-
 :root {
   --main-bg-color: #191923;
   --main-color: #a7e2e3;
   --accent-color: #d5a021;
+}
+
+.main-content {
+  background-image: url("../public/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  min-width: 840px;
+}
+
+.content-container {
+  width: 80%;
+  margin: 8% auto;
+  background-color: rgba(25, 25, 35, 0.9);
 }
 
 .container {
@@ -84,10 +95,6 @@ body {
   display: flex;
 }
 
-body {
-  background-color: var(--main-bg-color);
-}
-
 header {
   background-color: #a7e2e3;
   padding: 1rem 2rem;
@@ -96,7 +103,6 @@ header {
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   position: sticky;
-  margin-bottom: 10px;
 }
 
 /* The header for the page*/
@@ -114,7 +120,30 @@ nav a.active {
   font-size: large;
 }
 
-/* The buttons for the navbar tabs*/
+/* login icon */
+.login-icon-container {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 17px rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-icon {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-text {
+  font-size: 12px;
+}
+
+/* The buttons for the navbar tabs */
 nav a {
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -157,9 +186,6 @@ nav a:hover {
   margin: 64px;
   margin-top: 32px;
   border-radius: 32px;
-}
-.exercises-header h1 {
-  padding-bottom: 12px;
 }
 
 .exercises-list {

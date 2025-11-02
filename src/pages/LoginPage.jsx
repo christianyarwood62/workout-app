@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/NavBar";
 import { useAuthentication } from "../contexts/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +20,6 @@ function LoginPage() {
 
   return (
     <>
-      <Navbar />
       <div className="element-container">
         <form onSubmit={handleLogin}>
           <span>Email:</span>

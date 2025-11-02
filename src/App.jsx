@@ -7,6 +7,7 @@ import HistoryPage from "./pages/HistoryPage";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
+import Navbar from "./components/NavBar";
 
 function App() {
   return (
@@ -15,20 +16,25 @@ function App() {
         <ExercisesProvider>
           <BrowserRouter basename="/workout-app/">
             {/*basename needs to be here for workout-app */}
-            <Routes>
-              <Route index element={<Homepage />} />
-              <Route path="/login" element={<LoginPage></LoginPage>} />
-              <Route path="/exercises" element={<ExercisesPage />} />
-              <Route path="/workout" element={<WorkoutPage />} />
-              <Route
-                path="/history"
-                element={
-                  <ProtectedRoute>
-                    <HistoryPage />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
+            <Navbar />
+            <div className="main-content">
+              <div className="content-container">
+                <Routes>
+                  <Route index element={<Homepage />} />
+                  <Route path="/login" element={<LoginPage></LoginPage>} />
+                  <Route path="/exercises" element={<ExercisesPage />} />
+                  <Route path="/workout" element={<WorkoutPage />} />
+                  <Route
+                    path="/history"
+                    element={
+                      <ProtectedRoute>
+                        <HistoryPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </div>
+            </div>
           </BrowserRouter>
         </ExercisesProvider>
       </AuthenticationProvider>
