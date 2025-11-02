@@ -73,16 +73,20 @@ h1 {
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   min-width: 840px;
 }
 
 .content-container {
   width: 80%;
-  margin: 8% auto;
+  margin: 18% auto;
   background-color: rgba(25, 25, 35, 0.9);
   border-radius: 32px;
   padding: 32px;
+}
+
+.user-tile {
+  align-self: flex-end;
 }
 
 .container {
@@ -105,7 +109,7 @@ header {
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   position: sticky;
-  top: 0;
+  top: 0px;
 }
 
 /* The header for the page*/
@@ -125,21 +129,19 @@ nav a.active {
 
 /* login icon */
 .login-icon-container {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(25, 25, 25, 0.3);
   box-shadow: 0 0 17px rgb(255, 255, 255);
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-icon {
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
+  /* justify-content: center;
+  align-items: center; */
+  width: fit-content;
+  padding: 8px;
+  position: fixed;
+  top: 76px;
+  right: 16px;
+  padding: 8px;
+  border-radius: 16px;
 }
 
 .login-text {
@@ -394,8 +396,8 @@ button:hover {
 /* Overlay.css */
 .overlay-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);

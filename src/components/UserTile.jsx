@@ -12,24 +12,22 @@ function UserTile() {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
 
   return (
-    <div>
+    <>
       <div className="login-icon-container">
-        <div>
-          <User />
-          {user ? (
-            <span>{user}</span>
-          ) : (
-            <>
-              <button onClick={() => navigate("/login")}>Sign in</button>
-              <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
-                <ChevronDown />
-              </button>
-            </>
-          )}
-        </div>
+        <User />
+        {user ? (
+          <span>{user}</span>
+        ) : (
+          <>
+            <button onClick={() => navigate("/login")}>Sign in</button>
+            <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
+              <ChevronDown />
+            </button>
+          </>
+        )}
       </div>
       {isDropdownOpen && <LoginDropDown />}
-    </div>
+    </>
   );
 }
 

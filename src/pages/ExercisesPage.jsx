@@ -10,7 +10,6 @@ function ExercisesPage() {
 
   return (
     <div className="exercise-details-tab">
-      <UserTile />
       {!selectedExercise && <ExerciseSearchBar />}
       {!selectedExercise && <ExercisesList />}
       {selectedExercise && <ExerciseDetails />}

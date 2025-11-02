@@ -8,6 +8,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
 import Navbar from "./components/NavBar";
+import UserTile from "./components/UserTile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             {/*basename needs to be here for workout-app */}
             <Navbar />
             <div className="main-content">
+              <UserTile className="user-tile" />
               <div className="content-container">
                 <Routes>
                   <Route index element={<Homepage />} />
