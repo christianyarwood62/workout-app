@@ -11,7 +11,7 @@ function AddWorkoutTemplateButton() {
     <>
       {!showCreateWorkoutTemplate && (
         <div className="add-template-button">
-          <button className="button" onClick={() => handleShowNewWorkoutForm()}>
+          <button className="button" onClick={() => dispatch({type: 'toggleOverlay', payload: })}>
             {workoutTemplates.length === 0 ? (
               <h3>Create your first template! 🏋️‍♀️</h3>
             ) : (

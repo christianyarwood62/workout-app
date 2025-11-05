@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const AuthenticationContext = createContext();
 
@@ -30,6 +30,7 @@ function AuthenticationProvider({ children }) {
     reducer,
     initialState
   );
+  const [isDropdownOpen, setIsDropDownOpen] = useState(false);
 
   function login(email, password) {
     if (email === fakeUser.email && password === fakeUser.password)
@@ -42,7 +43,14 @@ function AuthenticationProvider({ children }) {
 
   return (
     <AuthenticationContext.Provider
-      value={{ user, isAuthenticated, login, logout }}
+      value={{
+        user,
+        isAuthenticated,
+        login,
+        logout,
+        isDropdownOpen,
+        setIsDropDownOpen,
+      }}
     >
       {children}
     </AuthenticationContext.Provider>

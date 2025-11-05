@@ -89,12 +89,15 @@ h1 {
   align-self: flex-end;
 }
 
-.container {
-  background: lightgray;
-  height: fit-content;
-  width: fit-content;
-  padding: 10px;
-  border-radius: 32px;
+.user-image {
+  color: white;
+}
+
+.login-dropdown-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
 }
 
 .exercise {
@@ -133,15 +136,16 @@ nav a.active {
   box-shadow: 0 0 17px rgb(255, 255, 255);
   display: flex;
   gap: 16px;
-  /* justify-content: center;
-  align-items: center; */
   width: fit-content;
   padding: 8px;
+  padding: 8px;
+  border-radius: 16px;
+}
+
+.profile-tile {
   position: fixed;
   top: 76px;
   right: 16px;
-  padding: 8px;
-  border-radius: 16px;
 }
 
 .login-text {

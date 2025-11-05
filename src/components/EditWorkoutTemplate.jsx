@@ -5,15 +5,12 @@ import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
 function EditWorkoutTemplate() {
   const {
     isEditTemplateOverlayOpen,
-    setIsEditTemplateOverlayOpen,
-    // selectedTemplateToEdit,
     setTemplateNameInput,
     templateNameInput,
     saveNewTemplate,
     dispatch,
     workoutTemplates,
     selectedTemplateIDToEdit,
-    setWorkoutTemplates,
   } = useExercises();
 
   const selectedTemplateToEdit = workoutTemplates.find(
