@@ -3,6 +3,7 @@ import { User, LogIn, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginDropDown from "./LoginDropDown";
+import Button from "../UI/Button";
 
 function UserTile() {
   const { user, isDropdownOpen, setIsDropDownOpen } = useAuthentication();
@@ -15,11 +16,7 @@ function UserTile() {
         <div className="login-icon-container">
           <User color="#e9e2e2" />
 
-          {user ? (
-            <span>{user}</span>
-          ) : (
-            <button onClick={() => navigate("/login")}>Sign in</button>
-          )}
+          {user ? <span>{user}</span> : <Button to="/login">Sign in</Button>}
           <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
             <ChevronDown />
           </button>

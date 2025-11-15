@@ -7,14 +7,16 @@ function Navbar() {
 
   return (
     <header>
-      <h1>
-        <NavLink to="/">Dream Workout</NavLink>
-      </h1>
-      <nav>
-        <NavLink to="/exercises">{tab1}</NavLink>
-        <NavLink to="/workout">{tab2}</NavLink>
-        <NavLink to="/history">{tab3}</NavLink>
-      </nav>
+      <div className="navbar">
+        <h1>
+          <NavLink to="/">Dream Workout</NavLink>
+        </h1>
+        <nav>
+          <NavLink to="/exercises">{tab1}</NavLink>
+          <NavLink to="/workout">{tab2}</NavLink>
+          <NavLink to="/history">{tab3}</NavLink>
+        </nav>
+      </div>
     </header>
   );
 }

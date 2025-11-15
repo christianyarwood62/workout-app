@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuthentication } from "../contexts/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
+import Button from "../UI/Button";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ export function Login() {
           <label for="password">Password</label>
           <input id="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button>login</button>
+        <Button>login</Button>
       </form>
     </div>
   );
