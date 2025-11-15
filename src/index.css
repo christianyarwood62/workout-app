@@ -28,11 +28,15 @@ body {
   gap: 20px;
   width: 80%;
   height: auto;
-  margin: 64px auto;
+  margin: 160px auto;
   background-color: rgba(25, 25, 35, 0.5);
   border-radius: 32px;
   padding: 32px;
   align-items: center;
+}
+
+.content-container p {
+  color: white;
 }
 
 /* Navbar */
@@ -58,7 +62,7 @@ nav a {
 /* Footer */
 
 .footer {
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -190,17 +194,14 @@ nav a {
   max-width: 75%;
 }
 
-p {
-  font-size: px;
-  color: white;
-}
-
 .flex-columns {
   display: flex;
   flex-direction: column;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   background: linear-gradient(90deg, #00c6ff, #0072ff);
   -webkit-background-clip: text;
   background-clip: text;
@@ -290,28 +291,16 @@ nav a:hover {
 }
 
 /* The exercises page */
-.exercise-details-tab {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+
+.exercises-component p {
+  color: grey;
+  padding-bottom: 8px;
 }
 
-.exercise-details {
-  background-color: var(--main-color);
-  border-radius: 32px;
-  padding: 16px;
-  margin: 64px;
-}
 .exercises-list-component {
   display: flex;
   flex-direction: column;
   max-height: 400px;
-}
-
-.exercises-list-component .exercises-component {
-  text-align: center;
-  position: sticky;
-  z-index: 1;
 }
 
 .exercises-component {
@@ -347,6 +336,28 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(0, 200, 255, 0.4);
 }
 
+.exercise-details-container h2 {
+  color: white;
+}
+
+.exercise-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  left: 400px;
+  bottom: 45px;
+}
+
+.exercise-details-container h2 {
+  width: 400px;
+}
+
 /* For the Search bar in the exercises page */
 
 .search-container {
@@ -362,10 +373,6 @@ nav a:hover {
 .search-input {
   all: unset;
   text-align: center;
-}
-
-.exercises-component h1 {
-  color: white;
 }
 
 /* Workout Page  */
@@ -478,6 +485,10 @@ nav a:hover {
 
 /* Buttons */
 
+a {
+  text-decoration: none;
+}
+
 .button {
   transition: all 0.2s ease;
   cursor: pointer;
@@ -493,6 +504,10 @@ button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
   background-color: var(--accent-color);
+}
+
+.exercise .button p {
+  color: white;
 }
 
 .add-template-button {

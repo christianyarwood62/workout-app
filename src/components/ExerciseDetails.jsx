@@ -1,34 +1,36 @@
 import { useExercises } from "../contexts/ExercisesContext";
+import Button from "../UI/Button";
 
 function ExerciseDetails() {
   const { selectedExercise, setSelectedExercise } = useExercises();
   return (
-    <div>
-      <div className="exercise-details">
-        <h2>{selectedExercise.name}</h2>
-        <button onClick={() => setSelectedExercise(null)}>X</button>
-        <button>History</button>
-        <button>Records</button>
-        <div>
-          <h3>Exercise Difficulty</h3>
-          <span>{selectedExercise.difficulty}</span>
-        </div>
-        <div>
-          <h3>Exercise Equipment</h3>
-          <span>{selectedExercise.equipment}</span>
-        </div>
-        <div>
-          <h3>Exercise Instructions</h3>
-          <span>{selectedExercise.instructions}</span>
-        </div>
-        <div>
-          <h3>Exercise Target Muscle</h3>
-          <span>{selectedExercise.muscle}</span>
-        </div>
-        <div>
-          <h3>Exercise Type</h3>
-          <span>{selectedExercise.type}</span>
-        </div>
+    <div className="exercise-details-container">
+      <h2>{selectedExercise.name}</h2>
+      <div className="buttons">
+        <Button onClick={() => setSelectedExercise(null)}>X</Button>
+        <Button>History</Button>
+        <Button>Records</Button>
+      </div>
+
+      <div>
+        <h3>Exercise Difficulty</h3>
+        <p>{selectedExercise.difficulty}</p>
+      </div>
+      <div>
+        <h3>Exercise Equipment</h3>
+        <p>{selectedExercise.equipment}</p>
+      </div>
+      <div>
+        <h3>Exercise Instructions</h3>
+        <p>{selectedExercise.instructions}</p>
+      </div>
+      <div>
+        <h3>Exercise Target Muscle</h3>
+        <p>{selectedExercise.muscle}</p>
+      </div>
+      <div>
+        <h3>Exercise Type</h3>
+        <p>{selectedExercise.type}</p>
       </div>
     </div>
   );

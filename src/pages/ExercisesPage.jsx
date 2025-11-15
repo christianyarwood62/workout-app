@@ -12,11 +12,9 @@ function ExercisesPage() {
   return (
     <div className="main-content">
       <div className="content-container">
-        <div className="exercise-details-tab">
-          {!selectedExercise && <ExerciseSearchBar />}
-          {!selectedExercise && <ExercisesList />}
-          {selectedExercise && <ExerciseDetails />}
-        </div>
+        {!selectedExercise && <ExerciseSearchBar />}
+        {!selectedExercise && <ExercisesList />}
+        {selectedExercise && <ExerciseDetails />}
       </div>
     </div>
   );

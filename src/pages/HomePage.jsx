@@ -8,7 +8,7 @@ function Homepage() {
       <div className="content-container">
         <h1>Dream Workout</h1>
         <p>Log in to gain access to exercise history</p>
-        <Button to="/login">Log in</Button>
+        <Button to="./login">Log in</Button>
       </div>
     </div>
   );

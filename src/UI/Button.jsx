@@ -1,10 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Button({ children, to }) {
-  const navigate = useNavigate();
+function Button({ children, to, onClick }) {
+  if (to)
+    return (
+      <Link to={`/${to}`} className="button">
+        {children}
+      </Link>
+    );
 
   return (
-    <button onClick={() => navigate(`/${to}`)} className="button">
+    <button onClick={onClick} className="button">
       {children}
     </button>
   );
