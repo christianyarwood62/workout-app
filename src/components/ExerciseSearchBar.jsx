@@ -1,18 +1,32 @@
+import { useEffect, useState } from "react";
 import { useExercises } from "../contexts/ExercisesContext";
+import { useEffectEvent } from "react";
 
 function ExerciseSearchBar() {
-  const { searchedExercise, searchExercise } = useExercises();
+  const { setExercises, exercises, handleSearchedExercise } = useExercises();
+  const [input, setInput] = useState("");
+
   return (
-    <div className="search-container">
+    <form
+      className="search-container"
+      onSubmit={(e) => {
+        handleSearchedExercise(input);
+        e.preventDefault();
+        const filteredExercises = exercises.filter((exercise) =>
+          exercise.name.includes(input)
+        );
+        setExercises(filteredExercises);
+      }}
+    >
       <span>🔎</span>
       <input
         className="search-input"
         type="text"
-        onChange={(e) => searchExercise(e)}
+        onChange={(e) => setInput(e.target.value)}
         placeholder="Search for Exercises..."
-        value={searchedExercise}
+        value={input}
       />
-    </div>
+    </form>
   );
 }
 

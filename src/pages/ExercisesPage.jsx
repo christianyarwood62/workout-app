@@ -2,7 +2,6 @@ import { useExercises } from "../contexts/ExercisesContext";
 
 import ExercisesList from "../components/ExercisesList";
 import ExerciseDetails from "../components/ExerciseDetails";
-import ExerciseSearchBar from "../components/ExerciseSearchBar";
 import UserTile from "../components/UserTile";
 import Navbar from "../components/NavBar";
 
@@ -12,7 +11,6 @@ function ExercisesPage() {
   return (
     <div className="main-content">
       <div className="content-container">
-        {!selectedExercise && <ExerciseSearchBar />}
         {!selectedExercise && <ExercisesList />}
         {selectedExercise && <ExerciseDetails />}
       </div>
