@@ -18,7 +18,6 @@ body {
 /* Main content */
 
 .main-content {
-  height: 100vh;
   min-width: var(--minimum-page-width);
 }
 
@@ -29,7 +28,7 @@ body {
   gap: 20px;
   width: 80%;
   height: auto;
-  margin: 8% auto;
+  margin: 64px auto;
   background-color: rgba(25, 25, 35, 0.5);
   border-radius: 32px;
   padding: 32px;
@@ -56,12 +55,9 @@ nav a {
   color: white;
 }
 
-.navbar
-
 /* Footer */
 
 .footer {
-  background-color: #a7e2e3;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -69,6 +65,11 @@ nav a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 16px;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  left: calc(50% - 150px);
 }
 
 /* From Uiverse.io by ahmed150up2 */
@@ -76,9 +77,6 @@ nav a {
   display: flex;
   height: 70px;
   width: 270px;
-  position: fixed;
-  bottom: 0px;
-  left: calc(50% - 135px);
 }
 
 .footer-card svg {
@@ -149,7 +147,20 @@ nav a {
   }
 }
 
-/* */
+/* Login page*/
+
+.password-container,
+.email-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-container label,
+.password-container label {
+  color: white;
+}
+
+/* User Login tile */
 
 .element-container {
   background: var(--main-color);
@@ -533,12 +544,4 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
-
-/* Login page*/
-
-.password-container,
-.email-container {
-  display: flex;
-  flex-direction: column;
 }
