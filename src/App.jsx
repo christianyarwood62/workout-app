@@ -9,21 +9,22 @@ import LoginPage from "./pages/LoginPage";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
 import Navbar from "./components/NavBar";
 import UserTile from "./components/UserTile";
+import { TemplatesProvider } from "./contexts/TemplatesContext";
+import AppLayout from "./UI/AppLayout";
 
 function App() {
   return (
     <div className="app">
       <AuthenticationProvider>
         <ExercisesProvider>
-          <BrowserRouter basename="/workout-app/">
-            {/*basename needs to be here for workout-app */}
-            <Navbar />
-            <div className="main-content">
+          <TemplatesProvider>
+            <BrowserRouter basename="/workout-app/">
+              {/*basename needs to be here for workout-app */}
               <UserTile className="user-tile" />
-              <div className="content-container">
-                <Routes>
+              <Routes>
+                <Route path="/" element={<AppLayout />}>
                   <Route index element={<Homepage />} />
-                  <Route path="/login" element={<LoginPage></LoginPage>} />
+                  <Route path="/login" element={<LoginPage />} />
                   <Route path="/exercises" element={<ExercisesPage />} />
                   <Route path="/workout" element={<WorkoutPage />} />
                   <Route
@@ -34,10 +35,10 @@ function App() {
                       </ProtectedRoute>
                     }
                   />
-                </Routes>
-              </div>
-            </div>
-          </BrowserRouter>
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </TemplatesProvider>
         </ExercisesProvider>
       </AuthenticationProvider>
     </div>

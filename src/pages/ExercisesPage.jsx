@@ -4,15 +4,20 @@ import ExercisesList from "../components/ExercisesList";
 import ExerciseDetails from "../components/ExerciseDetails";
 import ExerciseSearchBar from "../components/ExerciseSearchBar";
 import UserTile from "../components/UserTile";
+import Navbar from "../components/NavBar";
 
 function ExercisesPage() {
   const { selectedExercise } = useExercises();
 
   return (
-    <div className="exercise-details-tab">
-      {!selectedExercise && <ExerciseSearchBar />}
-      {!selectedExercise && <ExercisesList />}
-      {selectedExercise && <ExerciseDetails />}
+    <div className="main-content">
+      <div className="content-container">
+        <div className="exercise-details-tab">
+          {!selectedExercise && <ExerciseSearchBar />}
+          {!selectedExercise && <ExercisesList />}
+          {selectedExercise && <ExerciseDetails />}
+        </div>
+      </div>
     </div>
   );
 }

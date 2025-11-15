@@ -1,17 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/NavBar";
+import Button from "../UI/Button";
 
 function Homepage() {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <div>
-        <h1>Login to get access to kick start your fitness journey</h1>
-        <button onClick={() => navigate("/login")} className="button">
-          Log in
-        </button>
+    <div className="main-content">
+      <div className="content-container">
+        <h1>Dream Workout</h1>
+        <p>Log in to gain access to exercise history</p>
+        <Button to="/login">Log in</Button>
       </div>
-    </>
+    </div>
   );
 }
 
