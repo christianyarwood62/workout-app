@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useExercises } from "../contexts/ExercisesContext";
-import { useEffectEvent } from "react";
 
 function ExerciseSearchBar() {
-  const { setExercises, exercises, handleSearchedExercise } = useExercises();
+  const { handleSearchedExercise } = useExercises();
   const [input, setInput] = useState("");
 
   return (
@@ -12,10 +11,10 @@ function ExerciseSearchBar() {
       onSubmit={(e) => {
         handleSearchedExercise(input);
         e.preventDefault();
-        const filteredExercises = exercises.filter((exercise) =>
-          exercise.name.includes(input)
-        );
-        setExercises(filteredExercises);
+        // const filteredExercises = exercises.filter((exercise) =>
+        //   exercise.name.includes(input)
+        // );
+        // setExercises(filteredExercises);
       }}
     >
       <span>🔎</span>

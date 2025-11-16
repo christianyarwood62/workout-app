@@ -334,6 +334,7 @@ function ExercisesProvider({ children }) {
         fetchedExercises,
         resetExercises,
         isLoading,
+        setSearchedExercise,
       }}
     >
       {children}

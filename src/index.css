@@ -361,18 +361,26 @@ nav a:hover {
 /* For the Search bar in the exercises page */
 
 .search-container {
-  margin-top: 32px;
   display: flex;
   width: 320px;
   background-color: rgb(255, 255, 255);
   border-radius: 32px;
   justify-content: center;
-  align-self: center;
 }
 
 .search-input {
   all: unset;
   text-align: center;
+}
+
+.searchbar {
+  display: flex;
+}
+
+.searchbar button {
+  color: white;
+  position: relative;
+  left: 32px;
 }
 
 /* Workout Page  */
