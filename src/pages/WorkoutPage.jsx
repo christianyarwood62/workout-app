@@ -4,7 +4,6 @@ import WorkoutTemplateList from "../components/WorkoutTemplateList";
 import NewTemplateExerciseForm from "../components/NewTemplateExerciseForm";
 import TemplateExerciseErrorComponent from "../components/TemplateExerciseErrorComponent";
 import EditWorkoutTemplate from "../components/EditWorkoutTemplate";
-import Navbar from "../components/NavBar";
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutPage() {

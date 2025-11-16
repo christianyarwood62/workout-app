@@ -3,6 +3,12 @@ import { createContext } from "react";
 
 const TemplatesContext = createContext();
 
+const initialTemplateExercise = {
+  exerciseName: "curl",
+  sets: 3,
+  reps: 12,
+};
+
 const initialState = {
   // workoutTemplates: [],
   // templateNameInput: "",
@@ -13,6 +19,7 @@ const initialState = {
   isTemplateExerciseErrorOpen: false,
   isEditTemplateOverlayOpen: false,
   isCreateWorkoutTemplateOpen: false,
+  exercises: [initialTemplateExercise],
 };
 
 function reducer(state, action) {
@@ -21,6 +28,18 @@ function reducer(state, action) {
       return {
         ...state,
         [action.payload]: !state[action.payload],
+      };
+    case "template/addExerciseToTemplate":
+      return {
+        ...state,
+        exercises: [
+          ...state.exercises,
+          {
+            exerciseName: action.payload.exerciseName,
+            sets: action.payload.sets,
+            reps: action.payload.reps,
+          },
+        ],
       };
 
     default:
@@ -38,12 +57,14 @@ function TemplatesProvider({ children }) {
     useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
+  console.log(initialState);
   const [
     {
       isTemplateOverlayOpen,
       isTemplateExerciseErrorOpen,
       isEditTemplateOverlayOpen,
       isCreateWorkoutTemplateOpen,
+      exercises,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -75,18 +96,24 @@ function TemplatesProvider({ children }) {
     dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
   }
 
-  function handleAddExerciseToTemplate(e) {
-    const exercise = e.target.value;
-    console.log(exercise);
-    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
-    if (selectedExercisesForTemplate.includes(exercise)) {
-      dispatch({
-        type: "toggleOverlay",
-        payload: "isTemplateExerciseErrorOpen",
-      });
-      return;
-    }
-    setSelectedExercisesForTemplate((cur) => [...cur, exercise]);
+  function handleAddExerciseToTemplate(exerciseName, sets, reps) {
+    dispatch({
+      type: "template/addExerciseToTemplate",
+      payload: {
+        exerciseName: exerciseName,
+        sets: sets,
+        reps: reps,
+      },
+    });
+    // dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
+    // if (selectedExercisesForTemplate.includes(exercise)) {
+    //   dispatch({
+    //     type: "toggleOverlay",
+    //     payload: "isTemplateExerciseErrorOpen",
+    //   });
+    //   return;
+    // }
+    // setSelectedExercisesForTemplate((cur) => [...cur, exercise]);
   }
 
   function handleSaveTemplate(e) {

@@ -14,6 +14,8 @@ function TemplateExercises() {
         {selectedExercisesForTemplate?.map((exercise) => (
           <TemplateExercise value={exercise} key={exercise}>
             {exercise}
+            <p>Sets</p>
+            <p>Reps</p>
           </TemplateExercise>
         ))}
         <button
