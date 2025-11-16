@@ -11,6 +11,7 @@ function ExerciseSearchBar() {
       onSubmit={(e) => {
         handleSearchedExercise(input);
         e.preventDefault();
+        setInput("");
         // const filteredExercises = exercises.filter((exercise) =>
         //   exercise.name.includes(input)
         // );
