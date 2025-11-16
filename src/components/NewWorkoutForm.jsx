@@ -1,8 +1,8 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 import TemplateExercises from "./TemplateExercises";
 
 function NewWorkoutForm() {
-  const { dispatch } = useExercises();
+  const { dispatch } = useTemplates();
 
   return (
     <div className="new-template-form">

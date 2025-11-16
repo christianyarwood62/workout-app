@@ -1,8 +1,8 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutTemplateIcon({ template, id }) {
   const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm } =
-    useExercises();
+    useTemplates();
 
   return (
     <div className="workout-template-icon">

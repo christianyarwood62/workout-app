@@ -1,8 +1,8 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
 
 function WorkoutTemplateList() {
-  const { workoutTemplates } = useExercises();
+  const { workoutTemplates } = useTemplates();
 
   if (workoutTemplates.length === 0)
     return (

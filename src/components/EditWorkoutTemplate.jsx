@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { useExercises } from "../contexts/ExercisesContext";
 import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
+import { useTemplates } from "../contexts/TemplatesContext";
 
 function EditWorkoutTemplate() {
   const {
@@ -11,7 +10,7 @@ function EditWorkoutTemplate() {
     dispatch,
     workoutTemplates,
     selectedTemplateIDToEdit,
-  } = useExercises();
+  } = useTemplates();
 
   const selectedTemplateToEdit = workoutTemplates.find(
     (template) => template.id === selectedTemplateIDToEdit

@@ -1,4 +1,4 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 import TemplateExercise from "./TemplateExercise";
 
 function TemplateExercises() {
@@ -6,7 +6,7 @@ function TemplateExercises() {
     handleToggleTemplateFormOverlay,
     selectedExercisesForTemplate,
     handleSaveTemplate,
-  } = useExercises();
+  } = useTemplates();
 
   return (
     <div className="flex-columns">

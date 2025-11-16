@@ -1,7 +1,7 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 
 function TemplateExerciseErrorComponent() {
-  const { handleToggleTemplateExerciseErrorOpen } = useExercises();
+  const { handleToggleTemplateExerciseErrorOpen } = useTemplates();
 
   return (
     <div

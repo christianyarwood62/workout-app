@@ -1,8 +1,8 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useTemplates } from "../contexts/TemplatesContext";
 
 function AddWorkoutTemplateButton() {
   const { isCreateWorkoutTemplateOpen, workoutTemplates, dispatch } =
-    useExercises();
+    useTemplates();
 
   return (
     <>

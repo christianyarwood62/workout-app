@@ -1,10 +1,4 @@
-import {
-  useContext,
-  createContext,
-  useState,
-  useEffect,
-  useReducer,
-} from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
 const ExercisesContext = createContext();
 
@@ -83,31 +77,6 @@ const initialExercises = [
   },
 ];
 
-const initialState = {
-  // workoutTemplates: [],
-  // templateNameInput: "",
-  // selectedTemplateToEdit: null,
-  // templateCounter: 0,
-  // selectedExercisesForTemplate: [],
-  isTemplateOverlayOpen: false,
-  isTemplateExerciseErrorOpen: false,
-  isEditTemplateOverlayOpen: false,
-  isCreateWorkoutTemplateOpen: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "toggleOverlay":
-      return {
-        ...state,
-        [action.payload]: !state[action.payload],
-      };
-
-    default:
-      return state;
-  }
-}
-
 function ExercisesProvider({ children }) {
   const [fetchedExercises, setFetchedExercises] = useState([]);
   const [exercises, setExercises] = useState(initialExercises);
@@ -118,25 +87,6 @@ function ExercisesProvider({ children }) {
   const [err, setErr] = useState("");
   const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
-  const [selectedExercisesForTemplate, setSelectedExercisesForTemplate] =
-    useState([]);
-  const [workoutTemplates, setWorkoutTemplates] = useState([]);
-  const [templateCounter, setTemplateCounter] = useState(0);
-  const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
-  const [selectedTemplateIDToEdit, setSelectedTemplateIDToEdit] =
-    useState(null);
-  const [templateNameInput, setTemplateNameInput] = useState("");
-
-  const [
-    {
-      isTemplateOverlayOpen,
-      isTemplateExerciseErrorOpen,
-      isEditTemplateOverlayOpen,
-      isCreateWorkoutTemplateOpen,
-    },
-    dispatch,
-  ] = useReducer(reducer, initialState);
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Fetches all the exercise data from the API to display in the exercises list component
@@ -146,7 +96,7 @@ function ExercisesProvider({ children }) {
         try {
           setErr("");
           let res = await fetch(
-            `https://api.api-ninjas.com/v1/exercises?muscle=${searchedExercise}`,
+            `https://api.api-ninjas.com/v1/exercises?name=${searchedExercise}`,
             {
               headers: {
                 "X-Api-Key": "SphLNzCc4LFN8J9GCrK4Kw==YWu2RSP860Dn0657",
@@ -184,117 +134,23 @@ function ExercisesProvider({ children }) {
     [searchedExercise]
   );
 
-  useEffect(
-    function () {
-      if (!isTemplateExerciseErrorOpen) return;
-
-      const timer = setTimeout(() => {
-        dispatch({
-          type: "toggleOverlay",
-          payload: "isTemplateExerciseErrorOpen",
-        });
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    },
-    [isTemplateExerciseErrorOpen]
-  );
-
+  // Search for a specific exercise from the list, and API will fetch all exercises that match this search
   function handleSearchedExercise(exercise) {
     setSearchedExercise(exercise);
   }
 
+  // Reset button on the exercises list so cancel out the user search and show the original API fetch of every exercise
   function resetExercises() {
     setExercises(fetchedExercises);
     setSearchedExercise("");
   }
 
+  // Selects an exercise from the list to show details about it
   function handleSelection(exercise) {
+    console.log(exercise);
     setSelectedExercise((cur) =>
       cur?.name === exercise.name ? null : exercise
     );
-  }
-
-  function handleShowNewWorkoutForm() {
-    setShowCreateWorkoutTemplate(!showCreateWorkoutTemplate);
-    // setWorkoutTemplateList(!workoutTemplateList);
-    setSelectedExercisesForTemplate([]);
-  }
-
-  function handleToggleTemplateFormOverlay(e) {
-    e.preventDefault();
-    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
-  }
-
-  function handleAddExerciseToTemplate(e) {
-    const exercise = e.target.value;
-    console.log(exercise);
-    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
-    if (selectedExercisesForTemplate.includes(exercise)) {
-      dispatch({
-        type: "toggleOverlay",
-        payload: "isTemplateExerciseErrorOpen",
-      });
-      return;
-    }
-    setSelectedExercisesForTemplate((cur) => [...cur, exercise]);
-  }
-
-  function handleSaveTemplate(e) {
-    e.preventDefault();
-    if (selectedExercisesForTemplate.length === 0) return;
-
-    setWorkoutTemplates(() => [
-      ...workoutTemplates,
-      {
-        workoutName: `Template ${templateCounter + 1}`,
-        id: crypto.randomUUID(),
-        exercises: selectedExercisesForTemplate,
-        displayNumber: templateCounter + 1, // This is used because without it, when you delete a template, the numbering restarts
-        templateCounter: templateCounter + 1,
-      },
-    ]);
-    setTemplateCounter(templateCounter + 1);
-    setSelectedExercisesForTemplate([]);
-    dispatch({ type: "toggleOverlay", payload: "isCreateWorkoutTemplateOpen" });
-  }
-
-  function deleteExerciseFromTemplate(e) {
-    e.preventDefault();
-
-    const exercise = e.target.value;
-    setSelectedExercisesForTemplate((cur) => {
-      return cur.filter((element) => element !== exercise);
-    });
-    console.log("exercise deleted");
-  }
-
-  function handleToggleTemplateExerciseErrorOpen() {
-    dispatch({ type: "toggleOverlay", payload: "isTemplateExerciseErrorOpen" });
-  }
-
-  function deleteWorkoutTemplateFromList(e, id) {
-    e.preventDefault();
-
-    setWorkoutTemplates((cur) => {
-      return cur.filter((template) => template.id !== id); // cur is the workoutTemplates
-    });
-  }
-
-  function toggleEditWorkoutForm(id) {
-    dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
-    setSelectedTemplateIDToEdit(id);
-    // setTemplateNameInput(`Template ${template.displayNumber}`);
-  }
-
-  function saveNewTemplate(id, newName) {
-    setWorkoutTemplates((cur) =>
-      cur.map((template) =>
-        template.id === id ? { ...template, workoutName: newName } : template
-      )
-    );
-    setTemplateNameInput("");
-    dispatch({ type: "toggleOverlay", payload: "isEditTemplateOverlayOpen" });
   }
 
   return (
@@ -307,29 +163,6 @@ function ExercisesProvider({ children }) {
         searchedExercise,
         setSelectedExercise,
         setShowingResultsIsOpen,
-        handleShowNewWorkoutForm,
-        handleToggleTemplateFormOverlay,
-        isTemplateOverlayOpen,
-        handleAddExerciseToTemplate,
-        selectedExercisesForTemplate,
-        handleSaveTemplate,
-        deleteExerciseFromTemplate,
-        isTemplateExerciseErrorOpen,
-        handleToggleTemplateExerciseErrorOpen,
-        workoutTemplates,
-        setWorkoutTemplates,
-        deleteWorkoutTemplateFromList,
-        templateCounter,
-        toggleEditWorkoutForm,
-        isEditTemplateOverlayOpen,
-        selectedTemplateToEdit,
-        setSelectedTemplateToEdit,
-        setTemplateNameInput,
-        saveNewTemplate,
-        templateNameInput,
-        dispatch,
-        isCreateWorkoutTemplateOpen,
-        selectedTemplateIDToEdit,
         handleSearchedExercise,
         fetchedExercises,
         resetExercises,
