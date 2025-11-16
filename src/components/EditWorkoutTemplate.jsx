@@ -8,11 +8,11 @@ function EditWorkoutTemplate() {
     templateNameInput,
     saveNewTemplate,
     dispatch,
-    workoutTemplates,
+    templates,
     selectedTemplateIDToEdit,
   } = useTemplates();
 
-  const selectedTemplateToEdit = workoutTemplates.find(
+  const selectedTemplateToEdit = templates.find(
     (template) => template.id === selectedTemplateIDToEdit
   );
 

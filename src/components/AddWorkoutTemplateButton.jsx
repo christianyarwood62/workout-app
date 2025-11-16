@@ -1,8 +1,7 @@
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function AddWorkoutTemplateButton() {
-  const { isCreateWorkoutTemplateOpen, workoutTemplates, dispatch } =
-    useTemplates();
+  const { isCreateWorkoutTemplateOpen, templates, dispatch } = useTemplates();
 
   return (
     <>
@@ -15,10 +14,9 @@ function AddWorkoutTemplateButton() {
                 type: "toggleOverlay",
                 payload: "isCreateWorkoutTemplateOpen",
               });
-              console.log("test");
             }}
           >
-            {workoutTemplates.length === 0 ? (
+            {templates.length === 0 ? (
               <h3>Create your first template! 🏋️‍♀️</h3>
             ) : (
               <h3>Add another template!</h3>

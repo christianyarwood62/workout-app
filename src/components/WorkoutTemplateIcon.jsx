@@ -1,7 +1,7 @@
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutTemplateIcon({ template, id }) {
-  const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm } =
+  const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm, children } =
     useTemplates();
 
   return (
@@ -22,8 +22,13 @@ function WorkoutTemplateIcon({ template, id }) {
       </div>
       <h3>{template.workoutName}</h3>
       <div className="workout-template-icon-exercises">
-        {template.exercises.map((exercise) => (
-          <p key={exercise}>💪 {exercise}</p>
+        {template.map((exercise) => (
+          <div>
+            <p key={exercise.exerciseName}>
+              💪 {exercise.exerciseName}: {exercise.sets} Sets x {exercise.reps}{" "}
+              reps
+            </p>
+          </div>
         ))}
       </div>
     </div>
