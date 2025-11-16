@@ -57,7 +57,6 @@ function TemplatesProvider({ children }) {
     useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
-  console.log(initialState);
   const [
     {
       isTemplateOverlayOpen,
@@ -105,7 +104,7 @@ function TemplatesProvider({ children }) {
         reps: reps,
       },
     });
-    // dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
+    dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
     // if (selectedExercisesForTemplate.includes(exercise)) {
     //   dispatch({
     //     type: "toggleOverlay",
@@ -113,7 +112,7 @@ function TemplatesProvider({ children }) {
     //   });
     //   return;
     // }
-    // setSelectedExercisesForTemplate((cur) => [...cur, exercise]);
+    setSelectedExercisesForTemplate((cur) => [...cur, exerciseName]);
   }
 
   function handleSaveTemplate(e) {
@@ -199,6 +198,7 @@ function TemplatesProvider({ children }) {
         dispatch,
         isCreateWorkoutTemplateOpen,
         selectedTemplateIDToEdit,
+        exercises,
       }}
     >
       {children}

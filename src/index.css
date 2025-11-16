@@ -180,8 +180,8 @@ nav a {
 
 .icon-lower-area {
   display: flex;
-  justify-content: center;
-  align-items: end;
+  flex-direction: column;
+  align-items: center;
   max-height: 100px;
 }
 

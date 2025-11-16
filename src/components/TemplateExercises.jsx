@@ -6,17 +6,20 @@ function TemplateExercises() {
     handleToggleTemplateFormOverlay,
     selectedExercisesForTemplate,
     handleSaveTemplate,
+    exercises,
   } = useTemplates();
 
+  console.log(exercises);
   return (
     <div className="flex-columns">
       <div className="template-exercises ">
-        {selectedExercisesForTemplate?.map((exercise) => (
-          <TemplateExercise value={exercise} key={exercise}>
-            {exercise}
-            <p>Sets</p>
-            <p>Reps</p>
-          </TemplateExercise>
+        {exercises?.map((exercise) => (
+          <TemplateExercise
+            name={exercise.exerciseName}
+            key={exercise.exerciseName}
+            sets={exercise.sets}
+            reps={exercise.reps}
+          />
         ))}
         <button
           className="add-template-exercise-button button"
