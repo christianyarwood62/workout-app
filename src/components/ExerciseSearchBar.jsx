@@ -12,10 +12,6 @@ function ExerciseSearchBar() {
         handleSearchedExercise(input);
         e.preventDefault();
         setInput("");
-        // const filteredExercises = exercises.filter((exercise) =>
-        //   exercise.name.includes(input)
-        // );
-        // setExercises(filteredExercises);
       }}
     >
       <span>🔎</span>

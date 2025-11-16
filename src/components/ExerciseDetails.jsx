@@ -2,12 +2,12 @@ import { useExercises } from "../contexts/ExercisesContext";
 import Button from "../UI/Button";
 
 function ExerciseDetails() {
-  const { selectedExercise, setSelectedExercise } = useExercises();
+  const { selectedExercise, handleSelection } = useExercises();
   return (
     <div className="exercise-details-container">
       <h2>{selectedExercise.name}</h2>
-      <div className="buttons">
-        <Button onClick={() => setSelectedExercise(null)}>X</Button>
+      <div className="">
+        <Button onClick={() => handleSelection(null)}>X</Button>
         <Button>History</Button>
         <Button>Records</Button>
       </div>

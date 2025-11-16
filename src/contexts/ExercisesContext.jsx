@@ -85,7 +85,6 @@ function ExercisesProvider({ children }) {
   const [searchedExercise, setSearchedExercise] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
-  const [showingResultsIsopen, setShowingResultsIsOpen] = useState(true);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -114,6 +113,8 @@ function ExercisesProvider({ children }) {
           if (exerciseDetails.length === 0) {
             setExercises(null);
           } else {
+            //
+            if (!fetchedExercises.length) setFetchedExercises(exerciseDetails);
             setExercises(exerciseDetails);
           }
         } catch (err) {
@@ -124,7 +125,6 @@ function ExercisesProvider({ children }) {
           }
         } finally {
           setIsLoading(false);
-          setErr("");
         }
       }
 
@@ -147,9 +147,8 @@ function ExercisesProvider({ children }) {
 
   // Selects an exercise from the list to show details about it
   function handleSelection(exercise) {
-    console.log(exercise);
     setSelectedExercise((cur) =>
-      cur?.name === exercise.name ? null : exercise
+      cur?.name === exercise?.name ? null : exercise
     );
   }
 
@@ -157,17 +156,13 @@ function ExercisesProvider({ children }) {
     <ExercisesContext.Provider
       value={{
         exercises,
-        setExercises,
         handleSelection,
         selectedExercise,
         searchedExercise,
-        setSelectedExercise,
-        setShowingResultsIsOpen,
         handleSearchedExercise,
         fetchedExercises,
         resetExercises,
         isLoading,
-        setSearchedExercise,
       }}
     >
       {children}

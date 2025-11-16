@@ -2,11 +2,10 @@ import Loader from "./Loader";
 import Exercise from "./Exercise";
 import { useExercises } from "../contexts/ExercisesContext";
 import ExerciseSearchBar from "./ExerciseSearchBar";
-import { useEffect } from "react";
 import Button from "../UI/Button";
 
 function ExercisesList() {
-  const { exercises, searchedExercise, isLoading, setSearchedExercise } =
+  const { exercises, searchedExercise, isLoading, handleSearchedExercise } =
     useExercises();
 
   return (
@@ -15,7 +14,7 @@ function ExercisesList() {
         <h1>List of exercises</h1>
         <div className="searchbar">
           <ExerciseSearchBar />
-          <Button onClick={() => setSearchedExercise("")}> X Reset</Button>
+          <Button onClick={() => handleSearchedExercise("")}> X Reset</Button>
         </div>
         {isLoading ? (
           <Loader />
