@@ -1,14 +1,16 @@
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutTemplateIcon({ template, id }) {
-  const { deleteWorkoutTemplateFromList, toggleEditWorkoutForm, children } =
-    useTemplates();
+  const { toggleEditWorkoutForm, handleDeleteTemplate } = useTemplates();
 
   return (
     <div className="workout-template-icon">
       <div className="icon-buttons">
         <button
-          onClick={(e) => deleteWorkoutTemplateFromList(e, id)}
+          onClick={(e) => {
+            e.preventDefault();
+            handleDeleteTemplate(template.id);
+          }}
           className="icon-x button"
         >
           🗑️
@@ -22,10 +24,10 @@ function WorkoutTemplateIcon({ template, id }) {
       </div>
       <h3>{template.workoutName}</h3>
       <div className="workout-template-icon-exercises">
-        {template.map((exercise) => (
-          <div>
-            <p key={exercise.exerciseName}>
-              💪 {exercise.exerciseName}: {exercise.sets} Sets x {exercise.reps}{" "}
+        {template.template.map((exercise) => (
+          <div key={template.id}>
+            <p>
+              💪 {exercise.exerciseName}: {exercise.sets} Sets x {exercise.reps}
               reps
             </p>
           </div>

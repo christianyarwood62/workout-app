@@ -12,9 +12,8 @@ function WorkoutTemplateList() {
         {templates?.map((template) => (
           <WorkoutTemplateIcon
             template={template}
-            id={template.id}
             displayNumber={template.templateCounter}
-            key={`template-${template.templateCounter}`}
+            key={template.id}
           />
         ))}
       </div>
