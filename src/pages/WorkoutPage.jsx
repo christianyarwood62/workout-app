@@ -3,20 +3,23 @@ import NewWorkoutForm from "../components/NewWorkoutForm";
 import WorkoutTemplateList from "../components/WorkoutTemplateList";
 import NewTemplateExerciseForm from "../components/NewTemplateExerciseForm";
 import TemplateExerciseErrorComponent from "../components/TemplateExerciseErrorComponent";
-import EditWorkoutTemplate from "../components/EditWorkoutTemplate";
+import EditWorkoutOverlay from "../components/EditWorkoutOverlay";
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutPage() {
-  const { isCreateWorkoutTemplateOpen, isTemplateExerciseErrorOpen } =
-    useTemplates();
+  const {
+    isCreateWorkoutTemplateOpen,
+    isTemplateExerciseErrorOpen,
+    isEditTemplateOverlayOpen,
+  } = useTemplates();
 
   return (
     <>
       <AddWorkoutTemplateButton />
       {isCreateWorkoutTemplateOpen && <NewWorkoutForm />}
-      <WorkoutTemplateList />
+      {<WorkoutTemplateList />}
       <NewTemplateExerciseForm />
-      <EditWorkoutTemplate />
+      {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
     </>
   );

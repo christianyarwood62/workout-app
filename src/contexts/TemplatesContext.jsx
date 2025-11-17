@@ -6,7 +6,7 @@ const TemplatesContext = createContext();
 const initialState = {
   // workoutTemplates: [],
   // templateNameInput: "",
-  // selectedTemplateToEdit: null,
+  selectedTemplateToEdit: null,
   // templateCounter: 0,
   // selectedExercisesForTemplate: [],
   isTemplateOverlayOpen: false,
@@ -44,7 +44,6 @@ function reducer(state, action) {
         ),
       };
     case "template/saveTemplate":
-      console.log(action.payload);
       return {
         ...state,
         templates: [
@@ -67,11 +66,17 @@ function reducer(state, action) {
           (template) => template.id !== action.payload
         ),
       };
-    case "template/openEditForm":
+    case "template/openEditForm": {
+      // id is the id of the icon clicked on edit
+      const templateToEdit = state.templates.find(
+        (template) => template.id === action.payload.id
+      );
       return {
         ...state,
         [action.payload.overlay]: !state[action.payload.overlay],
+        selectedTemplateToEdit: templateToEdit,
       };
+    }
 
     case "template/saveEditedTemplate":
       console.log("test");
@@ -83,9 +88,7 @@ function reducer(state, action) {
 }
 
 function TemplatesProvider({ children }) {
-  const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
-  const [selectedTemplateIDToEdit, setSelectedTemplateIDToEdit] =
-    useState(null);
+  // const [selectedTemplateToEdit, setSelectedTemplateToEdit] = useState(null);
   const [templateNameInput, setTemplateNameInput] = useState("");
 
   const [
@@ -96,6 +99,7 @@ function TemplatesProvider({ children }) {
       isCreateWorkoutTemplateOpen,
       exercises,
       templates,
+      selectedTemplateToEdit,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -148,7 +152,6 @@ function TemplatesProvider({ children }) {
   }
 
   function toggleEditWorkoutForm(id) {
-    console.log(id);
     dispatch({
       type: "template/openEditForm",
       payload: { overlay: "isEditTemplateOverlayOpen", id },
@@ -169,7 +172,6 @@ function TemplatesProvider({ children }) {
         toggleEditWorkoutForm,
         isEditTemplateOverlayOpen,
         selectedTemplateToEdit,
-        setSelectedTemplateToEdit,
         setTemplateNameInput,
         templateNameInput,
         dispatch,

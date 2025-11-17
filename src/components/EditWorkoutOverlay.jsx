@@ -1,33 +1,26 @@
+import { useEffect, useState } from "react";
 import { useTemplates } from "../contexts/TemplatesContext";
+import EditTemplateExercise from "./EditTemplateExercise";
 
-function EditWorkoutTemplate() {
-  const {
-    isEditTemplateOverlayOpen,
-    setTemplateNameInput,
-    templateNameInput,
-    saveNewTemplate,
-    dispatch,
-    templates,
-    selectedTemplateIDToEdit,
-  } = useTemplates();
-
-  const selectedTemplateToEdit = templates.find(
-    (template) => template.id === selectedTemplateIDToEdit
+function EditWorkoutOverlay() {
+  const { isEditTemplateOverlayOpen, selectedTemplateToEdit, dispatch } =
+    useTemplates("");
+  const [editableTemplate, setEditableTemplate] = useState(
+    selectedTemplateToEdit
   );
 
-  if (!isEditTemplateOverlayOpen) return null;
+  const templateIdToEdit = selectedTemplateToEdit.id;
+  console.log(templateIdToEdit);
 
-  function setNewNameForTemplate(e) {
-    const newName = e.target.value;
-    setTemplateNameInput(newName);
-  }
+  // console.log(editableTemplate);
+
+  if (!isEditTemplateOverlayOpen) return null;
 
   function handleCloseEditTemplateButton() {
     dispatch({
       type: "toggleOverlay",
       payload: "isEditTemplateOverlayOpen",
     });
-    setTemplateNameInput("");
   }
 
   return (
@@ -64,13 +57,12 @@ function EditWorkoutTemplate() {
               ☑️ Save
             </button>
           </div>
-          <input
-            value={templateNameInput || selectedTemplateToEdit?.workoutName}
-            onChange={setNewNameForTemplate}
-          ></input>
-          <div className="workout-template-icon-exercises">
-            {selectedTemplateToEdit?.exercises.map((exercise) => (
-              <p key={exercise}>💪 {exercise}</p>
+          <div>
+            {selectedTemplateToEdit?.exercises.map((exercise, i) => (
+              <EditTemplateExercise
+                exercise={exercise}
+                key={crypto.randomUUID()}
+              />
             ))}
           </div>
         </div>
@@ -79,4 +71,4 @@ function EditWorkoutTemplate() {
   );
 }
 
-export default EditWorkoutTemplate;
+export default EditWorkoutOverlay;
