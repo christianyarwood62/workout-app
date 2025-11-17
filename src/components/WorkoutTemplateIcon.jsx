@@ -1,4 +1,6 @@
 import { useTemplates } from "../contexts/TemplatesContext";
+import EditButton from "./EditButton";
+import { Trash } from "lucide-react";
 
 function WorkoutTemplateIcon({ template, id }) {
   const { toggleEditWorkoutForm, handleDeleteTemplate } = useTemplates();
@@ -11,20 +13,24 @@ function WorkoutTemplateIcon({ template, id }) {
             e.preventDefault();
             handleDeleteTemplate(template.id);
           }}
-          className="icon-x button"
+          className="delete-button"
         >
-          🗑️
+          <p>Delete</p>
+          <Trash width={"18px"} />
         </button>
-        <button
+
+        <EditButton
           className="icon-edit-button button"
-          onClick={() => toggleEditWorkoutForm(id)}
+          // onClick={() => toggleEditWorkoutForm(template.id)}
         >
           ✍️
-        </button>
+        </EditButton>
       </div>
-      <h3>{template.workoutName}</h3>
+      <div className="template-icon-header">
+        <h3>{template.templateName}</h3>
+      </div>
       <div className="workout-template-icon-exercises">
-        {template.template.map((exercise) => (
+        {template.exercises.map((exercise) => (
           <div key={template.id}>
             <p>
               💪 {exercise.exerciseName}: {exercise.sets} Sets x {exercise.reps}

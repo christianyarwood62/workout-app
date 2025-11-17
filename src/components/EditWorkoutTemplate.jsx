@@ -1,4 +1,3 @@
-import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function EditWorkoutTemplate() {
@@ -39,7 +38,6 @@ function EditWorkoutTemplate() {
           payload: "isEditTemplateOverlayOpen",
         })
       }
-      // onClick={() => setIsEditTemplateOverlayOpen(!isEditTemplateOverlayOpen)}
       className="overlay-backdrop"
     >
       <div
@@ -57,7 +55,10 @@ function EditWorkoutTemplate() {
             <button
               className="icon-edit-button button"
               onClick={() =>
-                saveNewTemplate(selectedTemplateToEdit.id, templateNameInput)
+                dispatch({
+                  type: "template/saveEditedTemplate",
+                  payload: "test",
+                })
               }
             >
               ☑️ Save

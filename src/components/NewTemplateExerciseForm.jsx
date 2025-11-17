@@ -18,7 +18,15 @@ function NewTemplateExerciseForm() {
   if (!isTemplateOverlayOpen) return null;
 
   return (
-    <div onClick={handleToggleTemplateFormOverlay} className="overlay-backdrop">
+    <div
+      onClick={(e) => {
+        e.preventDefault();
+        setSetsInput("");
+        setRepsInput("");
+        handleToggleTemplateFormOverlay();
+      }}
+      className="overlay-backdrop"
+    >
       <div
         onClick={(e) => e.stopPropagation()}
         className="overlay-content element-container" // no CSS for overlay-content, just here for understanding
@@ -27,28 +35,39 @@ function NewTemplateExerciseForm() {
           onSubmit={(e) => {
             e.preventDefault();
             handleAddExerciseToTemplate(exerciseName, setsInput, repsInput);
+            setRepsInput("");
+            setSetsInput("");
           }}
         >
           <select
             onChange={(e) => setExerciseName(e.target.value)}
             className="button"
+            required
           >
             <option>Choose an exercise</option>
             {exercises.map((exercise, i) => (
               <option key={`exercise-${i}`}>{exercise.name}</option>
             ))}
           </select>
-          <label htmlFor="sets">Sets:</label>
           <input
+            type="number"
+            min={1}
+            className="button"
             value={setsInput}
+            required
             name="sets"
             onChange={(e) => setSetsInput(e.target.value)}
+            placeholder="Sets?"
           />
-          <label htmlFor="reps">Reps:</label>
           <input
+            type="number"
+            min={1}
+            className="button"
+            required
             value={repsInput}
             name="reps"
             onChange={(e) => setRepsInput(e.target.value)}
+            placeholder="Reps?"
           />
           <button>Submit</button>
         </form>

@@ -16,7 +16,13 @@ function UserTile() {
         <div className="login-icon-container">
           <User color="#e9e2e2" />
 
-          {user ? <span>{user}</span> : <Button to="/login">Sign in</Button>}
+          {user ? (
+            <span>{user}</span>
+          ) : (
+            <Button className="button-with-icon" to="/login">
+              Sign in
+            </Button>
+          )}
           <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
             <ChevronDown />
           </button>

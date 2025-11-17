@@ -5,7 +5,10 @@ function Exercise({ exercise, children }) {
 
   return (
     <div className="exercise">
-      <button className="button" onClick={() => handleSelection(exercise)}>
+      <button
+        className="exercise-icon"
+        onClick={() => handleSelection(exercise)}
+      >
         <p>{children}</p>
       </button>
     </div>

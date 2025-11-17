@@ -1,12 +1,22 @@
+import { useState } from "react";
 import { useTemplates } from "../contexts/TemplatesContext";
 import TemplateExercise from "./TemplateExercise";
 
 function TemplateExercises() {
+  const [templateName, setTemplateName] = useState("");
   const { handleToggleTemplateFormOverlay, handleSaveTemplate, exercises } =
     useTemplates();
 
   return (
-    <div className="flex-columns">
+    <div className="flex-column">
+      <div>
+        <input
+          type="test"
+          required
+          placeholder="Template Name..."
+          onChange={(e) => setTemplateName(e.target.value)}
+        />
+      </div>
       <div className="template-exercises ">
         {exercises.map((exercise) => (
           <TemplateExercise key={exercise.exerciseName} value={exercise} />
@@ -21,7 +31,10 @@ function TemplateExercises() {
       <div className="save-template-button-container">
         <button
           className="button save-template-button"
-          onClick={handleSaveTemplate}
+          onClick={(e) => {
+            e.preventDefault();
+            handleSaveTemplate(templateName);
+          }}
         >
           Save template
         </button>

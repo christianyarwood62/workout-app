@@ -3,6 +3,7 @@ import Exercise from "./Exercise";
 import { useExercises } from "../contexts/ExercisesContext";
 import ExerciseSearchBar from "./ExerciseSearchBar";
 import Button from "../UI/Button";
+import { X } from "lucide-react";
 
 function ExercisesList() {
   const { exercises, searchedExercise, isLoading, handleSearchedExercise } =
@@ -14,7 +15,13 @@ function ExercisesList() {
         <h1>List of exercises</h1>
         <div className="searchbar">
           <ExerciseSearchBar />
-          <Button onClick={() => handleSearchedExercise("")}> X Reset</Button>
+          <Button
+            className="button-with-icon"
+            onClick={() => handleSearchedExercise("")}
+          >
+            <X color="black" />
+            <p>Reset</p>
+          </Button>
         </div>
         {isLoading ? (
           <Loader />

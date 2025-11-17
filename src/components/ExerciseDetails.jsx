@@ -1,15 +1,28 @@
 import { useExercises } from "../contexts/ExercisesContext";
 import Button from "../UI/Button";
+import { X, History, Archive } from "lucide-react";
 
 function ExerciseDetails() {
   const { selectedExercise, handleSelection } = useExercises();
   return (
     <div className="exercise-details-container">
       <h2>{selectedExercise.name}</h2>
-      <div className="">
-        <Button onClick={() => handleSelection(null)}>X</Button>
-        <Button>History</Button>
-        <Button>Records</Button>
+      <div className="flex-row gap-small">
+        <Button
+          className="button-with-icon"
+          onClick={() => handleSelection(null)}
+        >
+          <X className="svg" width="24px" />
+          <p>Close</p>
+        </Button>
+        <Button className="button-with-icon">
+          <History className="svg" />
+          <p>History</p>
+        </Button>
+        <Button className="button-with-icon">
+          <Archive className="svg" />
+          <p>Records</p>
+        </Button>
       </div>
 
       <div>
