@@ -22,11 +22,12 @@ function NewTemplateExercises() {
           onChange={(e) => setTemplateName(e.target.value)}
         />
       </div>
-      <div className="template-exercises ">
+      <div className="template-exercises">
         {exercises.map((exercise) => (
           <NewTemplateExercise key={exercise.id} value={exercise} />
         ))}
         <button
+          type="button"
           className="add-template-exercise-button button"
           onClick={handleToggleTemplateFormOverlay}
         >

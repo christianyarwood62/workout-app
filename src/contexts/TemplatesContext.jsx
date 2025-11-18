@@ -48,7 +48,7 @@ function reducer(state, action) {
           },
         ],
       };
-    case "template/deleteExerciseFromTemplate":
+    case "template/deleteExerciseFromNewTemplate":
       return {
         ...state,
         exercises: state.exercises.filter(
@@ -142,7 +142,7 @@ function TemplatesProvider({ children }) {
   function toggleNewTemplateExerciseOverlay() {
     dispatch({
       type: "template/openCloseNewTemplateExerciseForm",
-      payload: "",
+      payload: "isCreateWorkoutTemplateOpen",
     });
   }
 
@@ -154,6 +154,13 @@ function TemplatesProvider({ children }) {
     dispatch({
       type: "toggleOverlay",
       payload: "isEditTemplateOverlayOpen",
+    });
+  }
+
+  function deleteExerciseFromNewTemplate(exerciseName) {
+    dispatch({
+      type: "template/deleteExerciseFromNewTemplate",
+      payload: exerciseName,
     });
   }
 
@@ -212,6 +219,7 @@ function TemplatesProvider({ children }) {
         handleToggleTemplateFormOverlay,
         toggleNewTemplateExerciseOverlay,
         handleCloseEditTemplateButton,
+        deleteExerciseFromNewTemplate,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
         handleSaveTemplate,

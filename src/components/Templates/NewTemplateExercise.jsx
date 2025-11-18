@@ -1,18 +1,13 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 
 function NewTemplateExercise({ value }) {
-  const { dispatch } = useTemplates();
+  const { deleteExerciseFromNewTemplate } = useTemplates();
 
   return (
     <div className="exercise-in-template">
       <div className="icon-top-area">
         <button
-          onClick={() =>
-            dispatch({
-              type: "template/deleteExerciseFromTemplate",
-              payload: value.exerciseName,
-            })
-          }
+          onClick={(value) => deleteExerciseFromNewTemplate(value.exerciseName)}
           className="button icon-x"
         >
           🗑️
