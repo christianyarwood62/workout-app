@@ -7,15 +7,10 @@ function NewTemplateExerciseForm() {
   const [repsInput, setRepsInput] = useState("");
   const [exerciseName, setExerciseName] = useState("");
 
-  const {
-    isTemplateOverlayOpen,
-    handleToggleTemplateFormOverlay,
-    handleAddExerciseToTemplate,
-  } = useTemplates();
+  const { handleToggleTemplateFormOverlay, handleAddExerciseToTemplate } =
+    useTemplates();
 
   const { exercises } = useExercises();
-
-  if (!isTemplateOverlayOpen) return null;
 
   return (
     <div

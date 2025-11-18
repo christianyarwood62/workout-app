@@ -11,6 +11,7 @@ function WorkoutPage() {
     isCreateWorkoutTemplateOpen,
     isTemplateExerciseErrorOpen,
     isEditTemplateOverlayOpen,
+    isTemplateOverlayOpen,
   } = useTemplates();
 
   return (
@@ -18,7 +19,7 @@ function WorkoutPage() {
       <AddTemplateButton />
       {isCreateWorkoutTemplateOpen && <NewTemplate />}
       {<TemplateList />}
-      <NewTemplateExerciseForm />
+      {isTemplateOverlayOpen && <NewTemplateExerciseForm />}
       {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
     </>

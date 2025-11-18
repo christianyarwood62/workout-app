@@ -29,6 +29,11 @@ function reducer(state, action) {
         ...state,
         [action.payload]: !state[action.payload],
       };
+    case "template/openCloseNewTemplateExerciseFrom":
+      return {
+        ...state,
+        [action.payload]: !state[action.payload],
+      };
 
     case "template/addExerciseToTemplate":
       return {
@@ -134,6 +139,13 @@ function TemplatesProvider({ children }) {
     });
   }
 
+  function toggleNewTemplateExerciseOverlay() {
+    dispatch({
+      type: "template/openCloseNewTemplateExerciseForm",
+      payload: "",
+    });
+  }
+
   function handleToggleTemplateFormOverlay() {
     dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
   }
@@ -198,6 +210,7 @@ function TemplatesProvider({ children }) {
       value={{
         toggleNewTemplate,
         handleToggleTemplateFormOverlay,
+        toggleNewTemplateExerciseOverlay,
         handleCloseEditTemplateButton,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
