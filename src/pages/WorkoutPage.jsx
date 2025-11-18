@@ -5,6 +5,7 @@ import NewTemplateExerciseOverlay from "../components/Templates/NewTemplateExerc
 import TemplateExerciseErrorComponent from "../components/Templates/TemplateExerciseErrorComponent";
 import EditWorkoutOverlay from "../components/Templates/EditWorkoutOverlay";
 import { useTemplates } from "../contexts/TemplatesContext";
+import { useState } from "react";
 
 function WorkoutPage() {
   const {
@@ -12,14 +13,17 @@ function WorkoutPage() {
     isTemplateExerciseErrorOpen,
     isEditTemplateOverlayOpen,
     isTemplateOverlayOpen,
+    showingNewExerciseForm,
+    handleShowingNewTemplate,
+    showingNewTemplate,
   } = useTemplates();
 
   return (
     <>
       <AddTemplateButton />
-      {isCreateWorkoutTemplateOpen && <NewTemplate />}
+      {showingNewTemplate && <NewTemplate />}
       {<TemplateList />}
-      {isTemplateOverlayOpen && <NewTemplateExerciseOverlay />}
+      {showingNewExerciseForm && <NewTemplateExerciseOverlay />}
       {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
     </>

@@ -7,34 +7,57 @@ const tempInitialState = {
     {
       exerciseName: "",
       id: "",
-      reps: null,
-      sets: null,
+      reps: "",
+      sets: "",
     },
   ],
   id: "",
   templateName: "",
 };
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "editedTemplate/updateSets": {
+      const editedExercises = state.exercises.map((exercise, i) => {
+        if (i === action.payload.index)
+          return { ...exercise, sets: action.payload.sets };
+
+        return exercise;
+      });
+      console.log(state);
+      return {
+        ...state,
+        exercises: editedExercises,
+      };
+    }
+
+    default:
+      return state;
+  }
+}
+
 function EditWorkoutOverlay() {
   const {
-    isEditTemplateOverlayOpen,
     selectedTemplateToEdit,
     handleSaveEditedTemplate,
     handleCloseEditTemplateButton,
   } = useTemplates();
 
-  const [editableTemplate, setEditableTemplate] = useState(
-    selectedTemplateToEdit
+  const selectedTemplateId = selectedTemplateToEdit.id;
+
+  function initializer() {
+    return {
+      exercises: selectedTemplateToEdit.exercises,
+      id: selectedTemplateToEdit.id,
+      templateName: selectedTemplateToEdit.templateName,
+    };
+  }
+
+  const [{ exercises }, dispatch] = useReducer(
+    reducer,
+    tempInitialState,
+    initializer
   );
-
-  const [{ exercises, id, templateName }, dispatch] = useReducer(
-    useReducer,
-    tempInitialState
-  );
-
-  console.log(selectedTemplateToEdit);
-
-  if (!isEditTemplateOverlayOpen) return null;
 
   return (
     <div onClick={handleCloseEditTemplateButton} className="overlay-backdrop">
@@ -63,22 +86,19 @@ function EditWorkoutOverlay() {
               </button>
             </div>
             <div>
-              <h3>{selectedTemplateToEdit.templateName}</h3>
+              <input defaultValue={selectedTemplateToEdit.templateName} />
               {selectedTemplateToEdit?.exercises.map((exercise, i) => (
                 <div key={exercise.id} className="flex-row">
                   <span style={{ color: "white" }}>Delete</span>
                   <p>{exercise.exerciseName}</p>
                   <input
                     defaultValue={exercise.sets}
-                    // value={setsInput || exercise.sets}
-                    onChange={(e) => {
-                      setSetsInput((cur) => {
-                        const newArray = [...cur];
-                        newArray[i] = e.target.value;
-                        return newArray;
-                      });
-                    }}
-                    // value={setsInput || exercise.sets}
+                    onChange={(e) =>
+                      dispatch({
+                        type: "editedTemplate/updateSets",
+                        payload: { sets: Number(e.target.value), index: i },
+                      })
+                    }
                     style={{ width: "50px" }}
                   />
                   <input

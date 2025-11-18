@@ -4,7 +4,7 @@ import NewTemplateExercise from "./NewTemplateExercise";
 
 function NewTemplateExercises() {
   const [templateName, setTemplateName] = useState("");
-  const { handleToggleTemplateFormOverlay, handleSaveTemplate, exercises } =
+  const { handleSaveTemplate, exercises, setShowingNewExerciseForm } =
     useTemplates();
 
   return (
@@ -29,7 +29,7 @@ function NewTemplateExercises() {
         <button
           type="button"
           className="add-template-exercise-button button"
-          onClick={handleToggleTemplateFormOverlay}
+          onClick={() => setShowingNewExerciseForm(true)}
         >
           <p>Add an exercise</p>
         </button>

@@ -1,14 +1,19 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 
-function AddTemplateButton() {
-  const { isCreateWorkoutTemplateOpen, templates, toggleNewTemplate } =
-    useTemplates();
+function AddTemplateButton({}) {
+  const {
+    isCreateWorkoutTemplateOpen,
+    templates,
+    toggleNewTemplate,
+    handleShowingNewTemplate,
+    showingNewTemplate,
+  } = useTemplates();
 
   return (
     <>
-      {!isCreateWorkoutTemplateOpen && (
+      {!showingNewTemplate && (
         <div className="add-template-button">
-          <button className="button" onClick={toggleNewTemplate}>
+          <button className="button" onClick={() => handleShowingNewTemplate()}>
             {templates.length === 0 ? (
               <h3>Create your first template! 🏋️‍♀️</h3>
             ) : (
