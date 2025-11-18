@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useExercises } from "../../contexts/ExercisesContext";
 import { useTemplates } from "../../contexts/TemplatesContext";
 
-function NewTemplateExerciseForm() {
+function NewTemplateExerciseOverlay() {
   const [setsInput, setSetsInput] = useState("");
   const [repsInput, setRepsInput] = useState("");
   const [exerciseName, setExerciseName] = useState("");
@@ -71,4 +71,4 @@ function NewTemplateExerciseForm() {
   );
 }
 
-export default NewTemplateExerciseForm;
+export default NewTemplateExerciseOverlay;
