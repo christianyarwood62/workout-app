@@ -1,7 +1,7 @@
 import { useExercises } from "../contexts/ExercisesContext";
 
-import ExercisesList from "../components/ExercisesList";
-import ExerciseDetails from "../components/ExerciseDetails";
+import ExercisesList from "../components/Exercises/ExercisesList";
+import ExerciseDetails from "../components/Exercises/ExerciseDetails";
 import UserTile from "../components/UserTile";
 import Navbar from "../components/NavBar";
 

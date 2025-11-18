@@ -1,8 +1,8 @@
-import Loader from "./Loader";
+import Loader from "../Loader";
 import Exercise from "./Exercise";
-import { useExercises } from "../contexts/ExercisesContext";
+import { useExercises } from "../../contexts/ExercisesContext";
 import ExerciseSearchBar from "./ExerciseSearchBar";
-import Button from "../UI/Button";
+import Button from "../../UI/Button";
 import { X } from "lucide-react";
 
 function ExercisesList() {
@@ -19,7 +19,7 @@ function ExercisesList() {
             className="button-with-icon"
             onClick={() => handleSearchedExercise("")}
           >
-            <X color="black" />
+            <X className="svg" color="black" />
             <p>Reset</p>
           </Button>
         </div>

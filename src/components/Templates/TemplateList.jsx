@@ -1,7 +1,7 @@
-import { useTemplates } from "../contexts/TemplatesContext";
-import WorkoutTemplateIcon from "./WorkoutTemplateIcon";
+import { useTemplates } from "../../contexts/TemplatesContext";
+import TemplateListIcon from "./TemplateListIcon";
 
-function WorkoutTemplateList() {
+function TemplateList() {
   const { templates } = useTemplates();
 
   if (templates.length === 0) return null;
@@ -10,7 +10,7 @@ function WorkoutTemplateList() {
     return (
       <div className="workout-template-container">
         {templates?.map((template) => (
-          <WorkoutTemplateIcon
+          <TemplateListIcon
             template={template}
             displayNumber={template.templateCounter}
             key={template.id}
@@ -20,4 +20,4 @@ function WorkoutTemplateList() {
     );
 }
 
-export default WorkoutTemplateList;
+export default TemplateList;

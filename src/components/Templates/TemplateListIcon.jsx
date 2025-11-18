@@ -1,8 +1,8 @@
-import { useTemplates } from "../contexts/TemplatesContext";
-import EditButton from "./EditButton";
+import { useTemplates } from "../../contexts/TemplatesContext";
+import EditButton from "../EditButton";
 import { Trash } from "lucide-react";
 
-function WorkoutTemplateIcon({ template }) {
+function TemplateListIcon({ template }) {
   const { toggleEditWorkoutForm, handleDeleteTemplate } = useTemplates();
 
   return (
@@ -29,7 +29,7 @@ function WorkoutTemplateIcon({ template }) {
       </div>
       <div className="workout-template-icon-exercises">
         {template.exercises.map((exercise) => (
-          <div key={crypto.randomUUID()}>
+          <div key={exercise.id}>
             <p>
               💪 {exercise.exerciseName}: {exercise.sets} Sets x {exercise.reps}
               reps
@@ -41,4 +41,4 @@ function WorkoutTemplateIcon({ template }) {
   );
 }
 
-export default WorkoutTemplateIcon;
+export default TemplateListIcon;

@@ -1,4 +1,4 @@
-import { useTemplates } from "../contexts/TemplatesContext";
+import { useTemplates } from "../../contexts/TemplatesContext";
 
 function TemplateExerciseErrorComponent() {
   const { handleToggleTemplateExerciseErrorOpen } = useTemplates();

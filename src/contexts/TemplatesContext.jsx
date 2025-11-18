@@ -24,12 +24,19 @@ function reducer(state, action) {
         ...state,
         [action.payload]: !state[action.payload],
       };
+    case "template/openCloseNewTemplate":
+      return {
+        ...state,
+        [action.payload]: !state[action.payload],
+      };
+
     case "template/addExerciseToTemplate":
       return {
         ...state,
         exercises: [
           ...state.exercises,
           {
+            id: action.payload.id,
             exerciseName: action.payload.exerciseName,
             sets: action.payload.sets,
             reps: action.payload.reps,
@@ -79,7 +86,7 @@ function reducer(state, action) {
     }
 
     case "template/saveEditedTemplate":
-      console.log("test");
+      console.log(action.payload.sets);
       return { ...state };
 
     default:
@@ -120,14 +127,37 @@ function TemplatesProvider({ children }) {
     [isTemplateExerciseErrorOpen]
   );
 
+  function toggleNewTemplate() {
+    dispatch({
+      type: "template/openCloseNewTemplate",
+      payload: "isCreateWorkoutTemplateOpen",
+    });
+  }
+
   function handleToggleTemplateFormOverlay() {
     dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
   }
+
+  function handleCloseEditTemplateButton() {
+    dispatch({
+      type: "toggleOverlay",
+      payload: "isEditTemplateOverlayOpen",
+    });
+  }
+
+  // function handleCloseEditTemplateButton() {
+  //   console.log("test");
+  //   dispatch({
+  //     type: "toggleOverlay",
+  //     payload: "isEditTemplateOverlayOpen",
+  //   });
+  // }
 
   function handleAddExerciseToTemplate(exerciseName, sets, reps) {
     dispatch({
       type: "template/addExerciseToTemplate",
       payload: {
+        id: crypto.randomUUID(),
         exerciseName: exerciseName,
         sets: sets,
         reps: reps,
@@ -159,10 +189,16 @@ function TemplatesProvider({ children }) {
     // setTemplateNameInput(`Template ${template.displayNumber}`);
   }
 
+  function handleSaveEditedTemplate(setsInput) {
+    dispatch({ type: "template/saveEditedTemplate", payload: setsInput });
+  }
+
   return (
     <TemplatesContext.Provider
       value={{
+        toggleNewTemplate,
         handleToggleTemplateFormOverlay,
+        handleCloseEditTemplateButton,
         isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
         handleSaveTemplate,
@@ -178,6 +214,7 @@ function TemplatesProvider({ children }) {
         isCreateWorkoutTemplateOpen,
         exercises,
         handleDeleteTemplate,
+        handleSaveEditedTemplate,
       }}
     >
       {children}

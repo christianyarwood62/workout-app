@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useExercises } from "../contexts/ExercisesContext";
+import { useExercises } from "../../contexts/ExercisesContext";
 
 function ExerciseSearchBar() {
   const { handleSearchedExercise } = useExercises();

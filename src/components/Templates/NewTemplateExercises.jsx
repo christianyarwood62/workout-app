@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { useTemplates } from "../contexts/TemplatesContext";
-import TemplateExercise from "./TemplateExercise";
+import { useTemplates } from "../../contexts/TemplatesContext";
+import NewTemplateExercise from "./NewTemplateExercise";
 
-function TemplateExercises() {
+function NewTemplateExercises() {
   const [templateName, setTemplateName] = useState("");
   const { handleToggleTemplateFormOverlay, handleSaveTemplate, exercises } =
     useTemplates();
 
   return (
-    <div className="flex-column">
+    <form
+      className="flex-column"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSaveTemplate(templateName);
+      }}
+    >
       <div>
         <input
-          type="test"
           required
           placeholder="Template Name..."
           onChange={(e) => setTemplateName(e.target.value)}
@@ -19,7 +24,7 @@ function TemplateExercises() {
       </div>
       <div className="template-exercises ">
         {exercises.map((exercise) => (
-          <TemplateExercise key={exercise.exerciseName} value={exercise} />
+          <NewTemplateExercise key={exercise.id} value={exercise} />
         ))}
         <button
           className="add-template-exercise-button button"
@@ -29,18 +34,12 @@ function TemplateExercises() {
         </button>
       </div>
       <div className="save-template-button-container">
-        <button
-          className="button save-template-button"
-          onClick={(e) => {
-            e.preventDefault();
-            handleSaveTemplate(templateName);
-          }}
-        >
+        <button type="submit" className="button save-template-button">
           Save template
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 
-export default TemplateExercises;
+export default NewTemplateExercises;

@@ -1,7 +1,7 @@
-import { useTemplates } from "../contexts/TemplatesContext";
+import { useTemplates } from "../../contexts/TemplatesContext";
 
-function TemplateExercise({ value }) {
-  const { deleteExerciseFromTemplate, dispatch } = useTemplates();
+function NewTemplateExercise({ value }) {
+  const { dispatch } = useTemplates();
 
   return (
     <div className="exercise-in-template">
@@ -27,4 +27,4 @@ function TemplateExercise({ value }) {
   );
 }
 
-export default TemplateExercise;
+export default NewTemplateExercise;

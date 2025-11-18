@@ -1,9 +1,9 @@
-import AddWorkoutTemplateButton from "../components/AddWorkoutTemplateButton";
-import NewWorkoutForm from "../components/NewWorkoutForm";
-import WorkoutTemplateList from "../components/WorkoutTemplateList";
-import NewTemplateExerciseForm from "../components/NewTemplateExerciseForm";
-import TemplateExerciseErrorComponent from "../components/TemplateExerciseErrorComponent";
-import EditWorkoutOverlay from "../components/EditWorkoutOverlay";
+import AddTemplateButton from "../components/Templates/AddTemplateButton";
+import NewTemplate from "../components/Templates/NewTemplate";
+import TemplateList from "../components/Templates/TemplateList";
+import NewTemplateExerciseForm from "../components/Templates/NewTemplateExerciseForm";
+import TemplateExerciseErrorComponent from "../components/Templates/TemplateExerciseErrorComponent";
+import EditWorkoutOverlay from "../components/Templates/EditWorkoutOverlay";
 import { useTemplates } from "../contexts/TemplatesContext";
 
 function WorkoutPage() {
@@ -15,9 +15,9 @@ function WorkoutPage() {
 
   return (
     <>
-      <AddWorkoutTemplateButton />
-      {isCreateWorkoutTemplateOpen && <NewWorkoutForm />}
-      {<WorkoutTemplateList />}
+      <AddTemplateButton />
+      {isCreateWorkoutTemplateOpen && <NewTemplate />}
+      {<TemplateList />}
       <NewTemplateExerciseForm />
       {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}

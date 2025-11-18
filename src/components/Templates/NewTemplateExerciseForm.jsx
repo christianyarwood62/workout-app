@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useExercises } from "../contexts/ExercisesContext";
-import { useTemplates } from "../contexts/TemplatesContext";
+import { useExercises } from "../../contexts/ExercisesContext";
+import { useTemplates } from "../../contexts/TemplatesContext";
 
 function NewTemplateExerciseForm() {
   const [setsInput, setSetsInput] = useState("");

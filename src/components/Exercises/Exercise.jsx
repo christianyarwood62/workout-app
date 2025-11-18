@@ -1,4 +1,4 @@
-import { useExercises } from "../contexts/ExercisesContext";
+import { useExercises } from "../../contexts/ExercisesContext";
 
 function Exercise({ exercise, children }) {
   const { handleSelection } = useExercises();

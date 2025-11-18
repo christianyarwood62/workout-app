@@ -1,7 +1,7 @@
-import { useTemplates } from "../contexts/TemplatesContext";
-import TemplateExercises from "./TemplateExercises";
+import { useTemplates } from "../../contexts/TemplatesContext";
+import NewTemplateExercises from "./NewTemplateExercises";
 
-function NewWorkoutForm() {
+function NewTemplate() {
   const { dispatch } = useTemplates();
 
   return (
@@ -18,9 +18,9 @@ function NewWorkoutForm() {
         x
       </button>
       <h2>💪 Choose your exercises for this template</h2>
-      <TemplateExercises />
+      <NewTemplateExercises />
     </div>
   );
 }
 
-export default NewWorkoutForm;
+export default NewTemplate;

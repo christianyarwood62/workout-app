@@ -1,5 +1,5 @@
-import { useExercises } from "../contexts/ExercisesContext";
-import Button from "../UI/Button";
+import { useExercises } from "../../contexts/ExercisesContext";
+import Button from "../../UI/Button";
 import { X, History, Archive } from "lucide-react";
 
 function ExerciseDetails() {
