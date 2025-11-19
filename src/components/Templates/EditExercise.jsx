@@ -1,17 +1,19 @@
-function EditExercise({ exercise }) {
+import { useState } from "react";
+
+function EditExercise({ exercise, onEditExercise }) {
+  function handleSetsUpdate(e) {
+    onEditExercise({
+      ...exercise,
+      sets: e.target.value,
+    });
+  }
   return (
     <div key={exercise.id} className="flex-row">
       <span style={{ color: "white" }}>Delete</span>
       <p>{exercise.exerciseName}</p>
       <input
         defaultValue={exercise.sets}
-        // onChange={(e) => setNewSets(e.target.value)}
-        // onChange={(e) =>
-        //   dispatch({
-        //     type: "editedTemplate/updateSets",
-        //     payload: { sets: Number(e.target.value), index: i },
-        //   })
-        // }
+        onChange={handleSetsUpdate}
         style={{ width: "50px" }}
       />
       <input defaultValue={exercise.reps} style={{ width: "50px" }} />

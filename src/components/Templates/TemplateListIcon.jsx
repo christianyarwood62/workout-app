@@ -5,7 +5,6 @@ import { Trash } from "lucide-react";
 function TemplateListIcon({ template }) {
   const { handleShowEditTemplate, handleDeleteTemplate } = useTemplates();
 
-  console.log(template);
   return (
     <div className="workout-template-icon">
       <div className="icon-buttons">

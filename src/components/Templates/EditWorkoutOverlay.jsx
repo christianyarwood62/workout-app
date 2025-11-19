@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useTemplates } from "../../contexts/TemplatesContext";
 import EditTemplateExercise from "../EditTemplateExercise";
 import EditExercise from "./EditExercise";
@@ -32,11 +32,33 @@ import EditExercise from "./EditExercise";
 
 function EditWorkoutOverlay() {
   const [newTemplateName, setNewTemplateName] = useState("");
+  const [editedExercises, setEditedExercises] = useState([]);
+  // const [editedExercises, setEditedExercises] = useState({
+  //   exerciseName: "",
+  //   id: "",
+  //   reps: "",
+  //   sets: "",
+  // });
+
+  function handleEditExercise(updatedExercise) {
+    setEditedExercises((cur) =>
+      cur.map((exerciseInState) =>
+        exerciseInState.id === updatedExercise.id
+          ? updatedExercise
+          : exerciseInState
+      )
+    );
+  }
+
   const {
     editingTemplate,
     handleCloseEditTemplateButton,
     handleSaveEditedTemplate,
   } = useTemplates();
+
+  useEffect(() => {
+    setEditedExercises(editingTemplate.exercises);
+  }, [editingTemplate.exercises]);
 
   // const [{ exercises, id, templateName }, dispatch] = useReducer(
   //   reducer,
@@ -52,7 +74,11 @@ function EditWorkoutOverlay() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSaveEditedTemplate(newTemplateName, editingTemplate.id);
+            handleSaveEditedTemplate(
+              newTemplateName,
+              editedExercises,
+              editingTemplate.id
+            );
           }}
         >
           <div className="workout-template-icon">
@@ -74,6 +100,7 @@ function EditWorkoutOverlay() {
               />
               {editingTemplate.exercises.map((exercise) => (
                 <EditExercise
+                  onEditExercise={handleEditExercise}
                   templateName={editingTemplate.templateName}
                   exercise={exercise}
                   key={exercise.id}

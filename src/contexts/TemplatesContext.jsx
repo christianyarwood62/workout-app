@@ -78,6 +78,7 @@ function reducer(state, action) {
                 ...template,
                 templateName:
                   action.payload.newTemplateName || template.templateName,
+                exercises: action.payload.editedExercises,
               }
             : template
         ),
@@ -133,7 +134,6 @@ function TemplatesProvider({ children }) {
     setEditTemplateOverlayOpen(true);
     dispatch({ type: "template/openEditForm", payload: template });
     // dispatch({type: 'template/showEdittemplate', payload: })
-    console.log("test");
   }
 
   function deleteExerciseFromNewTemplate(exerciseName) {
@@ -148,7 +148,7 @@ function TemplatesProvider({ children }) {
       type: "template/addExerciseToTemplate",
       payload: {
         id: crypto.randomUUID(),
-        exerciseName: exerciseName,
+        exerciseName,
         sets: sets,
         reps: reps,
       },
@@ -159,7 +159,7 @@ function TemplatesProvider({ children }) {
   function handleSaveTemplate(templateName, exercises) {
     dispatch({
       type: "template/saveTemplate",
-      payload: { newExercises: exercises, templateName: templateName },
+      payload: { newExercises: exercises, templateName },
     });
   }
 
@@ -171,10 +171,10 @@ function TemplatesProvider({ children }) {
     dispatch({ type: "toggleOverlay", payload: "isTemplateExerciseErrorOpen" });
   }
 
-  function handleSaveEditedTemplate(newTemplateName, id) {
+  function handleSaveEditedTemplate(newTemplateName, editedExercises, id) {
     dispatch({
       type: "template/saveEditedTemplate",
-      payload: { newTemplateName: newTemplateName, id },
+      payload: { newTemplateName, id, editedExercises },
     });
     setEditTemplateOverlayOpen(false);
   }
