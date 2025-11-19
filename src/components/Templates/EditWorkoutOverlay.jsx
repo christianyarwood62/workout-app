@@ -1,34 +1,6 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTemplates } from "../../contexts/TemplatesContext";
-import EditTemplateExercise from "../EditTemplateExercise";
 import EditExercise from "./EditExercise";
-
-// const tempInitialState = {
-//   exercises: [
-//     {
-//       exerciseName: "",
-//       id: "",
-//       reps: "",
-//       sets: "",
-//     },
-//   ],
-//   id: "",
-//   templateName: "",
-// };
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "editedTemplate/updateSets": {
-//       return {
-//         ...state,
-//         exercises,
-//       };
-//     }
-
-//     default:
-//       return state;
-//   }
-// }
 
 function EditWorkoutOverlay() {
   const [newTemplateName, setNewTemplateName] = useState("");
@@ -59,11 +31,6 @@ function EditWorkoutOverlay() {
   useEffect(() => {
     setEditedExercises(editingTemplate.exercises);
   }, [editingTemplate.exercises]);
-
-  // const [{ exercises, id, templateName }, dispatch] = useReducer(
-  //   reducer,
-  //   tempInitialState
-  // );
 
   return (
     <div onClick={handleCloseEditTemplateButton} className="overlay-backdrop">
@@ -98,7 +65,7 @@ function EditWorkoutOverlay() {
                 defaultValue={editingTemplate.templateName}
                 onChange={(e) => setNewTemplateName(e.target.value)}
               />
-              {editingTemplate.exercises.map((exercise) => (
+              {editedExercises.map((exercise) => (
                 <EditExercise
                   onEditExercise={handleEditExercise}
                   templateName={editingTemplate.templateName}
