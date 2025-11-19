@@ -35,7 +35,7 @@ function reducer(state, action) {
       return {
         ...state,
         exercises: state.exercises.filter(
-          (exercise) => exercise.exerciseName !== action.payload
+          (exercise) => exercise.id !== action.payload
         ),
       };
     case "template/saveTemplate":
@@ -136,10 +136,10 @@ function TemplatesProvider({ children }) {
     // dispatch({type: 'template/showEdittemplate', payload: })
   }
 
-  function deleteExerciseFromNewTemplate(exerciseName) {
+  function deleteExerciseFromNewTemplate(exerciseId) {
     dispatch({
       type: "template/deleteExerciseFromNewTemplate",
-      payload: exerciseName,
+      payload: exerciseId,
     });
   }
 

@@ -7,9 +7,8 @@ function NewTemplateExercise({ proposedExercise }) {
     <div className="exercise-in-template">
       <div className="icon-top-area">
         <button
-          onClick={(proposedExercise) =>
-            deleteExerciseFromNewTemplate(proposedExercise.exerciseName)
-          }
+          type="button"
+          onClick={() => deleteExerciseFromNewTemplate(proposedExercise.id)}
           className="button icon-x"
         >
           🗑️
