@@ -7,11 +7,8 @@ function NewTemplateExerciseOverlay() {
   const [repsInput, setRepsInput] = useState("");
   const [exerciseName, setExerciseName] = useState("");
 
-  const {
-    handleToggleTemplateFormOverlay,
-    handleAddExerciseToTemplate,
-    setShowingNewExerciseForm,
-  } = useTemplates();
+  const { handleAddExerciseToTemplate, handleShowingNewExerciseFrom } =
+    useTemplates();
 
   const { exercises } = useExercises();
 
@@ -21,7 +18,7 @@ function NewTemplateExerciseOverlay() {
         e.preventDefault();
         setSetsInput("");
         setRepsInput("");
-        setShowingNewExerciseForm();
+        handleShowingNewExerciseFrom();
       }}
       className="overlay-backdrop"
     >
@@ -33,7 +30,7 @@ function NewTemplateExerciseOverlay() {
           onSubmit={(e) => {
             e.preventDefault();
             handleAddExerciseToTemplate(exerciseName, setsInput, repsInput);
-            setShowingNewExerciseForm(false);
+            handleShowingNewExerciseFrom();
             setRepsInput(null);
             setSetsInput(null);
           }}

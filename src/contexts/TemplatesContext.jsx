@@ -4,16 +4,10 @@ import { createContext } from "react";
 const TemplatesContext = createContext();
 
 const initialState = {
-  // workoutTemplates: [],
-  // templateNameInput: "",
-  selectedTemplateToEdit: null,
-  // templateCounter: 0,
-  // selectedExercisesForTemplate: [],
-  isTemplateOverlayOpen: false,
   isTemplateExerciseErrorOpen: false,
-  isEditTemplateOverlayOpen: false,
   exercises: [],
   templates: [],
+  editingTemplate: {},
 };
 
 function reducer(state, action) {
@@ -52,7 +46,7 @@ function reducer(state, action) {
           {
             id: crypto.randomUUID(),
             templateName: action.payload.templateName,
-            exercises: action.payload.exercises,
+            exercises: action.payload.newExercises,
           },
         ],
         exercises: [],
@@ -68,19 +62,26 @@ function reducer(state, action) {
         ),
       };
     case "template/openEditForm": {
-      // id is the id of the icon clicked on edit
-      const templateToEdit = state.templates.find(
-        (template) => template.id === action.payload.id
-      );
       return {
         ...state,
-        [action.payload.overlay]: !state[action.payload.overlay],
-        selectedTemplateToEdit: templateToEdit,
+        editingTemplate: action.payload,
       };
     }
 
     case "template/saveEditedTemplate":
-      return { ...state };
+      return {
+        ...state,
+        editingTemplate: {},
+        templates: state.templates.map((template) =>
+          template.id === action.payload.id
+            ? {
+                ...template,
+                templateName:
+                  action.payload.newTemplateName || template.templateName,
+              }
+            : template
+        ),
+      };
 
     default:
       return state;
@@ -91,17 +92,11 @@ function TemplatesProvider({ children }) {
   const [showingNewExerciseForm, setShowingNewExerciseForm] = useState(false);
   const [showingNewTemplate, setShowingNewTemplate] = useState(false);
   const [templateNameInput, setTemplateNameInput] = useState("");
+  const [isEditTemplateOverlayOpen, setEditTemplateOverlayOpen] =
+    useState(false);
 
   const [
-    {
-      isTemplateOverlayOpen,
-      isTemplateExerciseErrorOpen,
-      isEditTemplateOverlayOpen,
-      isCreateWorkoutTemplateOpen,
-      exercises,
-      templates,
-      selectedTemplateToEdit,
-    },
+    { isTemplateExerciseErrorOpen, exercises, templates, editingTemplate },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -111,6 +106,12 @@ function TemplatesProvider({ children }) {
   function handleShowingNewTemplate() {
     setShowingNewTemplate(!showingNewTemplate);
   }
+
+  function handleShowingNewExerciseFrom() {
+    setShowingNewExerciseForm(!showingNewExerciseForm);
+  }
+
+  // Handles the logic behind updating the templates from the reducer
 
   useEffect(
     function () {
@@ -128,18 +129,11 @@ function TemplatesProvider({ children }) {
     [isTemplateExerciseErrorOpen]
   );
 
-  function toggleNewTemplateExerciseOverlay() {
-    dispatch({
-      type: "template/openCloseNewTemplateExerciseForm",
-      payload: "",
-    });
-  }
-
-  function handleCloseEditTemplateButton() {
-    dispatch({
-      type: "toggleOverlay",
-      payload: "isEditTemplateOverlayOpen",
-    });
+  function handleShowEditTemplate(template) {
+    setEditTemplateOverlayOpen(true);
+    dispatch({ type: "template/openEditForm", payload: template });
+    // dispatch({type: 'template/showEdittemplate', payload: })
+    console.log("test");
   }
 
   function deleteExerciseFromNewTemplate(exerciseName) {
@@ -162,10 +156,10 @@ function TemplatesProvider({ children }) {
     dispatch({ type: "toggleOverlay", payload: "isTemplateOverlayOpen" });
   }
 
-  function handleSaveTemplate(templateName) {
+  function handleSaveTemplate(templateName, exercises) {
     dispatch({
       type: "template/saveTemplate",
-      payload: { exercises: exercises, templateName: templateName },
+      payload: { newExercises: exercises, templateName: templateName },
     });
   }
 
@@ -177,44 +171,35 @@ function TemplatesProvider({ children }) {
     dispatch({ type: "toggleOverlay", payload: "isTemplateExerciseErrorOpen" });
   }
 
-  function toggleEditWorkoutForm(id) {
+  function handleSaveEditedTemplate(newTemplateName, id) {
     dispatch({
-      type: "template/openEditForm",
-      payload: { overlay: "isEditTemplateOverlayOpen", id },
+      type: "template/saveEditedTemplate",
+      payload: { newTemplateName: newTemplateName, id },
     });
-    // setTemplateNameInput(`Template ${template.displayNumber}`);
-  }
-
-  function handleSaveEditedTemplate(updatedExercises) {
-    dispatch({ type: "template/saveEditedTemplate", payload: setsInput });
+    setEditTemplateOverlayOpen(false);
   }
 
   return (
     <TemplatesContext.Provider
       value={{
-        toggleNewTemplateExerciseOverlay,
-        handleCloseEditTemplateButton,
+        handleShowEditTemplate,
         deleteExerciseFromNewTemplate,
-        isTemplateOverlayOpen,
         handleAddExerciseToTemplate,
         handleSaveTemplate,
         isTemplateExerciseErrorOpen,
         handleToggleTemplateExerciseErrorOpen,
         templates,
-        toggleEditWorkoutForm,
         isEditTemplateOverlayOpen,
-        selectedTemplateToEdit,
         setTemplateNameInput,
         templateNameInput,
-        dispatch,
-        isCreateWorkoutTemplateOpen,
         exercises,
         handleDeleteTemplate,
         handleSaveEditedTemplate,
-        setShowingNewExerciseForm,
+        handleShowingNewExerciseFrom,
         showingNewExerciseForm,
         handleShowingNewTemplate,
         showingNewTemplate,
+        editingTemplate,
       }}
     >
       {children}

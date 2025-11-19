@@ -10,11 +10,7 @@ function TemplateList() {
     return (
       <div className="workout-template-container">
         {templates?.map((template) => (
-          <TemplateListIcon
-            template={template}
-            displayNumber={template.templateCounter}
-            key={template.id}
-          />
+          <TemplateListIcon template={template} key={template.id} />
         ))}
       </div>
     );

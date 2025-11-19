@@ -1,22 +1,24 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 
-function NewTemplateExercise({ value }) {
+function NewTemplateExercise({ proposedExercise }) {
   const { deleteExerciseFromNewTemplate } = useTemplates();
 
   return (
     <div className="exercise-in-template">
       <div className="icon-top-area">
         <button
-          onClick={(value) => deleteExerciseFromNewTemplate(value.exerciseName)}
+          onClick={(proposedExercise) =>
+            deleteExerciseFromNewTemplate(proposedExercise.exerciseName)
+          }
           className="button icon-x"
         >
           🗑️
         </button>
       </div>
       <div className="icon-lower-area">
-        <p className="text-in-icon">{value.exerciseName}</p>
-        <p className="text-in-icon">Sets: {value.sets}</p>
-        <p className="text-in-icon">Reps: {value.reps}</p>
+        <p className="text-in-icon">{proposedExercise.exerciseName}</p>
+        <p className="text-in-icon">Sets: {proposedExercise.sets}</p>
+        <p className="text-in-icon">Reps: {proposedExercise.reps}</p>
       </div>
     </div>
   );

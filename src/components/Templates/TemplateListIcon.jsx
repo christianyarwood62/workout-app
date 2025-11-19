@@ -3,8 +3,9 @@ import EditButton from "../EditButton";
 import { Trash } from "lucide-react";
 
 function TemplateListIcon({ template }) {
-  const { toggleEditWorkoutForm, handleDeleteTemplate } = useTemplates();
+  const { handleShowEditTemplate, handleDeleteTemplate } = useTemplates();
 
+  console.log(template);
   return (
     <div className="workout-template-icon">
       <div className="icon-buttons">
@@ -21,7 +22,7 @@ function TemplateListIcon({ template }) {
 
         <EditButton
           className="icon-edit-button button"
-          onClick={() => toggleEditWorkoutForm(template.id)}
+          onClick={() => handleShowEditTemplate(template)}
         />
       </div>
       <div className="template-icon-header">

@@ -1,6 +1,6 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 
-function AddTemplateButton({}) {
+function AddTemplateButton() {
   const {
     isCreateWorkoutTemplateOpen,
     templates,
