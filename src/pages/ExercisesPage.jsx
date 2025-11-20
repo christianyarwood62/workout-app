@@ -10,10 +10,8 @@ function ExercisesPage() {
 
   return (
     <div className="main-content">
-      <div className="content-container">
-        {!selectedExercise && <ExercisesList />}
-        {selectedExercise && <ExerciseDetails />}
-      </div>
+      {!selectedExercise && <ExercisesList />}
+      {selectedExercise && <ExerciseDetails />}
     </div>
   );
 }

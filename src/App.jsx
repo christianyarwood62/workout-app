@@ -14,34 +14,32 @@ import AppLayout from "./UI/AppLayout";
 
 function App() {
   return (
-    <div className="app">
-      <AuthenticationProvider>
-        <ExercisesProvider>
-          <TemplatesProvider>
-            <BrowserRouter basename="/workout-app/">
-              {/*basename needs to be here for workout-app */}
-              <UserTile className="user-tile" />
-              <Routes>
-                <Route path="/" element={<AppLayout />}>
-                  <Route index element={<Homepage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/exercises" element={<ExercisesPage />} />
-                  <Route path="/workout" element={<WorkoutPage />} />
-                  <Route
-                    path="/history"
-                    element={
-                      <ProtectedRoute>
-                        <HistoryPage />
-                      </ProtectedRoute>
-                    }
-                  />
-                </Route>
-              </Routes>
-            </BrowserRouter>
-          </TemplatesProvider>
-        </ExercisesProvider>
-      </AuthenticationProvider>
-    </div>
+    <AuthenticationProvider>
+      <ExercisesProvider>
+        <TemplatesProvider>
+          <BrowserRouter basename="/workout-app/">
+            {/*basename needs to be here for workout-app */}
+            <UserTile className="user-tile" />
+            <Routes>
+              <Route path="/" element={<AppLayout />}>
+                <Route index element={<Homepage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/exercises" element={<ExercisesPage />} />
+                <Route path="/workout" element={<WorkoutPage />} />
+                <Route
+                  path="/history"
+                  element={
+                    <ProtectedRoute>
+                      <HistoryPage />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </TemplatesProvider>
+      </ExercisesProvider>
+    </AuthenticationProvider>
   );
 }
 
