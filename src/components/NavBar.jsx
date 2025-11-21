@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +9,9 @@ function Navbar() {
   const tab3 = "Exercise history";
 
   return (
-    <header className="navbar-header">
-      <div className="navbar-container">
-        <h1 className="navbar-logo">
+    <header className={styles["navbar-header"]}>
+      <div className={styles["navbar-container"]}>
+        <h1 className={styles["navbar-logo"]}>
           <NavLink to="/">Dream Workout</NavLink>
         </h1>
 
@@ -18,7 +19,11 @@ function Navbar() {
           &#9776;
         </button>
 
-        <nav className={`navbar-links ${isOpen ? "open" : ""}`}>
+        <nav
+          className={`${styles["navbar-links"]} ${
+            isOpen ? styles["open"] : ""
+          }`}
+        >
           <NavLink to="/exercises">{tab1}</NavLink>
           <NavLink to="/workout">{tab2}</NavLink>
           <NavLink to="/history">{tab3}</NavLink>

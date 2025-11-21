@@ -1,17 +1,15 @@
-import { useState, useEffect } from "react";
-import { useAuthentication } from "../contexts/AuthenticationContext";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import Login from "../components/Login";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   return (
     <div className="main-content">
-      <div className="login-page">
-        <div className="loginPage-logo">Logo</div>
-        <div className="login-title">
-          <h1 className="login-title-header">Dream Workout</h1>
-          <p className="login-title-text">
+      <div className={styles["login-page"]}>
+        <div className={styles["loginPage_logo"]}>Logo</div>
+        <div className={styles["login-title"]}>
+          <h1 className={styles["login-title-header"]}>Dream Workout</h1>
+          <p className={styles["login-title-text"]}>
             Transform into the best version of yourself
           </p>
         </div>

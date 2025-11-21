@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginDropDown from "./LoginDropDown";
 import Button from "../UI/Button";
+import styles from "./UserTile.module.css";
 
 function UserTile() {
   const { user } = useAuthentication();
@@ -12,21 +13,19 @@ function UserTile() {
   const navigate = useNavigate();
 
   return (
-    <div className="profileTile_container">
-      <div className="profileTile_user">
-        <User color="#e9e2e2" />
+    <div className={styles["profileTile_container"]}>
+      <User color="#e9e2e2" />
 
-        {user ? (
-          <span>{user}</span>
-        ) : (
-          <Button className="userTile_signIn_button" to="/login">
-            Sign in
-          </Button>
-        )}
-        <button>
-          <ChevronDown onClick={() => setIsDropDownOpen(!isDropdownOpen)} />
-        </button>
-      </div>
+      {user ? (
+        <span>{user}</span>
+      ) : (
+        <Button className={styles["userTile_signIn_button"]} to="/login">
+          Sign in
+        </Button>
+      )}
+      <button>
+        <ChevronDown onClick={() => setIsDropDownOpen(!isDropdownOpen)} />
+      </button>
       <LoginDropDown isDropDownOpen={isDropdownOpen} />
     </div>
   );
