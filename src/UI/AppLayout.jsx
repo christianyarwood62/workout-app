@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import Footer from "./Footer";
-
+import UserTile from "../components/UserTile";
 import Plasma from "./Plasma";
 
 function AppLayout() {
   return (
     <>
       <Navbar />
+      <UserTile />
       <Plasma
         color="#3f0fdb"
         speed={0.4}

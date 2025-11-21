@@ -7,7 +7,16 @@ import Login from "../components/Login";
 function LoginPage() {
   return (
     <div className="main-content">
-      <Login />
+      <div className="login-page">
+        <div className="loginPage-logo">Logo</div>
+        <div className="login-title">
+          <h1 className="login-title-header">Dream Workout</h1>
+          <p className="login-title-text">
+            Transform into the best version of yourself
+          </p>
+        </div>
+        <Login />
+      </div>
     </div>
   );
 }

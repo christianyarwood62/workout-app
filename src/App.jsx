@@ -7,8 +7,6 @@ import HistoryPage from "./pages/HistoryPage";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
-import Navbar from "./components/NavBar";
-import UserTile from "./components/UserTile";
 import { TemplatesProvider } from "./contexts/TemplatesContext";
 import AppLayout from "./UI/AppLayout";
 
@@ -19,7 +17,6 @@ function App() {
         <TemplatesProvider>
           <BrowserRouter basename="/workout-app/">
             {/*basename needs to be here for workout-app */}
-            <UserTile className="user-tile" />
             <Routes>
               <Route path="/" element={<AppLayout />}>
                 <Route index element={<Homepage />} />

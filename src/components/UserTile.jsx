@@ -11,25 +11,23 @@ function UserTile() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <div className="profile-tile">
-        <div className="login-icon-container">
-          <User color="#e9e2e2" />
+    <div className="profileTile_container">
+      <div className="profileTile_user">
+        <User color="#e9e2e2" />
 
-          {user ? (
-            <span>{user}</span>
-          ) : (
-            <Button className="button-with-icon" to="/login">
-              Sign in
-            </Button>
-          )}
-          <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
-            <ChevronDown />
-          </button>
-        </div>
-        {isDropdownOpen && <LoginDropDown />}
+        {user ? (
+          <span>{user}</span>
+        ) : (
+          <Button className="userTile_signIn_button" to="/login">
+            Sign in
+          </Button>
+        )}
+        <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
+          <ChevronDown />
+        </button>
       </div>
-    </>
+      {isDropdownOpen && <LoginDropDown />}
+    </div>
   );
 }
 

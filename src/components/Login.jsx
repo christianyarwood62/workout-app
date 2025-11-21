@@ -20,19 +20,46 @@ export function Login() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="content-container">
-      <form onSubmit={handleLogin}>
-        <div className="email-container">
-          <label for="email">Email address:</label>
-          <input id="email" onChange={(e) => setEmail(e.target.value)} />
+    <form className="login_form" onSubmit={handleLogin}>
+      <h2>Welcome Back</h2>
+      <div className="login_field">
+        <label className="login_label" htmlFor="email">
+          Email Address
+        </label>
+        <input
+          className="login_input"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div className="login_field">
+        <label className="login_label" htmlFor="password">
+          Password
+        </label>
+        <input
+          className="login_input"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <div className="login_user_checks">
+        <div className="login_checkbox_container">
+          <input
+            name="login-checkbox"
+            className="login_checkbox"
+            type="checkbox"
+          />
+          <label htmlFor="login-checkbox">Remember me</label>
         </div>
-        <div className="password-container">
-          <label for="password">Password</label>
-          <input id="password" onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <Button>login</Button>
-      </form>
-    </div>
+
+        <button className="login_button">Forgot password?</button>
+      </div>
+      <Button className={"login_signIn_button"}>Sign in</Button>
+      <div className="login_signUp_text">
+        <button className="login_button">Don't have an account?</button>{" "}
+        <button className="login_button bold">Sign Up</button>
+      </div>
+    </form>
   );
 }
 
