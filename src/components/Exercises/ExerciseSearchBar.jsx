@@ -3,15 +3,17 @@ import { useExercises } from "../../contexts/ExercisesContext";
 import Button from "../../UI/Button";
 import { X } from "lucide-react";
 
+import styles from "./ExerciseSearchBar.module.css";
+
 function ExerciseSearchBar() {
   const { handleSearchedExercise, searchedExercise } = useExercises();
   const [input, setInput] = useState("");
 
   return (
-    <div className="search-container">
+    <div className={styles["search-container"]}>
       <h1>List of exercises</h1>
       <form
-        className="search-bar"
+        className={styles["search-bar"]}
         onSubmit={(e) => {
           e.preventDefault();
           handleSearchedExercise(input);
@@ -21,7 +23,7 @@ function ExerciseSearchBar() {
         <span>🔎</span>
         <input
           name="exercise-search"
-          className="search-input"
+          className={styles["search-input"]}
           type="text"
           onChange={(e) => setInput(e.target.value)}
           placeholder="Search for Exercises..."
@@ -29,7 +31,7 @@ function ExerciseSearchBar() {
         />
       </form>
       {searchedExercise ? (
-        <div className="results-button-container">
+        <div className={styles["results-button-container"]}>
           <Button
             className="button-with-icon"
             onClick={() => handleSearchedExercise("")}

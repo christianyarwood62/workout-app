@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useTemplates } from "../../contexts/TemplatesContext";
 import EditExercise from "./EditExercise";
 
+import styles from "./EditWorkoutOverlay";
+
 function EditWorkoutOverlay() {
   const [newTemplateName, setNewTemplateName] = useState("");
   const [editedExercises, setEditedExercises] = useState([]);
@@ -33,7 +35,10 @@ function EditWorkoutOverlay() {
   }, [editingTemplate.exercises]);
 
   return (
-    <div onClick={handleCloseEditTemplateButton} className="overlay-backdrop">
+    <div
+      onClick={handleCloseEditTemplateButton}
+      className={styles["overlay-backdrop"]}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
         className="overlay-content element-container" // no CSS for overlay-content, just here for understanding

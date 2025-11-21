@@ -1,11 +1,12 @@
 import { useExercises } from "../../contexts/ExercisesContext";
 import Button from "../../UI/Button";
 import { X, History, Archive } from "lucide-react";
+import styles from "./ExerciseDetails.module.css";
 
 function ExerciseDetails() {
   const { selectedExercise, handleSelection } = useExercises();
   return (
-    <div className="exercise-details-container">
+    <div className={styles["exercise-details-container"]}>
       <h2>{selectedExercise.name}</h2>
       <div className="flex-row gap-small">
         <Button

@@ -4,16 +4,18 @@ import { useExercises } from "../../contexts/ExercisesContext";
 import Button from "../../UI/Button";
 import { X } from "lucide-react";
 
+import styles from "./ExercisesList.module.css";
+
 function ExercisesList() {
   const { exercises, isLoading, handleSearchedExercise } = useExercises();
 
   return (
     <>
-      <div className="searchbar"></div>
+      <div className={styles.searchbar}></div>
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="exercises-list">
+        <div className={styles["exercises-list"]}>
           {exercises?.map((exercise) => (
             <Exercise exercise={exercise} key={exercise.name}>
               {exercise.name}

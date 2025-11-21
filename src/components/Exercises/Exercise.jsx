@@ -1,12 +1,14 @@
 import { useExercises } from "../../contexts/ExercisesContext";
 
+import styles from "./Exercise.module.css";
+
 function Exercise({ exercise, children }) {
   const { handleSelection } = useExercises();
 
   return (
-    <div className="exercise">
+    <div className={styles.exercise}>
       <button
-        className="exercise-icon"
+        className={styles["exercise-icon"]}
         onClick={() => handleSelection(exercise)}
       >
         <p>{children}</p>

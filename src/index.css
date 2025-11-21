@@ -64,105 +64,16 @@ body {
   position: relative;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 /* Home page */
-
-.homepage-container {
-}
 /* Footer */
 
-.footer {
-  padding: 2rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  height: var(--footer-height);
-  background-color: var(--header-footer-background-color);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  bottom: 0px;
-  z-index: 1;
-  left: 0;
-  width: 100%;
-}
-
-/* From Uiverse.io by ahmed150up2 */
-.footer-card {
-  display: flex;
-  height: 70px;
-  width: 270px;
-}
-
-.footer-card svg {
-  position: absolute;
-  display: flex;
-  width: 60%;
-  height: 100%;
-  font-size: 24px;
-  font-weight: 700;
-  opacity: 1;
-  transition: opacity 0.25s;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.footer-card .social-link1,
-.footer-card .social-link2,
-.footer-card .social-link3,
-.footer-card .social-link4 {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 25%;
-  color: whitesmoke;
-  font-size: 24px;
-  text-decoration: none;
-  transition: 0.25s;
-  border-radius: 50px;
-}
-
-.footer-card svg {
-  transform: scale(1);
-}
-
-.footer-card .social-link1:hover {
-  background-color: #1a1e22;
-  animation: bounce_613 0.4s linear;
-}
-
-.footer-card .social-link2:hover {
-  background-color: #0a66c2;
-  animation: bounce_613 0.4s linear;
-}
-
-.footer-card .social-link3:hover {
-  background-color: #0059f7;
-  animation: bounce_613 0.4s linear;
-}
-
-.footer-card .social-link4:hover {
-  background-color: #1d4292;
-  animation: bounce_613 0.4s linear;
-}
-
-@keyframes bounce_613 {
-  40% {
-    transform: scale(1.4);
-  }
-  60% {
-    transform: scale(0.8);
-  }
-  80% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+.homepage-container {
+  padding-bottom: 10rem;
 }
 
 /* Login page*/
@@ -258,10 +169,6 @@ nav a {
   color: white;
 }
 
-.navbar-links {
-  display: flex;
-}
-
 /* Burger menu */
 
 .burger-menu {
@@ -276,27 +183,6 @@ nav a {
     font-size: 1.5rem;
   }
 
-  .navbar-links {
-    position: absolute;
-    z-index: 1100;
-    display: flex;
-    align-items: flex-end;
-    height: 0;
-    opacity: 0;
-    transition: height 0.8s linear, opacity 0.8s linear;
-    overflow: hidden;
-    flex-direction: column;
-    right: 1rem;
-    top: 5rem;
-    padding: 0.3rem;
-    border-radius: 8px;
-  }
-
-  .navbar-links.open {
-    height: 150px;
-    opacity: 1;
-  }
-
   .button-with-icon svg {
     display: none;
   }
@@ -308,83 +194,12 @@ nav a {
   color: white;
 }
 
-.login-dropdown-container {
-  height: 0;
-  background-color: rgba(255, 255, 255, 0.944);
-  position: absolute;
-  top: 4.5rem;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  opacity: 0;
-  transition: height 0.5s linear, opacity 0.5s linear, padding 0.5s ease;
-  padding: 0 1rem;
-}
-
-.login-dropdown-container.open {
-  display: flex;
-  height: 4rem;
-  opacity: 1;
-  padding: 1rem;
-}
-
-.login-dropdown_user {
-  color: black;
-}
-
 /* The exercises page */
 
 .exercises-list-component {
   display: flex;
   flex-direction: column;
   max-height: 400px;
-}
-
-.exercisesPage-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  margin: 64px;
-  margin-top: 32px;
-  border-radius: 32px;
-}
-
-.exercises-list {
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  padding-top: 16px;
-}
-
-.exercise {
-  flex-shrink: 1;
-}
-
-.exercise-icon {
-  transition: all 0.2s ease;
-  cursor: pointer;
-  width: fit-content;
-  background-color: var(--main-color);
-  border-radius: 16px;
-  padding: 8px 16px;
-  border: grey solid 0.1px;
-}
-
-.exercise p {
-  font-size: 1rem;
-  padding: 1rem;
-}
-
-.exercise-details-container h2 {
-  color: white;
-}
-
-.exercise-details-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .buttons {
@@ -395,53 +210,8 @@ nav a {
   bottom: 45px;
 }
 
-.exercise-details-container h2 {
-  width: 400px;
-}
-
 /* For the Search bar in the exercises page */
 
-.searchbar {
-  display: flex;
-  width: 80%;
-}
-
-.search-bar {
-  max-width: 30rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /* gap: 2rem; */
-  background-color: rgb(255, 255, 255);
-  border-radius: 32px;
-}
-
-.search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  gap: 1.5rem;
-}
-
-.search-input {
-  all: unset;
-  text-align: center;
-  /* width: 100%; */
-}
-
-.searchbar button {
-  color: white;
-  position: relative;
-  left: 32px;
-}
-
-.results-button-container {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 3rem;
-}
 /* Workout Page  */
 
 .workout-template-list {
@@ -497,63 +267,14 @@ nav a {
   border-radius: 32px;
 }
 
-.workout-template-container {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  margin: 64px 32px;
-}
-
-.workout-template-icon {
-  background-color: var(--main-color);
-  width: 16rem;
-  height: 8rem;
-  border-radius: 32px;
-  padding: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 2px 2px 2px var(--button-hover-shadow);
-}
-
 .exercise-icon:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--button-hover-shadow);
   background-color: var(--accent-color);
 }
-*/ .workout-template-icon h3 {
-  position: sticky;
-  top: 5px;
-  background-color: var(--main-color);
-  z-index: 1;
-  text-align: center;
-}
-
-.workout-template-icon-exercises {
-  padding-top: 16px;
-  font-size: 12px;
-  overflow: auto;
-  flex: 1;
-}
 
 .workout-template-icon p {
   font-size: 12px;
-}
-
-.workout-template-icon-exercises::after {
-  /* content: "";
-  position: sticky;
-  bottom: 0;
-  height: 1rem;
-  display: block;
-  background: linear-gradient(
-    to bottom,
-    rgba(167, 226, 227, 0) 0%,
-    rgba(167, 226, 227, 1) 100%
-  );
-  pointer-events: none;
-  z-index: 3;
-  border-radius: 0 0 32px 32px; */
 }
 
 /* Buttons */
@@ -561,6 +282,7 @@ nav a {
 button {
   cursor: pointer;
 }
+
 a {
   text-decoration: none;
 }
@@ -590,17 +312,6 @@ button:hover {
   background-color: var(--button-color);
 }
 
-.add-template-button {
-  display: flex;
-  justify-content: center;
-  margin: 64px;
-}
-
-.add-template-exercise-button {
-  height: 128px;
-  width: 128px;
-}
-
 .save-template-button {
   margin-top: 32px;
   background-color: #222a84;
@@ -611,27 +322,9 @@ button:hover {
   box-shadow: 0px 0px 17px rgb(255, 255, 255);
 }
 
-.delete-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 4px;
-  border-radius: 8px;
-  background-color: var(--main-color);
-}
-
 .save-template-button-container {
   display: flex;
   justify-content: center;
-}
-
-.icon-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.icon-edit-button {
-  cursor: pointer;
 }
 
 /* Edit button */
@@ -690,18 +383,4 @@ button:hover {
   padding: 0;
   border: none;
   transition-duration: 0.3s;
-}
-
-/* Overlay.css */
-.overlay-backdrop {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
 }

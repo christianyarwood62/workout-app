@@ -1,0 +1,18 @@
+.exercise {
+  flex-shrink: 1;
+}
+
+.exercise p {
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.exercise-icon {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  width: fit-content;
+  background-color: var(--main-color);
+  border-radius: 16px;
+  padding: 8px 16px;
+  border: grey solid 0.1px;
+}

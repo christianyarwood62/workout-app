@@ -1,0 +1,18 @@
+.searchbar {
+  display: flex;
+  width: 80%;
+}
+
+.searchbar button {
+  color: white;
+  position: relative;
+  left: 32px;
+}
+
+.exercises-list {
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-top: 16px;
+}

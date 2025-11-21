@@ -1,0 +1,23 @@
+.login-dropdown-container {
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.944);
+  position: absolute;
+  top: 4.5rem;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.5s linear, opacity 0.5s linear, padding 0.5s ease;
+  padding: 0 1rem;
+}
+
+.login-dropdown-container.open {
+  display: flex;
+  height: 4rem;
+  opacity: 1;
+  padding: 1rem;
+}
+
+.login-dropdown_user {
+  color: black;
+}

@@ -1,0 +1,44 @@
+.workout-template-icon {
+  background-color: var(--main-color);
+  width: 16rem;
+  height: 8rem;
+  border-radius: 32px;
+  padding: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px var(--button-hover-shadow);
+}
+
+.workout-template-icon h3 {
+  position: sticky;
+  top: 5px;
+  background-color: var(--main-color);
+  z-index: 1;
+  text-align: center;
+}
+
+.icon-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  border-radius: 8px;
+  background-color: var(--main-color);
+}
+
+.icon-edit-button {
+  cursor: pointer;
+}
+
+.workout-template-icon-exercises {
+  padding-top: 16px;
+  font-size: 12px;
+  overflow: auto;
+  flex: 1;
+}

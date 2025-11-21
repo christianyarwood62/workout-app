@@ -1,0 +1,6 @@
+.workout-template-container {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 64px 32px;
+}

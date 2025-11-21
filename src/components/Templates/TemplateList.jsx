@@ -1,6 +1,8 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 import TemplateListIcon from "./TemplateListIcon";
 
+import styles from "./TemplateList.module.css";
+
 function TemplateList() {
   const { templates } = useTemplates();
 
@@ -8,7 +10,7 @@ function TemplateList() {
 
   if (templates.length > 0)
     return (
-      <div className="workout-template-container">
+      <div className={styles["workout-template-container"]}>
         {templates?.map((template) => (
           <TemplateListIcon template={template} key={template.id} />
         ))}

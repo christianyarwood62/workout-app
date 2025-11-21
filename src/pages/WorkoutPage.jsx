@@ -9,24 +9,21 @@ import { useState } from "react";
 
 function WorkoutPage() {
   const {
-    isCreateWorkoutTemplateOpen,
     isTemplateExerciseErrorOpen,
     isEditTemplateOverlayOpen,
-    isTemplateOverlayOpen,
     showingNewExerciseForm,
-    handleShowingNewTemplate,
     showingNewTemplate,
   } = useTemplates();
 
   return (
-    <>
+    <div className="main-content">
       <AddTemplateButton />
       {showingNewTemplate && <NewTemplate />}
       {<TemplateList />}
       {showingNewExerciseForm && <NewTemplateExerciseOverlay />}
       {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
       {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
-    </>
+    </div>
   );
 }
 

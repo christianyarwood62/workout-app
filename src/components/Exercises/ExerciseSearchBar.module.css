@@ -1,0 +1,30 @@
+.search-bar {
+  max-width: 30rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* gap: 2rem; */
+  background-color: rgb(255, 255, 255);
+  border-radius: 32px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  gap: 1.5rem;
+}
+
+.search-input {
+  all: unset;
+  text-align: center;
+  /* width: 100%; */
+}
+
+.results-button-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 3rem;
+}
