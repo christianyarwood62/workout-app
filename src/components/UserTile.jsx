@@ -6,8 +6,9 @@ import LoginDropDown from "./LoginDropDown";
 import Button from "../UI/Button";
 
 function UserTile() {
-  const { user, isDropdownOpen, setIsDropDownOpen } = useAuthentication();
+  const { user } = useAuthentication();
 
+  const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -22,11 +23,11 @@ function UserTile() {
             Sign in
           </Button>
         )}
-        <button onClick={() => setIsDropDownOpen(!isDropdownOpen)}>
-          <ChevronDown />
+        <button>
+          <ChevronDown onClick={() => setIsDropDownOpen(!isDropdownOpen)} />
         </button>
       </div>
-      {isDropdownOpen && <LoginDropDown />}
+      <LoginDropDown isDropDownOpen={isDropdownOpen} />
     </div>
   );
 }

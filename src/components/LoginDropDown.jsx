@@ -1,14 +1,18 @@
 import { useAuthentication } from "../contexts/AuthenticationContext";
 
-function LoginDropDown() {
+function LoginDropDown({ isDropDownOpen }) {
   const { user } = useAuthentication();
 
   return (
-    <div className="login-dropdown-container">
-      <div>
-        {user ? <p>Logged in as {user}</p> : <p>Dont have an account?</p>}
-      </div>
-      <div>{!user && <p>Sign up</p>}</div>
+    <div className={`login-dropdown-container ${isDropDownOpen ? "open" : ""}`}>
+      {user !== null ? (
+        <p className="login-dropdown_user">Logged in as {user}</p>
+      ) : (
+        <div>
+          <p className="login-dropdown_user">Dont have an account?</p>
+          <p>Sign up</p>
+        </div>
+      )}
     </div>
   );
 }
