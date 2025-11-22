@@ -32,10 +32,6 @@
   background-color: var(--main-color);
 }
 
-.icon-edit-button {
-  cursor: pointer;
-}
-
 .workout-template-icon-exercises {
   padding-top: 16px;
   font-size: 12px;

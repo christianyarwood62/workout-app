@@ -2,6 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
+import logo from "../assets/company-logo.png";
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const tab1 = "Exercises";
@@ -12,10 +14,15 @@ function Navbar() {
     <header className={styles["navbar-header"]}>
       <div className={styles["navbar-container"]}>
         <h1 className={styles["navbar-logo"]}>
-          <NavLink to="/">Dream Workout</NavLink>
+          <NavLink to="/">
+            <img src={logo} className={styles["navbarLogo"]} />
+          </NavLink>
         </h1>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="burger-menu">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={styles["burger-menu"]}
+        >
           &#9776;
         </button>
 

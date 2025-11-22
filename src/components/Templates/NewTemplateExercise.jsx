@@ -1,10 +1,12 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
 
+import styles from "./NewTemplateExercise.module.css";
+
 function NewTemplateExercise({ proposedExercise }) {
   const { deleteExerciseFromNewTemplate } = useTemplates();
 
   return (
-    <div className="exercise-in-template">
+    <div className={styles["exercise-in-template"]}>
       <div className="icon-top-area">
         <button
           type="button"

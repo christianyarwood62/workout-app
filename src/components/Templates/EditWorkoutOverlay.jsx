@@ -7,12 +7,6 @@ import styles from "./EditWorkoutOverlay";
 function EditWorkoutOverlay() {
   const [newTemplateName, setNewTemplateName] = useState("");
   const [editedExercises, setEditedExercises] = useState([]);
-  // const [editedExercises, setEditedExercises] = useState({
-  //   exerciseName: "",
-  //   id: "",
-  //   reps: "",
-  //   sets: "",
-  // });
 
   function handleEditExercise(updatedExercise) {
     setEditedExercises((cur) =>
@@ -35,10 +29,7 @@ function EditWorkoutOverlay() {
   }, [editingTemplate.exercises]);
 
   return (
-    <div
-      onClick={handleCloseEditTemplateButton}
-      className={styles["overlay-backdrop"]}
-    >
+    <div onClick={handleCloseEditTemplateButton} className="overlay-backdrop">
       <div
         onClick={(e) => e.stopPropagation()}
         className="overlay-content element-container" // no CSS for overlay-content, just here for understanding
@@ -53,15 +44,15 @@ function EditWorkoutOverlay() {
             );
           }}
         >
-          <div className="workout-template-icon">
-            <div className="icon-buttons">
+          <div className={styles["workout-template-icon"]}>
+            <div className={styles["icon-buttons"]}>
               <button
                 onClick={handleCloseEditTemplateButton}
                 className="icon-x button"
               >
                 X
               </button>
-              <button className="icon-edit-button button" type="submit">
+              <button className="button" type="submit">
                 ☑️ Save
               </button>
             </div>

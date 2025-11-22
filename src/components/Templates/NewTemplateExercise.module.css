@@ -1,0 +1,6 @@
+.exercise-in-template {
+  background-color: var(--main-color);
+  height: 128px;
+  width: 128px;
+  border-radius: 32px;
+}

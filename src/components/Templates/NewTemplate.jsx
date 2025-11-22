@@ -3,6 +3,8 @@ import { useTemplates } from "../../contexts/TemplatesContext";
 import NewTemplateExercise from "./NewTemplateExercise";
 import AddExerciseTile from "./AddExerciseTile";
 
+import styles from "./NewTemplate.module.css";
+
 function NewTemplate() {
   const [templateName, setTemplateName] = useState("");
 
@@ -10,7 +12,7 @@ function NewTemplate() {
     useTemplates();
 
   return (
-    <div className="new-template-form">
+    <div className={styles["new-template-form"]}>
       <button className="button" onClick={() => handleShowingNewTemplate()}>
         x
       </button>
@@ -30,7 +32,7 @@ function NewTemplate() {
             onChange={(e) => setTemplateName(e.target.value)}
           />
         </div>
-        <div className="template-exercises">
+        <div className={styles["template-exercises"]}>
           {exercises.map((exercise) => (
             <NewTemplateExercise
               key={exercise.id}
@@ -39,8 +41,11 @@ function NewTemplate() {
           ))}
           <AddExerciseTile />
         </div>
-        <div className="save-template-button-container">
-          <button type="submit" className="button save-template-button">
+        <div className={styles["save-template-button-container"]}>
+          <button
+            type="submit"
+            className={`button ${styles["save-template-button"]}`}
+          >
             Save template
           </button>
         </div>

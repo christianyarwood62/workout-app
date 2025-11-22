@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthentication } from "../contexts/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
+
 import styles from "./Login.module.css";
 
 export function Login() {
@@ -34,7 +35,7 @@ export function Login() {
         />
       </div>
       <div className={styles["login_field"]}>
-        <label className="login_label" htmlFor="password">
+        <label className={styles["login_label"]} htmlFor="password">
           Password
         </label>
         <input
@@ -60,9 +61,7 @@ export function Login() {
         <button className={styles["login_button"]}>
           Don't have an account?
         </button>{" "}
-        <button className={`${styles["login_button"]} ${styles["bold"]}`}>
-          Sign Up
-        </button>
+        <button className={`${styles["login_button"]}`}>Sign Up</button>
       </div>
     </form>
   );
