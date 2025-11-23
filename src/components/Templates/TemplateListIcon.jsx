@@ -1,5 +1,5 @@
 import { useTemplates } from "../../contexts/TemplatesContext";
-import EditButton from "../EditButton";
+import EditButton from "./EditButton";
 import { Trash } from "lucide-react";
 
 import styles from "./TemplateListIcon.module.css";

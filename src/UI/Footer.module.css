@@ -1,15 +1,12 @@
 .footer {
-  padding: 2rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   height: var(--footer-height);
-  background-color: var(--header-footer-background-color);
+  background-color: var(--footer-color);
   backdrop-filter: blur(10px);
-  position: fixed;
-  bottom: 0px;
-  z-index: 1;
+
   left: 0;
   width: 100%;
 }

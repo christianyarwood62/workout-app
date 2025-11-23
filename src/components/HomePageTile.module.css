@@ -1,0 +1,17 @@
+.homePageTile {
+  background-color: rgba(12, 12, 40, 0.65);
+  flex: 1;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.iconWrapper {
+  background-color: var(--accent-color);
+  border-radius: 0.5rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+}

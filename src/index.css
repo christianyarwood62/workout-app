@@ -8,14 +8,16 @@
 }
 
 :root {
-  --main-bg-color: #191923;
+  --main-bg-color: #20203d58;
   --main-color: rgba(38, 0, 255, 0.3);
   --accent-color: #d5a021;
   --button-hover-shadow: rgba(255, 255, 255, 0.6);
   --button-color: rgba(105, 122, 206, 0.713);
   --header-height: 7rem;
-  --footer-height: 3rem;
-  --header-footer-background-color: rgba(8, 4, 110, 0.474);
+  --footer-height: 7rem;
+  --header-footer-background-color: #20203d58;
+  --footer-color: #a7832e;
+  --middle-section-color: rgba(108, 107, 112, 0.156);
 }
 
 button {
@@ -90,6 +92,10 @@ h3 {
   -webkit-text-fill-color: transparent;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
 /* The header AKA Navbar for the page*/
 
 /* Burger menu */
@@ -119,7 +125,7 @@ a {
   cursor: pointer;
   width: fit-content;
   background-color: var(--button-color);
-  border-radius: 32px;
+  border-radius: 0.5rem;
   padding: 8px 16px;
   border-style: none;
   color: white;
@@ -172,4 +178,19 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 0.7rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3,
+  button {
+    font-size: 0.8rem;
+  }
 }
