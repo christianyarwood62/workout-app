@@ -54,5 +54,23 @@
 /* Third Section */
 
 .thirdSectionContainer {
-  background-color: red;
+  background-color: var(--accent-color);
+  height: 7rem;
+  flex-direction: row;
+}
+
+.textSection {
+  flex: 1;
+  text-align: center;
+}
+
+.textSection .smallText {
+  font-size: 0.5rem;
+  color: black;
+}
+
+.textSection .bigText {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: bold;
 }

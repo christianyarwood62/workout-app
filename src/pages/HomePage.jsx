@@ -61,13 +61,34 @@ function Homepage() {
         <section
           className={`${styles.thirdSectionContainer} ${styles.homeSectionContainer}`}
         >
-          test
+          <div className={styles.textSection}>
+            <p className={styles.bigText}>5000+</p>
+            <p className={styles.smallText}>Happy Members</p>
+          </div>
+          <div className={styles.textSection}>
+            <p className={styles.bigText}>50+</p>
+            <p className={styles.smallText}>Results Driven exercises</p>
+          </div>
+          <div className={styles.textSection}>
+            <p className={styles.bigText}>Unlimited</p>
+            <p className={styles.smallText}>Customisable Routines</p>
+          </div>
+          <div className={styles.textSection}>
+            <p className={styles.bigText}>24/7</p>
+            <p className={styles.smallText}>Customer Service</p>
+          </div>
         </section>
         <section
           className={`${styles.bottomSectionContainer} ${styles.homeSectionContainer}`}
         >
-          <p>Log in to gain access to exercise history</p>
-          <Button to="./login">Log in</Button>
+          <h3>Ready to Start your Journey?</h3>
+          <p>
+            Join DreamWorkOut today and get your first month free. No
+            commitment, cancel anytime.
+          </p>
+          <Button className="button" to="./login">
+            Sign Up
+          </Button>
         </section>
       </div>
     </div>
