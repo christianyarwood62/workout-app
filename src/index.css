@@ -15,14 +15,11 @@
   --button-color: rgba(105, 122, 206, 0.713);
   --header-height: 7rem;
   --footer-height: 7rem;
-  --header-footer-background-color: #20203d58;
+  --header-background-color: #20203d58;
   --footer-color: #a7832e;
   --middle-section-color: rgba(108, 107, 112, 0.156);
 }
 
-button {
-  cursor: pointer;
-}
 p,
 label {
   color: white;
@@ -62,7 +59,6 @@ body {
 .main-content {
   min-height: calc(100vh - var(--footer-height) - var(--header-height));
   margin-top: var(--header-height);
-  margin-bottom: var(--footer-height);
   position: relative;
   width: 100%;
   display: flex;
@@ -96,12 +92,6 @@ h1 {
   font-size: 4rem;
 }
 
-/* The header AKA Navbar for the page*/
-
-/* Burger menu */
-
-/* login user tile */
-
 .exercise-icon:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--button-hover-shadow);
@@ -122,12 +112,24 @@ a {
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  cursor: pointer;
   width: fit-content;
-  background-color: var(--button-color);
+  background-color: var(--accent-color);
   border-radius: 0.5rem;
   padding: 8px 16px;
   border-style: none;
+  color: black;
+}
+
+.accentButton {
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+  background-color: var(--main-bg-color);
+  border-radius: 0.5rem;
+  padding: 8px 16px;
+  border: solid white 0.5px;
   color: white;
 }
 

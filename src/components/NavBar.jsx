@@ -1,14 +1,22 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 import logo from "../assets/company-logo.png";
+
+import { Activity, BookOpen, Dumbbell } from "lucide-react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const tab1 = "Exercises";
   const tab2 = "Workout Templates";
   const tab3 = "Exercise history";
+
+  // Closes the burger menu when the user navigates to a different page
+  const location = useLocation();
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
     <header className={styles["navbar-header"]}>
@@ -27,13 +35,32 @@ function Navbar() {
         </button>
 
         <nav
-          className={`${styles["navbar-links"]} ${
-            isOpen ? styles["open"] : ""
-          }`}
+          className={`${styles["navbar-links"]} ${isOpen ? styles.open : ""}`}
         >
-          <NavLink to="/exercises">{tab1}</NavLink>
-          <NavLink to="/workout">{tab2}</NavLink>
-          <NavLink to="/history">{tab3}</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? styles.active : "")}
+            to="/exercises"
+          >
+            <div className={styles.openNavbarSection}>
+              <Activity /> <p>{tab1}</p>
+            </div>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? styles.active : "")}
+            to="/workout"
+          >
+            <div className={styles.openNavbarSection}>
+              <Dumbbell /> <p>{tab2}</p>
+            </div>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? styles.active : "")}
+            to="/history"
+          >
+            <div className={styles.openNavbarSection}>
+              <BookOpen /> <p>{tab3}</p>
+            </div>
+          </NavLink>
         </nav>
       </div>
     </header>

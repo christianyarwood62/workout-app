@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: fit-content;
 }
 
 .companyLogo {
@@ -11,12 +12,12 @@
 }
 
 .homeSectionContainer {
-  height: 25rem;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 1.5rem;
+  padding: 4rem 1.5rem;
   width: 100%;
 }
 
@@ -51,6 +52,16 @@
   gap: 0.8rem;
 }
 
+.middleSectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.middleSectionHeader p {
+  text-align: center;
+}
+
 /* Third Section */
 
 .thirdSectionContainer {
@@ -73,4 +84,14 @@
   font-size: 1.2rem;
   color: black;
   font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Bottom Section */
+
+.bottomSectionContainer {
+  gap: 2rem;
 }

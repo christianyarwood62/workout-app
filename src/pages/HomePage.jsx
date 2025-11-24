@@ -24,7 +24,7 @@ function Homepage() {
             </p>
             <div className={`${styles.signUpButtons}`}>
               <button className="button">Register</button>
-              <button className="button">Log In</button>
+              <button className="accentButton">Log In</button>
             </div>
           </div>
           <img src={gym} className={styles["companyLogo"]} />
@@ -33,7 +33,7 @@ function Homepage() {
           className={`${styles.middleSectionContainer} ${styles.homeSectionContainer}`}
         >
           <div className={styles.middleSectionHeader}>
-            <h2>Why Choose DreamWorkOut?</h2>
+            <h1>Why Choose DreamWorkOut?</h1>
             <p>Everything you need to achieve your fitness goals</p>
           </div>
           <div className={styles.middleSectionTiles}>
@@ -81,7 +81,7 @@ function Homepage() {
         <section
           className={`${styles.bottomSectionContainer} ${styles.homeSectionContainer}`}
         >
-          <h3>Ready to Start your Journey?</h3>
+          <h1>Ready to Start your Journey?</h1>
           <p>
             Join DreamWorkOut today and get your first month free. No
             commitment, cancel anytime.
