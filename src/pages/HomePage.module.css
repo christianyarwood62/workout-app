@@ -6,8 +6,8 @@
 
 .companyLogo {
   max-width: 400px;
-  flex: 1;
   width: 100%;
+  min-width: 183px;
 }
 
 .homeSectionContainer {
@@ -16,8 +16,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-bg-color);
   padding: 0 1.5rem;
+  width: 100%;
 }
 
 /* Top section */
@@ -49,4 +49,10 @@
 .middleSectionTiles {
   display: flex;
   gap: 0.8rem;
+}
+
+/* Third Section */
+
+.thirdSectionContainer {
+  background-color: red;
 }

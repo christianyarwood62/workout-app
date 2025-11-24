@@ -16,3 +16,7 @@
 .userTile_signIn_button {
   font-weight: 600;
 }
+
+.chevronDown {
+  border-radius: 0.5rem;
+}

@@ -23,7 +23,7 @@ function UserTile() {
           Sign in
         </Button>
       )}
-      <button>
+      <button className={styles.chevronDown}>
         <ChevronDown onClick={() => setIsDropDownOpen(!isDropdownOpen)} />
       </button>
       <LoginDropDown isDropDownOpen={isDropdownOpen} />

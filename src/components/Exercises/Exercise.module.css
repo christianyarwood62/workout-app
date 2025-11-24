@@ -1,9 +1,5 @@
-.exercise {
-  flex-shrink: 1;
-}
-
 .exercise p {
-  font-size: 1rem;
+  font-size: 2rem;
   padding: 1rem;
 }
 
@@ -15,6 +11,10 @@
   border-radius: 16px;
   padding: 8px 16px;
   border: grey solid 0.1px;
+  color: white;
+  flex: 1;
+  min-width: 10rem;
+  min-height: 3rem;
 }
 
 .exercise-icon:hover {

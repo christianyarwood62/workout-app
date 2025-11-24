@@ -5,7 +5,6 @@ import NewTemplateExerciseOverlay from "../components/Templates/NewTemplateExerc
 import TemplateExerciseErrorComponent from "../components/Templates/TemplateExerciseErrorComponent";
 import EditWorkoutOverlay from "../components/Templates/EditWorkoutOverlay";
 import { useTemplates } from "../contexts/TemplatesContext";
-import { useState } from "react";
 
 function WorkoutPage() {
   const {

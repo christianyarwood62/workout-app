@@ -131,7 +131,7 @@ function ExercisesProvider({ children }) {
       setIsLoading(true);
       getExercises();
     },
-    [searchedExercise]
+    [searchedExercise, fetchedExercises.length]
   );
 
   // Search for a specific exercise from the list, and API will fetch all exercises that match this search
@@ -145,7 +145,7 @@ function ExercisesProvider({ children }) {
     setSearchedExercise("");
   }
 
-  // Selects an exercise from the list to show details about it
+  // Selects an exercise from the list to show details about it, also used to close the exercise details
   function handleSelection(exercise) {
     setSelectedExercise((cur) =>
       cur?.name === exercise?.name ? null : exercise

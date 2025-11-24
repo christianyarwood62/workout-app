@@ -6,14 +6,12 @@ function Exercise({ exercise, children }) {
   const { handleSelection } = useExercises();
 
   return (
-    <div className={styles.exercise}>
-      <button
-        className={styles["exercise-icon"]}
-        onClick={() => handleSelection(exercise)}
-      >
-        <p>{children}</p>
-      </button>
-    </div>
+    <button
+      className={`${styles["exercise-icon"]}`}
+      onClick={() => handleSelection(exercise)}
+    >
+      {children}
+    </button>
   );
 }
 

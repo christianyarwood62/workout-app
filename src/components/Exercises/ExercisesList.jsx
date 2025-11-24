@@ -1,13 +1,11 @@
 import Loader from "../Loader";
 import Exercise from "./Exercise";
 import { useExercises } from "../../contexts/ExercisesContext";
-import Button from "../../UI/Button";
-import { X } from "lucide-react";
 
 import styles from "./ExercisesList.module.css";
 
 function ExercisesList() {
-  const { exercises, isLoading, handleSearchedExercise } = useExercises();
+  const { exercises, isLoading } = useExercises();
 
   return (
     <>

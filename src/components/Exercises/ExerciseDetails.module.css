@@ -5,9 +5,5 @@
 .exercise-details-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.exercise-details-container h2 {
-  width: 400px;
+  gap: 2rem;
 }

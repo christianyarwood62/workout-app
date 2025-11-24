@@ -59,6 +59,11 @@ function Homepage() {
           </div>
         </section>
         <section
+          className={`${styles.thirdSectionContainer} ${styles.homeSectionContainer}`}
+        >
+          test
+        </section>
+        <section
           className={`${styles.bottomSectionContainer} ${styles.homeSectionContainer}`}
         >
           <p>Log in to gain access to exercise history</p>

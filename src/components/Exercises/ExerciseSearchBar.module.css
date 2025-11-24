@@ -3,9 +3,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* gap: 2rem; */
   background-color: rgb(255, 255, 255);
   border-radius: 32px;
+  height: 1.5rem;
 }
 
 .search-container {
@@ -19,7 +19,7 @@
 .search-input {
   all: unset;
   text-align: center;
-  /* width: 100%; */
+  font-size: 0.8rem;
 }
 
 .results-button-container {
