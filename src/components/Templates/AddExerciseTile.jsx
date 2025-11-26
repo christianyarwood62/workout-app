@@ -10,7 +10,7 @@ function AddExerciseTile() {
       className={`${styles["add-template-exercise-button"]} ${"button"}`}
       onClick={() => handleShowingNewExerciseFrom()}
     >
-      <p>Add an exercise</p>
+      Add an exercise
     </button>
   );
 }

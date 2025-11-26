@@ -25,13 +25,12 @@ function NewTemplate() {
           handleShowingNewTemplate();
         }}
       >
-        <div>
-          <input
-            required
-            placeholder="Template Name..."
-            onChange={(e) => setTemplateName(e.target.value)}
-          />
-        </div>
+        <input
+          required
+          placeholder="Template Name..."
+          onChange={(e) => setTemplateName(e.target.value)}
+        />
+
         <div className={styles["template-exercises"]}>
           {exercises.map((exercise) => (
             <NewTemplateExercise

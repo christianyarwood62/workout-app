@@ -9,12 +9,15 @@ function AddTemplateButton() {
   return (
     <>
       {!showingNewTemplate && (
-        <div className={styles["add-template-button"]}>
-          <button className="button" onClick={() => handleShowingNewTemplate()}>
+        <div className={styles["add-template-container"]}>
+          <button
+            className={styles.addTemplateButton}
+            onClick={() => handleShowingNewTemplate()}
+          >
             {templates.length === 0 ? (
-              <h3>Create your first template! 🏋️‍♀️</h3>
+              <>Create your first template! 🏋️‍♀️</>
             ) : (
-              <h3>Add another template!</h3>
+              <>Add another template!</>
             )}
           </button>
         </div>

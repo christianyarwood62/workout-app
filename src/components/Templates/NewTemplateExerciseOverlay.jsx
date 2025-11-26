@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useExercises } from "../../contexts/ExercisesContext";
 import { useTemplates } from "../../contexts/TemplatesContext";
 
+import styles from "./NewTemplateExerciseOverlay.module.css";
+
 function NewTemplateExerciseOverlay() {
   const [setsInput, setSetsInput] = useState("");
   const [repsInput, setRepsInput] = useState("");
@@ -24,9 +26,10 @@ function NewTemplateExerciseOverlay() {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="overlay-content element-container" // no CSS for overlay-content, just here for understanding
+        className={styles.newTemplateContainer}
       >
         <form
+          className={styles.newTemplateForm}
           onSubmit={(e) => {
             e.preventDefault();
             handleAddExerciseToTemplate(exerciseName, setsInput, repsInput);
@@ -37,7 +40,7 @@ function NewTemplateExerciseOverlay() {
         >
           <select
             onChange={(e) => setExerciseName(e.target.value)}
-            className="button"
+            className={styles.input}
             required
           >
             <option>Choose an exercise</option>
@@ -48,7 +51,7 @@ function NewTemplateExerciseOverlay() {
           <input
             type="number"
             min={1}
-            className="button"
+            className={styles.input}
             value={setsInput}
             required
             name="sets"
@@ -58,14 +61,14 @@ function NewTemplateExerciseOverlay() {
           <input
             type="number"
             min={1}
-            className="button"
+            className={styles.input}
             required
             value={repsInput}
             name="reps"
             onChange={(e) => setRepsInput(e.target.value)}
             placeholder="Reps?"
           />
-          <button>Submit</button>
+          <button className={styles.saveButton}>Save</button>
         </form>
       </div>
     </div>

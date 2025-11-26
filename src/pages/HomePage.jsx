@@ -23,8 +23,8 @@ function Homepage() {
               programs.
             </p>
             <div className={`${styles.signUpButtons}`}>
-              <button className="button">Register</button>
-              <button className="accentButton">Log In</button>
+              <button className="text-btn">Register</button>
+              <button className="accent-text-btn">Log In</button>
             </div>
           </div>
           <img src={gym} className={styles["companyLogo"]} />
@@ -86,7 +86,7 @@ function Homepage() {
             Join DreamWorkOut today and get your first month free. No
             commitment, cancel anytime.
           </p>
-          <Button className="button" to="./login">
+          <Button className="text-btn" to="./login">
             Sign Up
           </Button>
         </section>

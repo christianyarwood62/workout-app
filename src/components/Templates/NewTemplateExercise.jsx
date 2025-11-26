@@ -2,24 +2,26 @@ import { useTemplates } from "../../contexts/TemplatesContext";
 
 import styles from "./NewTemplateExercise.module.css";
 
+import { X } from "lucide-react";
+
 function NewTemplateExercise({ proposedExercise }) {
   const { deleteExerciseFromNewTemplate } = useTemplates();
 
   return (
     <div className={styles["exercise-in-template"]}>
-      <div className="icon-top-area">
+      <div className={styles.IconTopArea}>
         <button
           type="button"
           onClick={() => deleteExerciseFromNewTemplate(proposedExercise.id)}
-          className="button icon-x"
+          className={styles.deleteButton}
         >
-          🗑️
+          <X className={styles.xIcon} />
         </button>
       </div>
-      <div className="icon-lower-area">
-        <p className="text-in-icon">{proposedExercise.exerciseName}</p>
-        <p className="text-in-icon">Sets: {proposedExercise.sets}</p>
-        <p className="text-in-icon">Reps: {proposedExercise.reps}</p>
+      <div className={styles.iconLowerArea}>
+        <p className={styles.exerciseTitle}>{proposedExercise.exerciseName}</p>
+        <p className={styles.exerciseText}>Sets: {proposedExercise.sets}</p>
+        <p className={styles.exerciseText}>Reps: {proposedExercise.reps}</p>
       </div>
     </div>
   );

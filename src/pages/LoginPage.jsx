@@ -1,4 +1,3 @@
-import Navbar from "../components/NavBar";
 import Login from "../components/Login";
 import styles from "./LoginPage.module.css";
 

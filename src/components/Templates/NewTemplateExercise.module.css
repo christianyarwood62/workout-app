@@ -1,6 +1,39 @@
 .exercise-in-template {
-  background-color: var(--main-color);
-  height: 128px;
-  width: 128px;
-  border-radius: 32px;
+  background-color: rgba(92, 91, 96, 0.229);
+  height: auto;
+  width: auto;
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 1px 1px 3px rgba(109, 108, 113, 0.772);
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+}
+
+.xIcon {
+  color: white;
+}
+
+.xIcon:hover {
+  color: var(--accent-color);
+}
+.iconTopArea {
+}
+
+.iconLowerArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.exerciseTitle {
+  font-weight: bold;
+}
+
+.exerciseText {
+  font-size: 0.8rem;
 }

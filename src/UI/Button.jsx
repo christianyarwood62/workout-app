@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Button({ children, to, onClick, className }) {
   if (to)
     return (
-      <Link style={{ color: "white" }} to={`/${to}`} className={className}>
+      <Link to={`/${to}`} className={className}>
         {children}
       </Link>
     );

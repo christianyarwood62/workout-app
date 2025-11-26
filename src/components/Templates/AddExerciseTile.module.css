@@ -1,4 +1,5 @@
 .add-template-exercise-button {
-  height: 128px;
-  width: 128px;
+  height: 2rem;
+  width: 9rem;
+  margin: 2rem 0;
 }

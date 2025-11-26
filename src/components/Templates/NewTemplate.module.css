@@ -1,5 +1,4 @@
 .new-template-form {
-  background-color: var(--main-color);
   padding: 16px;
   margin: 64px;
   display: flex;
@@ -15,21 +14,31 @@
 
 .template-exercises {
   display: flex;
-  gap: 32px;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
 .save-template-button {
-  margin-top: 32px;
-  background-color: #222a84;
-  width: 96px;
+  width: 5rem;
   box-sizing: content-box;
-  border-style: double;
-  border-width: 4px;
-  box-shadow: 0px 0px 17px rgb(255, 255, 255);
 }
 
 .save-template-button-container {
   display: flex;
   justify-content: center;
+}
+
+input {
+  all: unset;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }

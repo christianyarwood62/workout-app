@@ -1,22 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "roboto";
 }
 
 :root {
-  --main-bg-color: #20203d58;
-  --main-color: rgba(38, 0, 255, 0.3);
+  --main-bg-color: #101f2c;
+  --main-bg-color-light: #1d374f;
+  --main-bg-color-dark: #0a121a;
+  --main-color: rgba(131, 130, 134, 0.195);
   --accent-color: #d5a021;
+  --accent-color-light: #ddb34d;
+  --accent-color-dark: #c0901e;
+  --grey-color: #ebebeb;
   --button-hover-shadow: rgba(255, 255, 255, 0.6);
   --button-color: rgba(105, 122, 206, 0.713);
   --header-height: 7rem;
   --footer-height: 7rem;
   --header-background-color: #20203d58;
-  --footer-color: #a7832e;
+  --footer-color: #d5a021;
   --middle-section-color: rgba(108, 107, 112, 0.156);
 }
 
@@ -28,7 +32,8 @@ label {
 /* General classes */
 
 body {
-  background-color: rgb(13, 11, 31);
+  background-color: var(--main-bg-color-dark);
+  font-family: "Rubik", sans-serif;
 }
 
 .flex-row {
@@ -64,7 +69,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .element-container {
@@ -117,26 +121,50 @@ a {
   border-radius: 0.5rem;
   padding: 8px 16px;
   border-style: none;
-  color: black;
+  font-weight: 700;
+  color: var(--main-bg-color-dark);
+}
+
+.text-btn {
+  background-color: var(--accent-color);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: var(--main-bg-color);
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  border: none;
+}
+
+.text-btn:hover {
+  background-color: var(--accent-color-dark);
+  transform: translateY(-2px);
+}
+
+.accent-text-btn {
+  background-color: var(--main-bg-color-light);
+  border-radius: 0.5rem;
+  color: var(--grey-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.accent-text-btn:hover {
+  background-color: var(--main-bg-color-dark);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 3px var(--main-bg-color-light);
 }
 
 .accentButton {
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  cursor: pointer;
-  width: fit-content;
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color-light);
+  transition: all 0.2s ease;
   border-radius: 0.5rem;
-  padding: 8px 16px;
-  border: solid white 0.5px;
-  color: white;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--button-hover-shadow);
-  background-color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  color: var(--grey-color);
 }
 
 .button-with-icon {
@@ -196,4 +224,9 @@ button:hover {
   button {
     font-size: 0.8rem;
   }
+}
+
+.loader {
+  color: white;
+  height: 100%;
 }

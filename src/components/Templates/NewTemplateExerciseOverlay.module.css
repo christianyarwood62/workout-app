@@ -1,0 +1,28 @@
+.newTemplateContainer {
+  background-color: rgba(162, 153, 192, 0.798);
+  border-radius: 0.5rem;
+}
+
+.newTemplateForm {
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.input {
+  background-color: rgba(37, 35, 46, 0.588);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.saveButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+.saveButton:hover {
+  color: var(--accent-color);
+}

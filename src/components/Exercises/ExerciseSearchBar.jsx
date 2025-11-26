@@ -6,7 +6,8 @@ import { X } from "lucide-react";
 import styles from "./ExerciseSearchBar.module.css";
 
 function ExerciseSearchBar() {
-  const { handleSearchedExercise, searchedExercise } = useExercises();
+  const { handleSearchedExercise, searchedExercise, isLoading } =
+    useExercises();
   const [input, setInput] = useState("");
 
   return (
@@ -30,20 +31,20 @@ function ExerciseSearchBar() {
           value={input}
         />
       </form>
-      {searchedExercise ? (
-        <div className={styles["results-button-container"]}>
-          <Button
-            className="button-with-icon"
-            onClick={() => handleSearchedExercise("")}
-          >
-            <X className="svg" color="black" />
-            <p>Reset</p>
-          </Button>
-          <p>Showing results for {searchedExercise}...</p>
-        </div>
-      ) : (
-        <p>Showing all results</p>
-      )}
+      {searchedExercise
+        ? !isLoading && (
+            <div className={styles["results-button-container"]}>
+              <Button
+                className="button-with-icon"
+                onClick={() => handleSearchedExercise("")}
+              >
+                <X className="svg" color="black" />
+                <p>Reset</p>
+              </Button>
+              <p>Showing results for {searchedExercise}...</p>
+            </div>
+          )
+        : !isLoading && <p> Showing all results</p>}
     </div>
   );
 }

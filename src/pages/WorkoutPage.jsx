@@ -16,12 +16,14 @@ function WorkoutPage() {
 
   return (
     <div className="main-content">
-      <AddTemplateButton />
-      {showingNewTemplate && <NewTemplate />}
-      {<TemplateList />}
-      {showingNewExerciseForm && <NewTemplateExerciseOverlay />}
-      {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
-      {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
+      <div className="workout-page">
+        <AddTemplateButton />
+        {showingNewTemplate && <NewTemplate />}
+        {<TemplateList />}
+        {showingNewExerciseForm && <NewTemplateExerciseOverlay />}
+        {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
+        {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
+      </div>
     </div>
   );
 }

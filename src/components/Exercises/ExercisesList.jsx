@@ -1,4 +1,4 @@
-import Loader from "../Loader";
+import Loader from "../../UI/Loader";
 import Exercise from "./Exercise";
 import { useExercises } from "../../contexts/ExercisesContext";
 
