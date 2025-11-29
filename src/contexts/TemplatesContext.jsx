@@ -91,7 +91,7 @@ function reducer(state, action) {
 
 function TemplatesProvider({ children }) {
   const [showingNewExerciseForm, setShowingNewExerciseForm] = useState(false);
-  const [showingNewTemplate, setShowingNewTemplate] = useState(false);
+
   const [templateNameInput, setTemplateNameInput] = useState("");
   const [isEditTemplateOverlayOpen, setEditTemplateOverlayOpen] =
     useState(false);
@@ -102,11 +102,6 @@ function TemplatesProvider({ children }) {
   ] = useReducer(reducer, initialState);
 
   // the UI functions
-
-  // This opens/closes the new template component where you can add exercises to a temporary template
-  function handleShowingNewTemplate() {
-    setShowingNewTemplate(!showingNewTemplate);
-  }
 
   function handleShowingNewExerciseFrom() {
     setShowingNewExerciseForm(!showingNewExerciseForm);
@@ -197,8 +192,6 @@ function TemplatesProvider({ children }) {
         handleSaveEditedTemplate,
         handleShowingNewExerciseFrom,
         showingNewExerciseForm,
-        handleShowingNewTemplate,
-        showingNewTemplate,
         editingTemplate,
       }}
     >

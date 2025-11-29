@@ -1,11 +1,6 @@
-.new-template-form {
-  padding: 16px;
-  margin: 64px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  border-radius: 1rem;
+h2 {
+  width: auto;
+  align-self: start;
 }
 
 .new-template-form button {
@@ -14,18 +9,31 @@
 
 .template-exercises {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
-.save-template-button {
-  width: 5rem;
-  box-sizing: content-box;
-}
-
-.save-template-button-container {
+.exercisesHeader {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  /* gap: 2.5rem; */
+  /* margin-right: 5rem; */
+}
+
+.headerSupportText {
+  align-self: start;
+}
+
+.emptySpace {
+  width: 2rem;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
 input {
@@ -35,10 +43,42 @@ input {
   border: 1px solid white;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  width: 95%;
 }
 
-form {
+.form {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+}
+
+.form label {
+  align-self: start;
+}
+
+.left {
+  align-self: start;
+}
+
+.newRoutineBtn:disabled {
+  background-color: grey;
+  opacity: 0.5;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+  width: 100%;
 }

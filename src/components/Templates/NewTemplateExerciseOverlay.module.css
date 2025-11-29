@@ -1,18 +1,14 @@
 .newTemplateContainer {
-  background-color: rgba(162, 153, 192, 0.798);
+  background-color: var(--main-bg-color);
   border-radius: 0.5rem;
-}
-
-.newTemplateForm {
-  flex-direction: column;
-  padding: 3rem;
+  padding: 30px;
 }
 
 .input {
-  background-color: rgba(37, 35, 46, 0.588);
+  background-color: var(--main-bg-color-light);
   color: white;
   font-size: 1rem;
-  border: none;
+  border: var(--input-border-color);
   padding: 0.5rem;
   border-radius: 0.5rem;
 }

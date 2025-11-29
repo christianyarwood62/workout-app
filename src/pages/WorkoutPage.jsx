@@ -1,4 +1,3 @@
-import AddTemplateButton from "../components/Templates/AddTemplateButton";
 import NewTemplate from "../components/Templates/NewTemplate";
 import TemplateList from "../components/Templates/TemplateList";
 import NewTemplateExerciseOverlay from "../components/Templates/NewTemplateExerciseOverlay";
@@ -11,19 +10,21 @@ function WorkoutPage() {
     isTemplateExerciseErrorOpen,
     isEditTemplateOverlayOpen,
     showingNewExerciseForm,
-    showingNewTemplate,
   } = useTemplates();
 
   return (
     <div className="main-content">
-      <div className="workout-page">
-        <AddTemplateButton />
-        {showingNewTemplate && <NewTemplate />}
-        {<TemplateList />}
+      <section className="workout-page">
+        <div className="workout-page-header-container">
+          <h1 className="workout-page-header">Track your Routines</h1>
+          <p>Design custom workout routines that you can reuse anytime</p>
+        </div>
+        <NewTemplate />
+        <TemplateList />
         {showingNewExerciseForm && <NewTemplateExerciseOverlay />}
         {isEditTemplateOverlayOpen && <EditWorkoutOverlay />}
         {isTemplateExerciseErrorOpen && <TemplateExerciseErrorComponent />}
-      </div>
+      </section>
     </div>
   );
 }

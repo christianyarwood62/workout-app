@@ -1,6 +1,15 @@
-.workout-template-container {
+.rightMiddle {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.new-template-container {
   display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  margin: 64px 32px;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  border-radius: 0.8rem;
+  padding: 2rem 1rem;
+  min-height: 35rem;
 }

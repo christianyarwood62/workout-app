@@ -3,27 +3,21 @@ import { useTemplates } from "../../contexts/TemplatesContext";
 import styles from "./AddTemplateButton.module.css";
 
 function AddTemplateButton() {
-  const { templates, handleShowingNewTemplate, showingNewTemplate } =
-    useTemplates();
+  const { templates, handleShowingNewTemplate } = useTemplates();
 
-  return (
-    <>
-      {!showingNewTemplate && (
-        <div className={styles["add-template-container"]}>
-          <button
-            className={styles.addTemplateButton}
-            onClick={() => handleShowingNewTemplate()}
-          >
-            {templates.length === 0 ? (
-              <>Create your first template! 🏋️‍♀️</>
-            ) : (
-              <>Add another template!</>
-            )}
-          </button>
-        </div>
-      )}
-    </>
-  );
+  // return (
+  //   <div className={styles["add-template-container"]}>
+  //     {templates.length === 0 ? (
+  //       <button className="text-btn" onClick={() => handleShowingNewTemplate()}>
+  //         Create your first template! 🏋️‍♀️
+  //       </button>
+  //     ) : (
+  //       <button className="text-btn" onClick={() => handleShowingNewTemplate()}>
+  //         Add another template!
+  //       </button>
+  //     )}
+  //   </div>
+  // );
 }
 
 export default AddTemplateButton;

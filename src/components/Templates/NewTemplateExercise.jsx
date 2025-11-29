@@ -8,21 +8,22 @@ function NewTemplateExercise({ proposedExercise }) {
   const { deleteExerciseFromNewTemplate } = useTemplates();
 
   return (
-    <div className={styles["exercise-in-template"]}>
-      <div className={styles.IconTopArea}>
-        <button
-          type="button"
-          onClick={() => deleteExerciseFromNewTemplate(proposedExercise.id)}
-          className={styles.deleteButton}
-        >
-          <X className={styles.xIcon} />
-        </button>
-      </div>
-      <div className={styles.iconLowerArea}>
-        <p className={styles.exerciseTitle}>{proposedExercise.exerciseName}</p>
-        <p className={styles.exerciseText}>Sets: {proposedExercise.sets}</p>
-        <p className={styles.exerciseText}>Reps: {proposedExercise.reps}</p>
-      </div>
+    <div className={`information-row ${styles.exerciseRow}`}>
+      <p className={styles.exerciseTitle}>{proposedExercise.exerciseName}</p>
+      <p className={`${styles.exerciseText} ${styles.sets}`}>
+        {proposedExercise.sets}
+      </p>
+      <p className={`${styles.exerciseText} ${styles.reps}`}>
+        {proposedExercise.reps}
+      </p>
+
+      <button
+        type="button"
+        onClick={() => deleteExerciseFromNewTemplate(proposedExercise.id)}
+        className={styles.deleteButton}
+      >
+        <X className={`${styles.xIcon} ${styles.removebtn}`} />
+      </button>
     </div>
   );
 }

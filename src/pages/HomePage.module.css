@@ -17,7 +17,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1.5rem;
   width: 100%;
 }
 
@@ -25,6 +24,7 @@
 .topSectionContainer {
   flex-direction: row;
   gap: 1rem;
+  padding: 4rem 1.5rem 7rem;
 }
 
 .topTextContainer {
@@ -44,20 +44,21 @@
 
 .middleSectionContainer {
   background-color: var(--middle-section-color);
-  gap: 2rem;
+  gap: 5rem;
+  padding: 4rem 1.5rem 7rem;
 }
 
 .middleSectionTiles {
   display: flex;
   flex: 1 1 2rem;
   min-width: 200px;
-  gap: 0.8rem;
+  gap: 3rem;
 }
 
 .middleSectionHeader {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .middleSectionHeader p {
@@ -70,6 +71,7 @@
   background-color: var(--accent-color);
   height: 7rem;
   flex-direction: row;
+  align-items: center;
 }
 
 .textSection {
@@ -96,4 +98,5 @@ h1 {
 
 .bottomSectionContainer {
   gap: 2rem;
+  padding: 4rem 1.5rem 7rem;
 }
