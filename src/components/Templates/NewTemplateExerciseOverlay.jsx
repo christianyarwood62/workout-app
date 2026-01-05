@@ -30,7 +30,10 @@ function NewTemplateExerciseOverlay() {
         className={styles.newTemplateContainer}
       >
         <h2>Add Exercise</h2>
-        <X />
+        <X
+          style={{ color: "var(--grey-text-color)" }}
+          onClick={handleShowingNewExerciseFrom}
+        />
 
         <form
           className={styles.newTemplateForm}
@@ -42,42 +45,53 @@ function NewTemplateExerciseOverlay() {
             setSetsInput(null);
           }}
         >
-          <label htmlFor="exercise">Exercise</label>
-          <select
-            onChange={(e) => setExerciseName(e.target.value)}
-            className={styles.input}
-            required
-            name="exercise"
-          >
-            <option>Choose an exercise</option>
-            {exercises.map((exercise, i) => (
-              <option key={`exercise-${i}`}>{exercise.name}</option>
-            ))}
-          </select>
+          <div className={styles.overlaySection}>
+            <label htmlFor="exercise">Exercise</label>
+            <select
+              onChange={(e) => {
+                // Can't set value because that uses options, instead of the text
+                setExerciseName(e.target.options[e.target.selectedIndex].text);
+              }}
+              className={styles.input}
+              required
+              name="exercise"
+            >
+              <option value="">Choose an exercise</option>
+              {exercises.map((exercise, i) => (
+                <option value={`option-${i}`} key={`exercise-${i}`}>
+                  {exercise.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <label htmlFor="sets">Sets</label>
-          <input
-            type="number"
-            min={1}
-            className={styles.input}
-            value={setsInput}
-            required
-            name="sets"
-            onChange={(e) => setSetsInput(e.target.value)}
-            placeholder="0"
-          />
+          <div className={styles.overlaySection}>
+            <label htmlFor="sets">Sets</label>
+            <input
+              type="number"
+              min={1}
+              className={styles.input}
+              value={setsInput}
+              required
+              name="sets"
+              onChange={(e) => setSetsInput(e.target.value)}
+              placeholder="0"
+            />
+          </div>
 
-          <label htmlFor="reps">Reps</label>
-          <input
-            type="number"
-            min={1}
-            className={styles.input}
-            required
-            value={repsInput}
-            name="reps"
-            onChange={(e) => setRepsInput(e.target.value)}
-            placeholder="0"
-          />
+          <div className={styles.overlaySection}>
+            <label htmlFor="reps">Reps</label>
+            <input
+              type="number"
+              min={1}
+              className={styles.input}
+              required
+              value={repsInput}
+              name="reps"
+              onChange={(e) => setRepsInput(e.target.value)}
+              placeholder="0"
+            />
+          </div>
           <button className="text-btn">Save</button>
         </form>
       </div>

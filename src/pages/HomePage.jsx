@@ -9,6 +9,8 @@ import HomePageTile from "../components/HomePageTile";
 import { Award, Dumbbell, Trophy } from "lucide-react";
 
 function Homepage() {
+  const navigate = useNavigate();
+
   return (
     <div className="main-content">
       <div className={styles["homepage-container"]}>
@@ -23,8 +25,15 @@ function Homepage() {
               programs.
             </p>
             <div className={`${styles.signUpButtons}`}>
-              <button className="text-btn">Register</button>
-              <button className="accent-text-btn">Log In</button>
+              <button onClick={() => navigate("./login")} className="text-btn">
+                Register
+              </button>
+              <button
+                onClick={() => navigate("./login")}
+                className="accent-text-btn"
+              >
+                Log In
+              </button>
             </div>
           </div>
           <img src={gym} className={styles["companyLogo"]} />

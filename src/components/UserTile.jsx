@@ -19,7 +19,7 @@ function UserTile() {
       {user ? (
         <span>{user}</span>
       ) : (
-        <Button className={styles["userTile_signIn_button"]} to="/login">
+        <Button className={styles["userTile_signIn_button"]} to="./login">
           Sign in
         </Button>
       )}

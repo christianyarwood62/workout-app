@@ -8,6 +8,8 @@ import styles from "./Login.module.css";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogIn, setIsLogIn] = useState(true);
+
   const { login, logout, isAuthenticated } = useAuthentication();
 
   const navigate = useNavigate();
@@ -44,6 +46,18 @@ export function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      {isLogIn && (
+        <div className={styles["login_field"]}>
+          <label className={styles["login_label"]} htmlFor="confirm-password">
+            Confirm Password
+          </label>
+          <input
+            className={styles["login_input"]}
+            name="confirm-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      )}
       <div className={styles["login_user_checks"]}>
         <div className={styles["login_checkbox_container"]}>
           <input
@@ -58,10 +72,12 @@ export function Login() {
       </div>
       <Button className={styles["login_signIn_button"]}>Sign in</Button>
       <div className={styles["login_signUp_text"]}>
-        <button className={styles["login_button"]}>
-          Don't have an account?
-        </button>{" "}
-        <button className={`${styles["login_button"]}`}>Sign Up</button>
+        <button
+          onClick={() => setIsLogIn(!isLogIn)}
+          className={styles["login_button"]}
+        >
+          Don't have an account? Sign Up
+        </button>
       </div>
     </form>
   );

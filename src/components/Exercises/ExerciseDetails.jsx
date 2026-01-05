@@ -10,19 +10,19 @@ function ExerciseDetails() {
       <h2>{selectedExercise.name}</h2>
       <div className="flex-row gap-small">
         <Button
-          className="button-with-icon"
+          className="icon-btn icon-btn-accent-color"
           onClick={() => handleSelection(null)}
         >
           <X className="svg" width="24px" />
-          <p>Close</p>
+          <span>Close</span>
         </Button>
-        <Button className="button-with-icon">
+        <Button className="icon-btn">
           <History className="svg" />
-          <p>History</p>
+          <span>History</span>
         </Button>
-        <Button className="button-with-icon">
+        <Button className="icon-btn">
           <Archive className="svg" />
-          <p>Records</p>
+          <span>Records</span>
         </Button>
       </div>
 

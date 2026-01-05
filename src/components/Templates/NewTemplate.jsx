@@ -48,17 +48,16 @@ function NewTemplate() {
           />
 
           <div className={styles["template-exercises"]}>
-            <div
-              className={`${styles.exercisesHeader} information-row template-column-headers`}
-            >
-              <p>Exercise</p>
-              <p>Sets</p>
-              <p>Reps</p>
-              <div className={styles.emptySpace}></div>
-            </div>
-
             {exercises.length > 0 ? (
               <div className={styles.listContainer}>
+                <div
+                  className={`${styles.exercisesHeader} information-row template-column-headers`}
+                >
+                  <p>Exercise</p>
+                  <p>Sets</p>
+                  <p>Reps</p>
+                  <div className={styles.emptySpace}></div>
+                </div>
                 {exercises.map((exercise) => (
                   <div className={styles.list}>
                     <NewTemplateExercise
@@ -70,7 +69,7 @@ function NewTemplate() {
               </div>
             ) : (
               <div className={styles.list}>
-                <Dumbbell />
+                <Dumbbell style={{ color: "grey" }} />
                 <p className="small-text light-text">No exercises added yet</p>
                 <p className="small-text light-text">
                   Click "Add Exercise" to start building your Routine
